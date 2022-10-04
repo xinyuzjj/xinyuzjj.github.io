@@ -6,10 +6,11 @@
     <updated>2022-10-04T13:02:03.089Z</updated>
     <entry>
         <id>http://example.com/2022/10/04/creat_ok/</id>
-        <title></title>
+        <title>hexo搭建博客</title>
         <link rel="alternate" href="http://example.com/2022/10/04/creat_ok/"/>
-        <content type="html">&lt;p&gt;title: 创建博客&lt;/p&gt;
-&lt;h1 id=&#34;创建博客&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建博客&#34;&gt;#&lt;/a&gt; 创建博客&lt;/h1&gt;
+        <content type="html">&lt;h1 id=&#34;创建博客&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建博客&#34;&gt;#&lt;/a&gt; 创建博客&lt;/h1&gt;
+&lt;h1 id=&#34;参考b站教程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#参考b站教程&#34;&gt;#&lt;/a&gt; 参考 B 站教程&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3JlYWQvY3YxMjYzMzEwMg==&#34;&gt;2021 最全 hexo 搭建博客 + matery 美化 + 使用（保姆级教程） - 哔哩哔哩 (bilibili.com)&lt;/span&gt;&lt;/p&gt;
 </content>
         <updated>2022-10-04T13:02:03.089Z</updated>
     </entry>
