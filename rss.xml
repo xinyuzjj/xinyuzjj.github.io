@@ -5,8 +5,20 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Tue, 04 Oct 2022 21:02:03 +0800</pubDate>
-        <lastBuildDate>Tue, 04 Oct 2022 21:02:03 +0800</lastBuildDate>
+        <pubDate>Wed, 05 Oct 2022 11:12:41 +0800</pubDate>
+        <lastBuildDate>Wed, 05 Oct 2022 11:12:41 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/05/pinglun/</guid>
+            <title>评论功能 添加</title>
+            <link>http://example.com/2022/10/05/pinglun/</link>
+            <pubDate>Wed, 05 Oct 2022 11:12:41 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;获取app-id-和-app-key&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取app-id-和-app-key&#34;&gt;#&lt;/a&gt; 获取 APP ID 和 APP Key&lt;/h2&gt;
+&lt;p&gt;请先&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sZWFuY2xvdWQuY24vZGFzaGJvYXJkL2xvZ2luLmh0bWwjL3NpZ25pbg==&#34;&gt;登录&lt;/span&gt;或&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sZWFuY2xvdWQuY24vZGFzaGJvYXJkL2xvZ2luLmh0bWwjL3NpZ251cA==&#34;&gt;注册&lt;/span&gt;  &lt;code&gt;LeanCloud&lt;/code&gt; , 进入&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sZWFuY2xvdWQuY24vZGFzaGJvYXJkL2FwcGxpc3QuaHRtbCMvYXBwcw==&#34;&gt;控制台&lt;/span&gt;后点击左下角&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sZWFuY2xvdWQuY24vZGFzaGJvYXJkL2FwcGxpc3QuaHRtbCMvbmV3YXBw&#34;&gt;创建应用&lt;/span&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2019/06/21/5d0c995c86fac81746.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;应用创建好以后，进入刚刚创建的应用，选择左下角的 &lt;code&gt;设置&lt;/code&gt;  &amp;gt; &lt;code&gt;应用Key&lt;/code&gt; ，然后就能看到你的 &lt;code&gt;APP ID&lt;/code&gt;  和 &lt;code&gt;APP Key&lt;/code&gt;  了：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2019/06/21/5d0c997a60baa24436.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/04/creat_ok/</guid>
             <title>hexo搭建博客</title>
