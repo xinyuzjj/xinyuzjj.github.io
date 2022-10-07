@@ -5,8 +5,17 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Thu, 06 Oct 2022 14:54:11 +0800</pubDate>
-        <lastBuildDate>Thu, 06 Oct 2022 14:54:11 +0800</lastBuildDate>
+        <pubDate>Fri, 07 Oct 2022 12:12:15 +0800</pubDate>
+        <lastBuildDate>Fri, 07 Oct 2022 12:12:15 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/07/2022.10.7/</guid>
+            <title>回校隔离三天 （第一天）</title>
+            <link>http://example.com/2022/10/07/2022.10.7/</link>
+            <pubDate>Fri, 07 Oct 2022 12:12:15 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;有点-离谱&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#有点-离谱&#34;&gt;#&lt;/a&gt; 有点 离谱&lt;/h1&gt;
+&lt;p&gt;隔离房间里面什么都没有&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/06/2022.10.6/</guid>
             <title>模仿大佬模板进行学习和代码复制（一） 👍</title>
