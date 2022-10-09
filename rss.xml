@@ -5,14 +5,38 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Fri, 07 Oct 2022 12:12:15 +0800</pubDate>
-        <lastBuildDate>Fri, 07 Oct 2022 12:12:15 +0800</lastBuildDate>
+        <pubDate>Sun, 09 Oct 2022 15:02:30 +0800</pubDate>
+        <lastBuildDate>Sun, 09 Oct 2022 15:02:30 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/09/2022.10.9/</guid>
+            <title>每日一记</title>
+            <link>http://example.com/2022/10/09/2022.10.9/</link>
+            <pubDate>Sun, 09 Oct 2022 15:02:30 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;回校隔离三天-第二天和第三天&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#回校隔离三天-第二天和第三天&#34;&gt;#&lt;/a&gt; 回校隔离三天 （第二天和第三天）&lt;/h1&gt;
+&lt;div class=&#34;note info&#34;&gt;
+&lt;p&gt;因为网络原因 10 月 8 号 就没有编写博客 (⊙﹏⊙)&lt;/p&gt;
+&lt;/div&gt;
+&lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;h4 id=&#34;我像睡着了静静的沉沦在宁静的梦里梦里里一片温暖的月牙白我躺在那儿身边有少许的花我半梦半醒的样子盯着那花什么也不去想了&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#我像睡着了静静的沉沦在宁静的梦里梦里里一片温暖的月牙白我躺在那儿身边有少许的花我半梦半醒的样子盯着那花什么也不去想了&#34;&gt;#&lt;/a&gt; &lt;strong&gt;&lt;mark&gt;我像睡着了，静静的沉沦在宁静的梦里，梦里里一片温暖的月牙白，我躺在那儿，身边有少许的花，我半梦半醒的样子，盯着那花，什么也不去想了。&lt;/mark&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;s&gt;每日推荐歌曲 ：身骑白马&lt;/s&gt;         ps：暂时未完成&lt;/p&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_0&#34; checked=&#34;true&#34; disabled=&#34;true&#34;&gt;&lt;label for=&#34;cbx_0&#34;&gt; 未完成&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;链接-身骑白马-徐佳莹-单曲-网易云音乐-163com&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链接-身骑白马-徐佳莹-单曲-网易云音乐-163com&#34;&gt;#&lt;/a&gt; 链接 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvc29uZz9pZD0zMDY2NjQ=&#34;&gt;身骑白马 - 徐佳莹 - 单曲 - 网易云音乐 (163.com)&lt;/span&gt;&lt;/h6&gt;
+&lt;h2 id=&#34;hh&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hh&#34;&gt;#&lt;/a&gt; hh&lt;/h2&gt;
+&lt;p&gt;感觉没什么好记的 就酱吧&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/07/2022.10.7/</guid>
             <title>每日一记</title>
             <link>http://example.com/2022/10/07/2022.10.7/</link>
             <pubDate>Fri, 07 Oct 2022 12:12:15 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;回校隔离三天-第一天&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#回校隔离三天-第一天&#34;&gt;#&lt;/a&gt; 回校隔离三天 （第一天）&lt;/h1&gt;
+&lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;mark&gt;香满衣，云满路，鸾凤绕身飞舞。霓旌绛节一群群，引见玉华君。&lt;/mark&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;collapse-折叠块&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#collapse-折叠块&#34;&gt;#&lt;/a&gt;  &lt;code&gt;collapse&lt;/code&gt;  折叠块&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -115,6 +139,9 @@
             <description><![CDATA[ &lt;div class=&#34;note info&#34;&gt;
 &lt;p&gt;以下介绍可以使用的 markdown 或者标签代码。 功能大部分基于 hexo-renderer-multi-markdown-it 渲染器，尤其是代码块的显示，与默认渲染器不兼容。&lt;/p&gt;
 &lt;/div&gt;
+&lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;mark&gt;人汹汹，鼓冬冬，襟袖五更风。大罗天上月朦胧，骑马上虚空。&lt;/mark&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;代码块&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码块&#34;&gt;#&lt;/a&gt; 代码块&lt;/h2&gt;
 &lt;p&gt;使用 markdown-it-prism 进行代码高亮，支持显示行号、行高亮 mark 、命令行提示符 command 、代码块标题。  基本格式： [language] [title] [url] [link text] [mark] [command]&lt;/p&gt;
 &lt;p&gt;import java.util.Scanner;&lt;br&gt;
