@@ -9,11 +9,12 @@
         <lastBuildDate>Tue, 18 Oct 2022 13:19:22 +0800</lastBuildDate>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/18/2022.10.18/</guid>
-            <title></title>
+            <title>HCIA(二) 2020.10.18</title>
             <link>http://example.com/2022/10/18/2022.10.18/</link>
             <pubDate>Tue, 18 Oct 2022 13:19:22 +0800</pubDate>
-            <description><![CDATA[ &lt;hr&gt;
-&lt;h2 id=&#34;titlehcia二-20201018&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#titlehcia二-20201018&#34;&gt;#&lt;/a&gt; title:HCIA (二) 2020.10.18&lt;/h2&gt;
+            <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;白日放歌需纵酒，漫卷诗书喜欲狂。—— 杜甫&lt;/mark&gt;&lt;/p&gt;
 &lt;h4 id=&#34;交换机&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#交换机&#34;&gt;#&lt;/a&gt; 交换机:&lt;/h4&gt;
 &lt;p&gt;​	工作在数据链路层&lt;/p&gt;
 &lt;p&gt;​	工作原理：根据数据帧中的目的 MAC 地址进行转发 查表转发&lt;/p&gt;
@@ -75,7 +76,11 @@
             <title>HCIA(一) 2020.10.17</title>
             <link>http://example.com/2022/10/18/2022.10.17/</link>
             <pubDate>Tue, 18 Oct 2022 08:50:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;网络的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络的定义&#34;&gt;#&lt;/a&gt; 网络的定义：&lt;/h3&gt;
+            <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;随富随贫且欢乐，不开口笑是痴人。—— 唐代。白居易 《对酒》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;译文：人生不论穷富，不必太过于斤斤计较，应该尽量放宽胸怀，随时保持心情的愉快，这才是处世之道&lt;/mark&gt;&lt;/p&gt;
+&lt;h3 id=&#34;网络的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络的定义&#34;&gt;#&lt;/a&gt; 网络的定义：&lt;/h3&gt;
 &lt;p&gt;终端设备通过物理介质实现跨地域的资源共享&lt;/p&gt;
 &lt;p&gt;物理介质：电话线、网线、光纤、红外线、无线电、同轴电缆，蓝牙等&lt;/p&gt;
 &lt;p&gt;双绞线：支持的速率有 10M、100M、1000M、10G&lt;/p&gt;
