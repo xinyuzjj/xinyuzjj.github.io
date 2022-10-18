@@ -5,8 +5,98 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 09 Oct 2022 15:02:30 +0800</pubDate>
-        <lastBuildDate>Sun, 09 Oct 2022 15:02:30 +0800</lastBuildDate>
+        <pubDate>Tue, 18 Oct 2022 08:50:00 +0800</pubDate>
+        <lastBuildDate>Tue, 18 Oct 2022 08:50:00 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/18/2022.10.17/</guid>
+            <title></title>
+            <link>http://example.com/2022/10/18/2022.10.17/</link>
+            <pubDate>Tue, 18 Oct 2022 08:50:00 +0800</pubDate>
+            <description><![CDATA[ &lt;hr&gt;
+&lt;h2 id=&#34;titlehcia一-20201017&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#titlehcia一-20201017&#34;&gt;#&lt;/a&gt; title:HCIA (一) 2020.10.17&lt;/h2&gt;
+&lt;h3 id=&#34;网络的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络的定义&#34;&gt;#&lt;/a&gt; 网络的定义：&lt;/h3&gt;
+&lt;p&gt;终端设备通过物理介质实现跨地域的资源共享&lt;/p&gt;
+&lt;p&gt;物理介质：电话线、网线、光纤、红外线、无线电、同轴电缆，蓝牙等&lt;/p&gt;
+&lt;p&gt;双绞线：支持的速率有 10M、100M、1000M、10G&lt;/p&gt;
+&lt;p&gt;有效传输距离：100m  工程运行最大 70m&lt;/p&gt;
+&lt;p&gt;4 对 8 根 1 2 3 4 5 6 7 8 1236（传输数据）   45（语音）    78（备用）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;水晶头：568B： 橙白 橙、绿白 蓝、蓝白 绿 、棕白 棕&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;光纤：支持的速率有 100M、1000M、10G、100G&lt;/strong&gt;&lt;br&gt;
+ 单模光纤：只能传输一种光，传输距离较远&lt;br&gt;
+多模光纤：利用了光复用技术，能够传输多种光，传输距离相对于单模较近有效传输距离 20 公里&lt;/p&gt;
+&lt;h3 id=&#34;网络参考模型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络参考模型&#34;&gt;#&lt;/a&gt; 网络参考模型：&lt;/h3&gt;
+&lt;h4 id=&#34;osi参考模型国际标准组织iso提出&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#osi参考模型国际标准组织iso提出&#34;&gt;#&lt;/a&gt; osi 参考模型：国际标准组织 iso 提出&lt;/h4&gt;
+&lt;p&gt;应用层：面向应用，产生数据。&lt;/p&gt;
+&lt;p&gt;表示层：对数据进行特殊处理 例如 ：加密，压缩。&lt;/p&gt;
+&lt;p&gt;会话层：建立，维护，终端会话连接。&lt;/p&gt;
+&lt;p&gt;传输层：建立端到端的链接，控制数据的传输。&lt;/p&gt;
+&lt;p&gt;网络层：提供逻辑地址，路由寻址，报文重组。&lt;/p&gt;
+&lt;p&gt;数据链路层：将数据转化为数据帧，发送至物理层。&lt;/p&gt;
+&lt;p&gt;物理层：将数据转化为比特流，发生出去，具体为发生电信号或光信号。&lt;/p&gt;
+&lt;h4 id=&#34;tcpip&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tcpip&#34;&gt;#&lt;/a&gt; TCP/IP&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;TCP/IP 标准模型&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;OSI&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;TCP/IP 对等模型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;应用层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;应用层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;表示层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;应用层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会话层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;传输层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;网络接入层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据链路层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;数据链路层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;物理层&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;物理层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;数据链路层&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据链路层&#34;&gt;#&lt;/a&gt; 数据链路层&lt;/h5&gt;
+&lt;p&gt;​	冲突点：发送数据产生的碰撞点&lt;/p&gt;
+&lt;p&gt;​	冲突域：所有碰撞点的集合&lt;/p&gt;
+&lt;p&gt;​	造成的问题：正常的数据丢失&lt;/p&gt;
+&lt;p&gt;​	解决办法：&lt;/p&gt;
+&lt;p&gt;CSMA/CD : 载波侦听，多路访问，冲突检测&lt;/p&gt;
+&lt;p&gt;1. 先听后法：主机需要发送数据时，先监听链路上是否存在别的设备在发送数据，有则不发送数据，没有则发送&lt;/p&gt;
+&lt;p&gt;2. 边听边发：主机在发送数据时，继续监听链路是否发送数据碰撞&lt;/p&gt;
+&lt;p&gt;3. 冲突停发：如果主机在发送数据时，检测到有数据碰撞，则停发&lt;/p&gt;
+&lt;p&gt;4. 随机延时后发：当发生冲突后停止发送数据，开启随机计时器，当时间到了 在监听链路是否有数据传输。&lt;/p&gt;
+&lt;h5 id=&#34;交换机&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#交换机&#34;&gt;#&lt;/a&gt; 交换机:&lt;/h5&gt;
+&lt;p&gt;每一个接口属于不同的冲突域，交换机可以隔绝冲突域&lt;/p&gt;
+&lt;h5 id=&#34;mac地址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mac地址&#34;&gt;#&lt;/a&gt; MAC 地址:&lt;/h5&gt;
+&lt;p&gt;物理硬件地址&lt;/p&gt;
+&lt;p&gt;格式 / 长度：杠分十六进制表示，长度 48bit&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/09/2022.10.9/</guid>
             <title>每日一记</title>
