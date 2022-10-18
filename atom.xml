@@ -6,11 +6,9 @@
     <updated>2022-10-18T00:50:00.093Z</updated>
     <entry>
         <id>http://example.com/2022/10/18/2022.10.17/</id>
-        <title></title>
+        <title>HCIA(一) 2020.10.17</title>
         <link rel="alternate" href="http://example.com/2022/10/18/2022.10.17/"/>
-        <content type="html">&lt;hr&gt;
-&lt;h2 id=&#34;titlehcia一-20201017&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#titlehcia一-20201017&#34;&gt;#&lt;/a&gt; title:HCIA (一) 2020.10.17&lt;/h2&gt;
-&lt;h3 id=&#34;网络的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络的定义&#34;&gt;#&lt;/a&gt; 网络的定义：&lt;/h3&gt;
+        <content type="html">&lt;h3 id=&#34;网络的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络的定义&#34;&gt;#&lt;/a&gt; 网络的定义：&lt;/h3&gt;
 &lt;p&gt;终端设备通过物理介质实现跨地域的资源共享&lt;/p&gt;
 &lt;p&gt;物理介质：电话线、网线、光纤、红外线、无线电、同轴电缆，蓝牙等&lt;/p&gt;
 &lt;p&gt;双绞线：支持的速率有 10M、100M、1000M、10G&lt;/p&gt;
@@ -86,11 +84,50 @@
 &lt;p&gt;2. 边听边发：主机在发送数据时，继续监听链路是否发送数据碰撞&lt;/p&gt;
 &lt;p&gt;3. 冲突停发：如果主机在发送数据时，检测到有数据碰撞，则停发&lt;/p&gt;
 &lt;p&gt;4. 随机延时后发：当发生冲突后停止发送数据，开启随机计时器，当时间到了 在监听链路是否有数据传输。&lt;/p&gt;
-&lt;h5 id=&#34;交换机&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#交换机&#34;&gt;#&lt;/a&gt; 交换机:&lt;/h5&gt;
-&lt;p&gt;每一个接口属于不同的冲突域，交换机可以隔绝冲突域&lt;/p&gt;
+&lt;h5 id=&#34;网卡的工作模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网卡的工作模式&#34;&gt;#&lt;/a&gt; 网卡的工作模式:&lt;/h5&gt;
+&lt;p&gt;单工 ：只允许收或者发一种操作&lt;/p&gt;
+&lt;p&gt;半双工 ：能收能发，但是不能同时进行&lt;/p&gt;
+&lt;p&gt;全双工 ：能收能发，并且可以同时进行&lt;/p&gt;
+&lt;p&gt;自协商 ：设备自己协商使用哪种工作模式&lt;/p&gt;
+&lt;h4 id=&#34;数据帧格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据帧格式&#34;&gt;#&lt;/a&gt; 数据帧格式：&lt;/h4&gt;
+&lt;h5 id=&#34;以太网ii帧&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#以太网ii帧&#34;&gt;#&lt;/a&gt; 以太网 Ⅱ 帧：&lt;/h5&gt;
+&lt;p&gt;D.MAC +S.MAC+type +data +FCS&lt;/p&gt;
+&lt;p&gt;D.MAC: 目的 MAC 地址，用于接收者&lt;/p&gt;
+&lt;p&gt;S.MAC：源 MAC 地址，用于发送者&lt;/p&gt;
+&lt;p&gt;Type：用于标识上层协议类型&lt;/p&gt;
+&lt;p&gt;​	0x0800: 表示网络层使用的协议为 ip 协议&lt;/p&gt;
+&lt;p&gt;​	0x0806: 表示网络层使用的协议为 ARP 协议&lt;/p&gt;
+&lt;p&gt;FCS：尾校验，用于检验数据帧的完整性&lt;/p&gt;
+&lt;h5 id=&#34;ieee8023帧格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ieee8023帧格式&#34;&gt;#&lt;/a&gt; IEEE802.3 帧格式:&lt;/h5&gt;
+&lt;p&gt;D.MAC +S.MAC+length+LLC +SNAP+FCS&lt;/p&gt;
+&lt;p&gt;D.MAC: 目的 MAC 地址，用于接收者&lt;/p&gt;
+&lt;p&gt;S.MAC：源 MAC 地址，用于发送者&lt;/p&gt;
+&lt;p&gt;length：标识数据帧的长度&lt;/p&gt;
+&lt;p&gt;LLC：逻辑链路控制&lt;/p&gt;
+&lt;p&gt;SNAP：&lt;/p&gt;
+&lt;p&gt;​	Org Code：全为 0 ，无意义&lt;/p&gt;
+&lt;p&gt;​	Type：用于标识上层协议&lt;/p&gt;
+&lt;p&gt;FCS：尾校验，用于检验数据帧的完整性&lt;/p&gt;
 &lt;h5 id=&#34;mac地址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mac地址&#34;&gt;#&lt;/a&gt; MAC 地址:&lt;/h5&gt;
-&lt;p&gt;物理硬件地址&lt;/p&gt;
+&lt;p&gt;物理硬件地址，全球唯一&lt;/p&gt;
 &lt;p&gt;格式 / 长度：杠分十六进制表示，长度 48bit&lt;/p&gt;
+&lt;p&gt;例如 1A-2B-3C-4D-5F-6E&lt;/p&gt;
+&lt;p&gt;1 字节 = 8bit&lt;/p&gt;
+&lt;p&gt;前 24bit 由 OUI 组织分配，分配给每一个厂商的是不同的前缀&lt;/p&gt;
+&lt;p&gt;后 24bit 由厂商自行分配，分配到每一个设备都是不同的后缀&lt;/p&gt;
+&lt;h5 id=&#34;mac地址分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mac地址分类&#34;&gt;#&lt;/a&gt; MAC 地址分类:&lt;/h5&gt;
+&lt;p&gt;单播 MAC 地址：当作为目的时，为一对一通信&lt;/p&gt;
+&lt;p&gt;​	第一字节第八 bit 位 0&lt;/p&gt;
+&lt;p&gt;例如：54-89----&lt;/p&gt;
+&lt;p&gt;0101010&lt;u&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;/u&gt;-10001001----&lt;/p&gt;
+&lt;p&gt;组播 MAC 地址：当作为目的使用时，表示接收者是一个组的设备&lt;/p&gt;
+&lt;p&gt;​	第一字节第八 bit 位为 1&lt;/p&gt;
+&lt;p&gt;例如：01-00----&lt;/p&gt;
+&lt;p&gt;0000000&lt;u&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/u&gt;-00000000----&lt;/p&gt;
+&lt;p&gt;广播 MAC 地址：作为目的使用时，表示接收者时所以设备&lt;/p&gt;
+&lt;p&gt;​	48bit 位全为 1，则为广播&lt;/p&gt;
+&lt;p&gt;​	FF-FF-FF-FF-FF-FF&lt;/p&gt;
+&lt;p&gt;11111111-11111111-11111111-11111111-11111111-111111111-11111111&lt;/p&gt;
 </content>
         <updated>2022-10-18T00:50:00.093Z</updated>
     </entry>

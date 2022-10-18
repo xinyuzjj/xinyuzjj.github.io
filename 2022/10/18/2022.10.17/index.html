@@ -33,7 +33,7 @@
 
 
   <title>
- |
+HCIA(一) 2020.10.17 |
 Z.J.J = 峻峻尼的个人博客</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -61,7 +61,7 @@ Z.J.J = 峻峻尼的个人博客</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">HCIA(一) 2020.10.17
   </h1>
   
 <div class="meta">
@@ -77,7 +77,7 @@ Z.J.J = 峻峻尼的个人博客</title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>838</span>
+    <span>1.5k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -118,12 +118,12 @@ Z.J.J = 峻峻尼的个人博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
         </ul>
       </div>
     </header>
@@ -167,9 +167,7 @@ Z.J.J = 峻峻尼的个人博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <hr>
-<h2 id="titlehcia一-20201017"><a class="markdownIt-Anchor" href="#titlehcia一-20201017">#</a> title:HCIA (一) 2020.10.17</h2>
-<h3 id="网络的定义"><a class="markdownIt-Anchor" href="#网络的定义">#</a> 网络的定义：</h3>
+    <h3 id="网络的定义"><a class="markdownIt-Anchor" href="#网络的定义">#</a> 网络的定义：</h3>
 <p>终端设备通过物理介质实现跨地域的资源共享</p>
 <p>物理介质：电话线、网线、光纤、红外线、无线电、同轴电缆，蓝牙等</p>
 <p>双绞线：支持的速率有 10M、100M、1000M、10G</p>
@@ -245,11 +243,50 @@ Z.J.J = 峻峻尼的个人博客</title>
 <p>2. 边听边发：主机在发送数据时，继续监听链路是否发送数据碰撞</p>
 <p>3. 冲突停发：如果主机在发送数据时，检测到有数据碰撞，则停发</p>
 <p>4. 随机延时后发：当发生冲突后停止发送数据，开启随机计时器，当时间到了 在监听链路是否有数据传输。</p>
-<h5 id="交换机"><a class="markdownIt-Anchor" href="#交换机">#</a> 交换机:</h5>
-<p>每一个接口属于不同的冲突域，交换机可以隔绝冲突域</p>
+<h5 id="网卡的工作模式"><a class="markdownIt-Anchor" href="#网卡的工作模式">#</a> 网卡的工作模式:</h5>
+<p>单工 ：只允许收或者发一种操作</p>
+<p>半双工 ：能收能发，但是不能同时进行</p>
+<p>全双工 ：能收能发，并且可以同时进行</p>
+<p>自协商 ：设备自己协商使用哪种工作模式</p>
+<h4 id="数据帧格式"><a class="markdownIt-Anchor" href="#数据帧格式">#</a> 数据帧格式：</h4>
+<h5 id="以太网ii帧"><a class="markdownIt-Anchor" href="#以太网ii帧">#</a> 以太网 Ⅱ 帧：</h5>
+<p>D.MAC +S.MAC+type +data +FCS</p>
+<p>D.MAC: 目的 MAC 地址，用于接收者</p>
+<p>S.MAC：源 MAC 地址，用于发送者</p>
+<p>Type：用于标识上层协议类型</p>
+<p>​	0x0800: 表示网络层使用的协议为 ip 协议</p>
+<p>​	0x0806: 表示网络层使用的协议为 ARP 协议</p>
+<p>FCS：尾校验，用于检验数据帧的完整性</p>
+<h5 id="ieee8023帧格式"><a class="markdownIt-Anchor" href="#ieee8023帧格式">#</a> IEEE802.3 帧格式:</h5>
+<p>D.MAC +S.MAC+length+LLC +SNAP+FCS</p>
+<p>D.MAC: 目的 MAC 地址，用于接收者</p>
+<p>S.MAC：源 MAC 地址，用于发送者</p>
+<p>length：标识数据帧的长度</p>
+<p>LLC：逻辑链路控制</p>
+<p>SNAP：</p>
+<p>​	Org Code：全为 0 ，无意义</p>
+<p>​	Type：用于标识上层协议</p>
+<p>FCS：尾校验，用于检验数据帧的完整性</p>
 <h5 id="mac地址"><a class="markdownIt-Anchor" href="#mac地址">#</a> MAC 地址:</h5>
-<p>物理硬件地址</p>
+<p>物理硬件地址，全球唯一</p>
 <p>格式 / 长度：杠分十六进制表示，长度 48bit</p>
+<p>例如 1A-2B-3C-4D-5F-6E</p>
+<p>1 字节 = 8bit</p>
+<p>前 24bit 由 OUI 组织分配，分配给每一个厂商的是不同的前缀</p>
+<p>后 24bit 由厂商自行分配，分配到每一个设备都是不同的后缀</p>
+<h5 id="mac地址分类"><a class="markdownIt-Anchor" href="#mac地址分类">#</a> MAC 地址分类:</h5>
+<p>单播 MAC 地址：当作为目的时，为一对一通信</p>
+<p>​	第一字节第八 bit 位 0</p>
+<p>例如：54-89----</p>
+<p>0101010<u><strong>0</strong></u>-10001001----</p>
+<p>组播 MAC 地址：当作为目的使用时，表示接收者是一个组的设备</p>
+<p>​	第一字节第八 bit 位为 1</p>
+<p>例如：01-00----</p>
+<p>0000000<u><strong>1</strong></u>-00000000----</p>
+<p>广播 MAC 地址：作为目的使用时，表示接收者时所以设备</p>
+<p>​	48bit 位全为 1，则为广播</p>
+<p>​	FF-FF-FF-FF-FF-FF</p>
+<p>11111111-11111111-11111111-11111111-11111111-111111111-11111111</p>
 
   </div>
 
@@ -261,9 +298,9 @@ Z.J.J = 峻峻尼的个人博客</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2022-10-18 08:48:53" itemprop="dateModified" datetime="2022-10-18T08:48:53+08:00">2022-10-18</time>
+    <time title="修改时间：2022-10-18 13:15:36" itemprop="dateModified" datetime="2022-10-18T13:15:36+08:00">2022-10-18</time>
   </span>
-  <span id="2022/10/18/2022.10.17/" class="item leancloud_visitors" data-flag-title="" title="阅读次数">
+  <span id="2022/10/18/2022.10.17/" class="item leancloud_visitors" data-flag-title="HCIA(一) 2020.10.17" title="阅读次数">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -305,7 +342,7 @@ Z.J.J = 峻峻尼的个人博客</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2022/10/18/2022.10.17/" title="">http://example.com/2022/10/18/2022.10.17/</a>
+    <a href="http://example.com/2022/10/18/2022.10.17/" title="HCIA(一) 2020.10.17">http://example.com/2022/10/18/2022.10.17/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -324,7 +361,7 @@ Z.J.J = 峻峻尼的个人博客</title>
     <div class="item left">
       
 
-  <a href="/2022/10/09/2022.10.9/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4lm9i7j20zk0m84qp.jpg" title="每日一记">
+  <a href="/2022/10/09/2022.10.9/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclize41wj20zk0m87gk.jpg" title="每日一记">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>每日一记</h3>
@@ -348,7 +385,7 @@ Z.J.J = 峻峻尼的个人博客</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#titlehcia%E4%B8%80-20201017"><span class="toc-number">1.</span> <span class="toc-text"> title:HCIA (一) 2020.10.17</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text"> 网络的定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 网络参考模型：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#osi%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E7%BB%84%E7%BB%87iso%E6%8F%90%E5%87%BA"><span class="toc-number">1.2.1.</span> <span class="toc-text"> osi 参考模型：国际标准组织 iso 提出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tcpip"><span class="toc-number">1.2.2.</span> <span class="toc-text"> TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 数据链路层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 交换机:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mac%E5%9C%B0%E5%9D%80"><span class="toc-number">1.2.2.3.</span> <span class="toc-text"> MAC 地址:</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text"> 网络的定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 网络参考模型：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#osi%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E7%BB%84%E7%BB%87iso%E6%8F%90%E5%87%BA"><span class="toc-number">2.1.</span> <span class="toc-text"> osi 参考模型：国际标准组织 iso 提出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tcpip"><span class="toc-number">2.2.</span> <span class="toc-text"> TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 数据链路层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E5%8D%A1%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 网卡的工作模式:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text"> 数据帧格式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91ii%E5%B8%A7"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 以太网 Ⅱ 帧：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ieee8023%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text"> IEEE802.3 帧格式:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mac%E5%9C%B0%E5%9D%80"><span class="toc-number">2.3.3.</span> <span class="toc-text"> MAC 地址:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mac%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB"><span class="toc-number">2.3.4.</span> <span class="toc-text"> MAC 地址分类:</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -463,34 +500,7 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/05/pinglun/" title="评论功能 添加">评论功能 添加</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/07/2022.10.7/" title="每日一记">每日一记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2022/10/04/creat_ok/" title="hexo搭建博客">hexo搭建博客</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/09/2022.10.9/" title="每日一记">每日一记</a></span>
   </li>
 
       
@@ -508,7 +518,34 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/18/2022.10.17/" title="未命名">未命名</a></span>
+    <span><a href="/2022/10/09/2022.10.9/" title="每日一记">每日一记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/05/pinglun/" title="评论功能 添加">评论功能 添加</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/18/2022.10.17/" title="HCIA(一) 2020.10.17">HCIA(一) 2020.10.17</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/07/2022.10.7/" title="每日一记">每日一记</a></span>
   </li>
 
   </ul>
@@ -539,7 +576,7 @@ Z.J.J = 峻峻尼的个人博客</title>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
