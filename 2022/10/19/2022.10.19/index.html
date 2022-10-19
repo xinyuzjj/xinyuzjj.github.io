@@ -77,7 +77,7 @@ Z.J.J = 峻峻尼的个人博客</title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>749</span>
+    <span>1.2k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -118,12 +118,12 @@ Z.J.J = 峻峻尼的个人博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
         </ul>
       </div>
     </header>
@@ -167,10 +167,7 @@ Z.J.J = 峻峻尼的个人博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="随记"><a class="markdownIt-Anchor" href="#随记">#</a> 随记</h3>
-<h4 id="mood"><a class="markdownIt-Anchor" href="#mood">#</a> mood</h4>
-<p><mark>人生天地之间，若白驹过隙，忽然而已。</mark></p>
-<h5 id="span-stylecolorred有类ip地址span"><a class="markdownIt-Anchor" href="#span-stylecolorred有类ip地址span">#</a> <span style="color:red">有类 IP 地址：</span></h5>
+    <h5 id="span-stylecolorred有类ip地址span"><a class="markdownIt-Anchor" href="#span-stylecolorred有类ip地址span">#</a> <span style="color:red">有类 IP 地址：</span></h5>
 <p>A 类：0.0.0.0-127.255.255.255	/8                                          0</p>
 <p>B 类：128.0.0.0-191.255.255.255	/16                                   10</p>
 <p>C 类：192.0.0.0-223.255.255.255	/24                           	110</p>
@@ -201,10 +198,79 @@ Z.J.J = 峻峻尼的个人博客</title>
 <p>127.0.0.0 -127.255.255.255 用于测试自身的状态</p>
 <h6 id="本路链路地址"><a class="markdownIt-Anchor" href="#本路链路地址">#</a> 本路链路地址</h6>
 <p>169.254.0.0/24 用于当自动获取地址失败后，临时链路通信</p>
-<h5 id="span-stylecolorredvlsmspan"><a class="markdownIt-Anchor" href="#span-stylecolorredvlsmspan">#</a> <span style="color:red">VLSM</span></h5>
+<h5 id="span-stylecolorredvlsmspan"><a class="markdownIt-Anchor" href="#span-stylecolorredvlsmspan">#</a> <span style="color:red">VLSM:</span></h5>
 <p>可变长子网掩码</p>
 <p>​	原理：网络位向主机位借位</p>
 <p>​	作用：减少广播域，减少同一网络中的主机数量</p>
+<p>​	划分方式：</p>
+<p>​		1. 按照主机数量进行划分</p>
+<p>​			a) 按照从大到小的主机数量进行计算</p>
+<p>​		2. 按照子网数量进行划分</p>
+<h5 id="icmp"><a class="markdownIt-Anchor" href="#icmp">#</a> ICMP：</h5>
+<p>互联网控制消息协议，工作在网络层，协议号为 1</p>
+<h6 id="作用"><a class="markdownIt-Anchor" href="#作用">#</a> 作用：</h6>
+<p>用于传递网络设备之间的差错和控制信息，收集网络信息，排错和诊断。</p>
+<h6 id="主要的应用"><a class="markdownIt-Anchor" href="#主要的应用">#</a> 主要的应用：</h6>
+<p>​	ping 和 tracert</p>
+<p>​	Ping 作用：检测网络连通性</p>
+<p>​	Tracert 作用：用于回显路由</p>
+<h6 id="报文格式"><a class="markdownIt-Anchor" href="#报文格式">#</a> 报文格式：</h6>
+<p>Type + code +checksum + 报文内容</p>
+<p>Type：消息类型</p>
+<p>code：具体参数</p>
+<p>校验和：用于检验数据完整性</p>
+<p>报文内容：包含具体的信息</p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Code</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Echo   Reply</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>网络不可达</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>主机不可达</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>协议不可达</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>端口不可达</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>重定向</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0</td>
+<td>Echo    Request</td>
+</tr>
+</tbody>
+</table>
+<h6 id="icmp重定向"><a class="markdownIt-Anchor" href="#icmp重定向">#</a> ICMP 重定向：</h6>
+<p>1. 主机访问服务器，两台设备处于不同的网段</p>
+<p>2. 主机默认将所有跨网络访问的数据报交由自己的网关进行处理</p>
+<p>3. 网关收到主机发送的报文后查找路由表，发现下一跳的地址与主机所处同一网段</p>
+<p>4. 网关会将下一跳的 IP 地址通过 ICMP 重定向消息发送给主机，主机收到后。再次访问服务器时，直接通过网关给的下一跳进行访问。</p>
 
   </div>
 
@@ -216,7 +282,7 @@ Z.J.J = 峻峻尼的个人博客</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2022-10-19 18:38:09" itemprop="dateModified" datetime="2022-10-19T18:38:09+08:00">2022-10-19</time>
+    <time title="修改时间：2022-10-19 20:53:03" itemprop="dateModified" datetime="2022-10-19T20:53:03+08:00">2022-10-19</time>
   </span>
   <span id="2022/10/19/2022.10.19/" class="item leancloud_visitors" data-flag-title="HCIA(三) 2020.10.19" title="阅读次数">
       <span class="icon">
@@ -279,7 +345,7 @@ Z.J.J = 峻峻尼的个人博客</title>
     <div class="item left">
       
 
-  <a href="/2022/10/18/2022.10.18/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicliierfjj20zk0m8npd.jpg" title="HCIA(二) 2020.10.18">
+  <a href="/2022/10/18/2022.10.18/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciundwu5j20zk0m8n9e.jpg" title="HCIA(二) 2020.10.18">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>HCIA(二) 2020.10.18</h3>
@@ -303,7 +369,7 @@ Z.J.J = 峻峻尼的个人博客</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text"> 随记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mood"><span class="toc-number">1.1.</span> <span class="toc-text"> mood</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E6%9C%89%E7%B1%BBip%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 有类 IP 地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 网络地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E5%B9%BF%E6%92%AD%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 广播地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E5%85%AC%E7%BD%91%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 公网地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E7%A7%81%E7%BD%91%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 私网地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 特殊地址：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%B9%BF%E6%92%AD"><span class="toc-number">1.1.6.1.</span> <span class="toc-text"> 有限广播</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80"><span class="toc-number">1.1.6.2.</span> <span class="toc-text"> 任意地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="toc-number">1.1.6.3.</span> <span class="toc-text"> 环回地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%AC%E8%B7%AF%E9%93%BE%E8%B7%AF%E5%9C%B0%E5%9D%80"><span class="toc-number">1.1.6.4.</span> <span class="toc-text"> 本路链路地址</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorredvlsmspan"><span class="toc-number">1.1.7.</span> <span class="toc-text"> VLSM</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E6%9C%89%E7%B1%BBip%E5%9C%B0%E5%9D%80span"><span class="toc-number">1.</span> <span class="toc-text"> 有类 IP 地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80span"><span class="toc-number">2.</span> <span class="toc-text"> 网络地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E5%B9%BF%E6%92%AD%E5%9C%B0%E5%9D%80span"><span class="toc-number">3.</span> <span class="toc-text"> 广播地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E5%85%AC%E7%BD%91%E5%9C%B0%E5%9D%80span"><span class="toc-number">4.</span> <span class="toc-text"> 公网地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E7%A7%81%E7%BD%91%E5%9C%B0%E5%9D%80span"><span class="toc-number">5.</span> <span class="toc-text"> 私网地址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorred%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80span"><span class="toc-number">6.</span> <span class="toc-text"> 特殊地址：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%B9%BF%E6%92%AD"><span class="toc-number">6.1.</span> <span class="toc-text"> 有限广播</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80"><span class="toc-number">6.2.</span> <span class="toc-text"> 任意地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="toc-number">6.3.</span> <span class="toc-text"> 环回地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%AC%E8%B7%AF%E9%93%BE%E8%B7%AF%E5%9C%B0%E5%9D%80"><span class="toc-number">6.4.</span> <span class="toc-text"> 本路链路地址</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#span-stylecolorredvlsmspan"><span class="toc-number">7.</span> <span class="toc-text"> VLSM:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#icmp"><span class="toc-number">8.</span> <span class="toc-text"> ICMP：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">8.1.</span> <span class="toc-text"> 作用：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">8.2.</span> <span class="toc-text"> 主要的应用：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="toc-number">8.3.</span> <span class="toc-text"> 报文格式：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#icmp%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">8.4.</span> <span class="toc-text"> ICMP 重定向：</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -409,16 +475,7 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/06/2022.10.6/" title="模仿大佬模板进行学习和代码复制（一） 👍">模仿大佬模板进行学习和代码复制（一） 👍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/07/2022.10.7/" title="每日一记">每日一记</a></span>
+    <span><a href="/2022/10/19/2022.10.19/" title="HCIA(三) 2020.10.19">HCIA(三) 2020.10.19</a></span>
   </li>
 
       
@@ -436,7 +493,7 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/18/2022.10.17/" title="HCIA(一) 2020.10.17">HCIA(一) 2020.10.17</a></span>
+    <span><a href="/2022/10/07/2022.10.7/" title="每日一记">每日一记</a></span>
   </li>
 
       
@@ -445,7 +502,7 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/04/creat_ok/" title="hexo搭建博客">hexo搭建博客</a></span>
+    <span><a href="/2022/10/04/one_frist/" title="欢迎大家光临我的个人博客">欢迎大家光临我的个人博客</a></span>
   </li>
 
       
@@ -472,7 +529,7 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/04/one_frist/" title="欢迎大家光临我的个人博客">欢迎大家光临我的个人博客</a></span>
+    <span><a href="/2022/10/04/creat_ok/" title="hexo搭建博客">hexo搭建博客</a></span>
   </li>
 
       
@@ -481,7 +538,16 @@ Z.J.J = 峻峻尼的个人博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/19/2022.10.19/" title="HCIA(三) 2020.10.19">HCIA(三) 2020.10.19</a></span>
+    <span><a href="/2022/10/06/2022.10.6/" title="模仿大佬模板进行学习和代码复制（一） 👍">模仿大佬模板进行学习和代码复制（一） 👍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/18/2022.10.17/" title="HCIA(一) 2020.10.17">HCIA(一) 2020.10.17</a></span>
   </li>
 
   </ul>
