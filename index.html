@@ -91,12 +91,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
         </ul>
       </div>
     </header>
@@ -123,7 +123,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/21/2022.10.21/" itemprop="url" title="HCIA(五) 2020.10.21"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></a>
+    <a href="/2022/10/21/2022.10.21/" itemprop="url" title="HCIA(五) 2020.10.21"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclfdu6exj20zk0m87hw.jpg"></a>
   </div>
   <div class="info">
     
@@ -138,14 +138,14 @@
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span>2.6k</span>
+    <span>3k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
     <span class="icon">
       <i class="ic i-clock"></i>
     </span>
-    <span>2 分钟</span>
+    <span>3 分钟</span>
   </span>
 </div>
 
@@ -161,12 +161,21 @@
 ​	再应用层数据前加上端头，数据称为数据段
 # TCP：
 ​		面向连接的安全可靠的传输层协议，
-​		TCP 头部参数：
-​			源端口号：用于标识发送者产生此数据的应用
-​			目的端口号：用于标识接收者最终交由的应用的那个用于进行处理
-​			序列号：标识发送者发送的第几个数据段
-​			确认序列号：用于接收者确认收到发送者发送的数据段
-​			头部长度：用于标识 TCP 的头部长度，因为 TCP 的头部中存在...
+
+Source port (16)
+Destinationport(16)
+
+Sequencenumber(32)
+
+Acknowledgement number (32)
+
+Header length (4)
+Reserved (6)
+Control bits (6)
+Window (16)
+
+Checksum (16)
+Urgent...
     </div>
     <a href="/2022/10/21/2022.10.21/" itemprop="url" title="HCIA(五) 2020.10.21" class="btn">more...</a>
   </div>
@@ -175,7 +184,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/21/2022.10.20/" itemprop="url" title="HCIA(四) 2020.10.20"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></a>
+    <a href="/2022/10/21/2022.10.20/" itemprop="url" title="HCIA(四) 2020.10.20"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipew28b65j20zk0m8hdt.jpg"></a>
   </div>
   <div class="info">
     
@@ -221,7 +230,7 @@ system-view // 进入系统视图
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/19/2022.10.19/" itemprop="url" title="HCIA(三) 2020.10.19"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></a>
+    <a href="/2022/10/19/2022.10.19/" itemprop="url" title="HCIA(三) 2020.10.19"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giciuv0socj20zk0m8qes.jpg"></a>
   </div>
   <div class="info">
     
@@ -270,7 +279,7 @@ E 类：240.0.0.0-255.255.255.255 	保留				1111
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/18/2022.10.18/" itemprop="url" title="HCIA(二) 2020.10.18"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giph4fomxoj20zk0m8axp.jpg"></a>
+    <a href="/2022/10/18/2022.10.18/" itemprop="url" title="HCIA(二) 2020.10.18"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclh3brzpj20zk0m8ann.jpg"></a>
   </div>
   <div class="info">
     
@@ -320,7 +329,7 @@ E 类：240.0.0.0-255.255.255.255 	保留				1111
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/18/2022.10.17/" itemprop="url" title="HCIA(一) 2020.10.17"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclflwv2aj20zk0m84qp.jpg"></a>
+    <a href="/2022/10/18/2022.10.17/" itemprop="url" title="HCIA(一) 2020.10.17"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></a>
   </div>
   <div class="info">
     
@@ -368,7 +377,7 @@ E 类：240.0.0.0-255.255.255.255 	保留				1111
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/09/2022.10.9/" itemprop="url" title="每日一记"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></a>
+    <a href="/2022/10/09/2022.10.9/" itemprop="url" title="每日一记"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giciundwu5j20zk0m8n9e.jpg"></a>
   </div>
   <div class="info">
     
@@ -418,7 +427,7 @@ E 类：240.0.0.0-255.255.255.255 	保留				1111
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/07/2022.10.7/" itemprop="url" title="每日一记"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></a>
+    <a href="/2022/10/07/2022.10.7/" itemprop="url" title="每日一记"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicljgocqbj20zk0m8e81.jpg"></a>
   </div>
   <div class="info">
     
@@ -489,7 +498,7 @@ https://xinyuzjj.github.io
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/06/2022.10.6/" itemprop="url" title="模仿大佬模板进行学习和代码复制（一） 👍"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></a>
+    <a href="/2022/10/06/2022.10.6/" itemprop="url" title="模仿大佬模板进行学习和代码复制（一） 👍"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></a>
   </div>
   <div class="info">
     
@@ -533,7 +542,7 @@ import...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/05/pinglun/" itemprop="url" title="评论功能 添加"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></a>
+    <a href="/2022/10/05/pinglun/" itemprop="url" title="评论功能 添加"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></a>
   </div>
   <div class="info">
     
@@ -573,7 +582,7 @@ import...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/04/creat_ok/" itemprop="url" title="hexo搭建博客"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></a>
+    <a href="/2022/10/04/creat_ok/" itemprop="url" title="hexo搭建博客"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giciub8ja1j20zk0m81ky.jpg"></a>
   </div>
   <div class="info">
     
@@ -735,43 +744,7 @@ import...
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/04/creat_ok/" title="hexo搭建博客">hexo搭建博客</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/18/2022.10.17/" title="HCIA(一) 2020.10.17">HCIA(一) 2020.10.17</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/18/2022.10.18/" title="HCIA(二) 2020.10.18">HCIA(二) 2020.10.18</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/05/pinglun/" title="评论功能 添加">评论功能 添加</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/07/2022.10.7/" title="每日一记">每日一记</a></span>
+    <span><a href="/2022/10/04/one_frist/" title="欢迎大家光临我的个人博客">欢迎大家光临我的个人博客</a></span>
   </li>
 
       
@@ -798,15 +771,6 @@ import...
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/04/one_frist/" title="欢迎大家光临我的个人博客">欢迎大家光临我的个人博客</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2022/10/09/2022.10.9/" title="每日一记">每日一记</a></span>
   </li>
 
@@ -816,7 +780,52 @@ import...
 <div class="breadcrumb">
 </div>
 
+    <span><a href="/2022/10/18/2022.10.17/" title="HCIA(一) 2020.10.17">HCIA(一) 2020.10.17</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/18/2022.10.18/" title="HCIA(二) 2020.10.18">HCIA(二) 2020.10.18</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
     <span><a href="/2022/10/19/2022.10.19/" title="HCIA(三) 2020.10.19">HCIA(三) 2020.10.19</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/07/2022.10.7/" title="每日一记">每日一记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/04/creat_ok/" title="hexo搭建博客">hexo搭建博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/05/pinglun/" title="评论功能 添加">评论功能 添加</a></span>
   </li>
 
   </ul>
