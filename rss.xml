@@ -5,30 +5,13 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Fri, 21 Oct 2022 15:57:21 +0800</pubDate>
-        <lastBuildDate>Fri, 21 Oct 2022 15:57:21 +0800</lastBuildDate>
-        <item>
-            <guid isPermalink="true">http://example.com/2022/10/21/2022.10.20/</guid>
-            <title>HCIA(四) 2020.10.20</title>
-            <link>http://example.com/2022/10/21/2022.10.20/</link>
-            <pubDate>Fri, 21 Oct 2022 15:57:21 +0800</pubDate>
-            <description><![CDATA[ &lt;h5 id=&#34;华为命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#华为命令&#34;&gt;#&lt;/a&gt; 华为命令&lt;/h5&gt;
-&lt;p&gt;&lt;Huawei&gt;    // 用户视图&lt;/p&gt;
-&lt;p&gt;&lt;Huawei&gt;system-view  // 进入系统视图&lt;/p&gt;
-&lt;p&gt;[Huawei]   // 系统视图&lt;/p&gt;
-&lt;p&gt;[Huawei] interface  GigabitEthernet 0/0/0  // 进入接口视图&lt;/p&gt;
-&lt;p&gt;[Huawei-GigabitEthernet0/0/0]      // 接口视图&lt;/p&gt;
-&lt;p&gt;[Huawei-GigabitEthernet0/0/0]ip address 192.168.1.1 24&lt;/p&gt;
-&lt;p&gt;// 为 G0/0/0 口配置 IP 地址，ip 为 192.168.1.1  /24&lt;/p&gt;
-&lt;p&gt;[Huawei-GigabitEthernet0/0/0]display this&lt;/p&gt;
-&lt;p&gt;// 查询在此位置的配置信息&lt;/p&gt;
- ]]></description>
-        </item>
+        <pubDate>Fri, 21 Oct 2022 15:59:34 +0800</pubDate>
+        <lastBuildDate>Fri, 21 Oct 2022 15:59:34 +0800</lastBuildDate>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/21/2022.10.21/</guid>
             <title>HCIA(五) 2020.10.21</title>
             <link>http://example.com/2022/10/21/2022.10.21/</link>
-            <pubDate>Fri, 21 Oct 2022 15:56:39 +0800</pubDate>
+            <pubDate>Fri, 21 Oct 2022 15:59:34 +0800</pubDate>
             <description><![CDATA[ &lt;h5 id=&#34;传输层&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#传输层&#34;&gt;#&lt;/a&gt; 传输层：&lt;/h5&gt;
 &lt;p&gt;​	用于建立端到端的连接&lt;/p&gt;
 &lt;p&gt;​	再应用层数据前加上端头，数据称为数据段&lt;/p&gt;
@@ -139,6 +122,23 @@
 &lt;p&gt;​		e）为广播时，直接交由传输层处理&lt;/p&gt;
 &lt;p&gt;​	4. 传输层收到数据段，查看端口中的目的端口号，直接将数据交由对于的应用层协议进行处理&lt;/p&gt;
 &lt;p&gt;​	5. 应用层，对数据进行处理，并且对源进行回应&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/21/2022.10.20/</guid>
+            <title>HCIA(四) 2020.10.20</title>
+            <link>http://example.com/2022/10/21/2022.10.20/</link>
+            <pubDate>Fri, 21 Oct 2022 15:59:32 +0800</pubDate>
+            <description><![CDATA[ &lt;h5 id=&#34;华为命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#华为命令&#34;&gt;#&lt;/a&gt; 华为命令&lt;/h5&gt;
+&lt;p&gt;&lt;Huawei&gt;    // 用户视图&lt;/p&gt;
+&lt;p&gt;&lt;Huawei&gt;system-view  // 进入系统视图&lt;/p&gt;
+&lt;p&gt;[Huawei]   // 系统视图&lt;/p&gt;
+&lt;p&gt;[Huawei] interface  GigabitEthernet 0/0/0  // 进入接口视图&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/0]      // 接口视图&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/0]ip address 192.168.1.1 24&lt;/p&gt;
+&lt;p&gt;// 为 G0/0/0 口配置 IP 地址，ip 为 192.168.1.1  /24&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/0]display this&lt;/p&gt;
+&lt;p&gt;// 查询在此位置的配置信息&lt;/p&gt;
  ]]></description>
         </item>
         <item>
