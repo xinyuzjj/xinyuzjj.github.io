@@ -8,7 +8,12 @@
         <id>http://example.com/2022/10/21/2022.10.21/</id>
         <title>HCIA(五) 2020.10.21</title>
         <link rel="alternate" href="http://example.com/2022/10/21/2022.10.21/"/>
-        <content type="html">&lt;h5 id=&#34;传输层&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#传输层&#34;&gt;#&lt;/a&gt; 传输层：&lt;/h5&gt;
+        <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzQ1YmRiZjNmMjI2OC5hc3B4&#34;&gt;黄巢&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzMyYmZhOTc1N2M2Mi5hc3B4&#34;&gt;不第后赋菊&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;待到秋来九月八，我花开后百花杀。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;冲天香阵透长安，满城尽带黄金甲。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;传输层&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#传输层&#34;&gt;#&lt;/a&gt; 传输层：&lt;/h5&gt;
 &lt;p&gt;​	用于建立端到端的连接&lt;/p&gt;
 &lt;p&gt;​	再应用层数据前加上端头，数据称为数据段&lt;/p&gt;
 &lt;h6 id=&#34;tcp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tcp&#34;&gt;#&lt;/a&gt; TCP：&lt;/h6&gt;
@@ -125,7 +130,9 @@
         <id>http://example.com/2022/10/21/2022.10.20/</id>
         <title>HCIA(四) 2020.10.20</title>
         <link rel="alternate" href="http://example.com/2022/10/21/2022.10.20/"/>
-        <content type="html">&lt;h5 id=&#34;华为命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#华为命令&#34;&gt;#&lt;/a&gt; 华为命令&lt;/h5&gt;
+        <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;人生天地之间，若白驹过隙，忽然而已。&lt;/mark&gt;&lt;/p&gt;
 &lt;p&gt;&lt;Huawei&gt;    // 用户视图&lt;/p&gt;
 &lt;p&gt;&lt;Huawei&gt;system-view  // 进入系统视图&lt;/p&gt;
 &lt;p&gt;[Huawei]   // 系统视图&lt;/p&gt;
@@ -142,7 +149,10 @@
         <id>http://example.com/2022/10/19/2022.10.19/</id>
         <title>HCIA(三) 2020.10.19</title>
         <link rel="alternate" href="http://example.com/2022/10/19/2022.10.19/"/>
-        <content type="html">&lt;h5 id=&#34;span-stylecolorred有类ip地址span&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#span-stylecolorred有类ip地址span&#34;&gt;#&lt;/a&gt; &lt;span style=&#34;color:red&#34;&gt;有类 IP 地址：&lt;/span&gt;&lt;/h5&gt;
+        <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;路漫漫其修远兮，吾将上下而求索&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;span-stylecolorred有类ip地址span&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#span-stylecolorred有类ip地址span&#34;&gt;#&lt;/a&gt; &lt;span style=&#34;color:red&#34;&gt;有类 IP 地址：&lt;/span&gt;&lt;/h5&gt;
 &lt;p&gt;A 类：0.0.0.0-127.255.255.255	/8                                          0&lt;/p&gt;
 &lt;p&gt;B 类：128.0.0.0-191.255.255.255	/16                                   10&lt;/p&gt;
 &lt;p&gt;C 类：192.0.0.0-223.255.255.255	/24                           	110&lt;/p&gt;
