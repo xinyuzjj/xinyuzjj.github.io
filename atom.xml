@@ -3,7 +3,98 @@
     <id>http://example.com</id>
     <title>峻峻尼的个人博客</title>
     <link href="http://example.com" />
-    <updated>2022-10-24T11:53:37.292Z</updated>
+    <updated>2022-10-25T09:40:49.667Z</updated>
+    <entry>
+        <id>http://example.com/2022/10/25/2022.10.25/</id>
+        <title>HCIA(七) 2020.10.25</title>
+        <link rel="alternate" href="http://example.com/2022/10/25/2022.10.25/"/>
+        <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;《壬辰生日儿侄诸孙有诗所言皆过记胸中所怀亦自作》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;——（北宋）苏轼&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;生日今朝是，匆匆又一年。读书真已矣，闭目但茫然。&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;下种言非妄，开花果定圆。驱羊旧有法，视后直须鞭。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;高级路由特性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#高级路由特性&#34;&gt;#&lt;/a&gt; 高级路由特性：&lt;/h5&gt;
+&lt;h6 id=&#34;路由递归&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由递归&#34;&gt;#&lt;/a&gt; &lt;strong&gt;路由递归：&lt;/strong&gt;&lt;/h6&gt;
+&lt;p&gt;​	将去往目的网段的路由的下一跳写为非直连，当收到一个数据包去往目的，查看路由表，下一跳为非直连，此时进行递归，再次查找去往下一跳目的网段的路由，将数据包进行转发。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcia%E5%9F%B9%E8%AE%AD%5Cassets%5C1666663059178.png&#34; alt=&#34;1666663059178&#34;&gt;&lt;/p&gt;
+&lt;h6 id=&#34;等价路由&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#等价路由&#34;&gt;#&lt;/a&gt; 等价路由：&lt;/h6&gt;
+&lt;p&gt;​	去往目的网络存在多个路径，他们的优先级和开销都一致，都进行了加表操作，此时路由表存在等价路由，去往目的网络的数据包会进行分流，按照链路的情况进行，在不同的链路上进行转发。&lt;/p&gt;
+&lt;h6 id=&#34;浮动路由&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#浮动路由&#34;&gt;#&lt;/a&gt; 浮动路由：&lt;/h6&gt;
+&lt;p&gt;​	去往目的网络存在多个路径，他们的优先级或者开销不一致，则只会将最优的路由进行加表操作，当最优路由失效时，次优的路由就会进行加表操作，实现备份路由。&lt;/p&gt;
+&lt;h6 id=&#34;cidr&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cidr&#34;&gt;#&lt;/a&gt; CIDR：&lt;/h6&gt;
+&lt;p&gt;​	无类域间路由&lt;/p&gt;
+&lt;p&gt;​	不在按照有类的掩码进行网络划分或写路由，&lt;/p&gt;
+&lt;p&gt;​	原理 ：主机位向网络位借位的过程&lt;/p&gt;
+&lt;p&gt;​	将多个小网络合为一个大的网络，寻找不同的网络中相同的网络位。&lt;/p&gt;
+&lt;h6 id=&#34;汇总引发问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇总引发问题&#34;&gt;#&lt;/a&gt; 汇总引发问题：&lt;/h6&gt;
+&lt;p&gt;​	路由汇总后，包含除了被汇总的路由之外，还有其他不需要被汇总的路由或自身没有的路由，如果其他路由器访问这些路由，则在此路由器上不能得到转发，若路由器上有缺省路由，则会按照缺省路由进行转发。导致数据不能正确到达目的，浪费链路资源&lt;/p&gt;
+&lt;p&gt;​	解决：&lt;/p&gt;
+&lt;p&gt;​		1、精确汇总：在包含所有需要被汇总的路由的前提下，尽量将汇总路由写精确（掩码尽量长）&lt;/p&gt;
+&lt;p&gt;​		2、黑洞路由：在路由器上写一条与汇总路由网段一致的路由，将出接口指向 null0 口，当数据包过来，未匹配明细路由而匹配中黑洞路由时，则将数据包丢至 null0 口不再进行转发。&lt;/p&gt;
+&lt;h5 id=&#34;ospf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf&#34;&gt;#&lt;/a&gt; OSPF:&lt;/h5&gt;
+&lt;p&gt;​	开放式最短路径优先&lt;/p&gt;
+&lt;p&gt;​	背景：由于静态路由无法自适应网络发生变化，并且在大型网络中配置工作量大，后期维护麻烦。&lt;/p&gt;
+&lt;h6 id=&#34;动态路由协议分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#动态路由协议分类&#34;&gt;#&lt;/a&gt; 动态路由协议分类：&lt;/h6&gt;
+&lt;p&gt;AS (自治系统)：由同一家组织或者机构同一管理实施同一种策略的一组路由器的集合&lt;/p&gt;
+&lt;p&gt;​	1. 按工作区域划分&lt;/p&gt;
+&lt;p&gt;​	a) 内部网关路由协议（工作在 AS 内的路由协议）&lt;/p&gt;
+&lt;p&gt;​		i .OSPF: 开放式最短路径优先&lt;/p&gt;
+&lt;p&gt;​		ii. ISIS: 中间系统到中间系统&lt;/p&gt;
+&lt;p&gt;​		iii：RIP: 已经淘汰&lt;/p&gt;
+&lt;p&gt;​	b) 外部网关路由协议&lt;/p&gt;
+&lt;p&gt;​		i. BGP: 外部网关路由协议&lt;/p&gt;
+&lt;p&gt;​	2. 按工作方式划分&lt;/p&gt;
+&lt;p&gt;​	a）距离矢量&lt;/p&gt;
+&lt;p&gt;​		i. RIP：已经淘汰&lt;/p&gt;
+&lt;p&gt;​		ii.BGP: 增强型路径矢量路由协议&lt;/p&gt;
+&lt;p&gt;​	b）链路状态&lt;/p&gt;
+&lt;p&gt;​		i. OSPF: 开放式最短路径优先&lt;/p&gt;
+&lt;p&gt;​		ii.ISIS: 中间系统到中间系统&lt;/p&gt;
+&lt;h6 id=&#34;lsa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsa&#34;&gt;#&lt;/a&gt; LSA:&lt;/h6&gt;
+&lt;p&gt;​	链路状态&lt;/p&gt;
+&lt;p&gt;​	包含路由器所有接口的 ip，开销，连接设备等等。&lt;/p&gt;
+&lt;h6 id=&#34;区域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#区域&#34;&gt;#&lt;/a&gt; 区域：&lt;/h6&gt;
+&lt;p&gt;​	用区域 ID 进行标识&lt;/p&gt;
+&lt;p&gt;​	Area ID：取值与 IP 地址格式一致&lt;/p&gt;
+&lt;p&gt;​	0.0.0.0-255.255.255.255&lt;/p&gt;
+&lt;h6 id=&#34;route-id&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#route-id&#34;&gt;#&lt;/a&gt; Route-id：&lt;/h6&gt;
+&lt;p&gt;​	用于唯一标识一台运行 OSPF 协议的路由器&lt;/p&gt;
+&lt;p&gt;​	 格式与 IP 地址一致：尽量取 IP 地址为 route-id&lt;/p&gt;
+&lt;p&gt;​	获取方式：&lt;/p&gt;
+&lt;p&gt;​	获取到 router-id 后除非重启设备或者重启进程，否则 router-id 不会失效&lt;/p&gt;
+&lt;p&gt;​		手工配置：&lt;/p&gt;
+&lt;p&gt;​		1. 全局下配置的 router-id：&lt;/p&gt;
+&lt;p&gt;​		全局下配置的 router-id 后，如果进程未配置 router id 则直接使用全局下配置的&lt;/p&gt;
+&lt;p&gt;​		[Huawei]router id 1.1.1.1&lt;/p&gt;
+&lt;p&gt;​		2. 进程下配置 router-id：跟进程同时配置，只在进程下有效&lt;/p&gt;
+&lt;p&gt;​		[Huawei]ospf 1 router-id 1.1.1.1&lt;/p&gt;
+&lt;p&gt;​		自动获取：&lt;/p&gt;
+&lt;p&gt;​		1. 存在逻辑接口，则使用逻辑接口最大的 IP 地址作为 router id&lt;/p&gt;
+&lt;p&gt;​		2. 不存在逻辑接口，则使用物理接口最大的 ip 地址作为 router id&lt;/p&gt;
+&lt;p&gt;​		3. 注：实际为谁先起来用谁&lt;/p&gt;
+&lt;h6 id=&#34;开销&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#开销&#34;&gt;#&lt;/a&gt; 开销：&lt;/h6&gt;
+&lt;p&gt;​	OSPF 使用开销作为度量值&lt;/p&gt;
+&lt;p&gt;​	每个接口都有独立的开销&lt;/p&gt;
+&lt;p&gt;​	开销的计算方式：&lt;/p&gt;
+&lt;p&gt;​		参考带宽 / 实际带宽 = 接口开销&lt;/p&gt;
+&lt;p&gt;​		开销最小为 1，当计算得到开销为小数（0.x）时取 1&lt;/p&gt;
+&lt;p&gt;​	路由的开销计算：&lt;/p&gt;
+&lt;p&gt;​	设备去往目的网络的入向接口开销总和&lt;/p&gt;
+&lt;p&gt;​	开销的修改方式：&lt;/p&gt;
+&lt;p&gt;​		1. 修改带宽参考值：直接对带宽参考值进行修改，但是会影响所有接口的开销，不推荐使用&lt;/p&gt;
+&lt;p&gt;​		a）命令：bandwidth-reference 10000000// 单位为 Mbits/s&lt;/p&gt;
+&lt;p&gt;​		2. 修改接口开销：由于每个接口都有一个独立的开销，可以直接对其进行修改，修改后不影响其他接口开销&lt;/p&gt;
+&lt;p&gt;​		a）命令: ospf cost 1000// 在接口视图下敲&lt;/p&gt;
+&lt;h6 id=&#34;ospf-报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf-报文&#34;&gt;#&lt;/a&gt; OSPF 报文：&lt;/h6&gt;
+&lt;p&gt;​		hello 报文：用于发现，建立，维护邻居关系&lt;/p&gt;
+&lt;p&gt;​		DD 报文：用于描述本地 LSDB 的摘要信息&lt;/p&gt;
+&lt;p&gt;​		LSR 报文：用于请求自身所缺失的 LSA，请求的信息来源于 DD 报文内的摘要信息，只包含请求的 LSA 的摘要&lt;/p&gt;
+&lt;p&gt;​		LSU 报文：用于回应 LSR 的请求，将完整的 LSA 信息发送给对方。&lt;/p&gt;
+&lt;p&gt;​		LS Ack 报文：用于对收到的 LSU 报文进行确认，表示收到了 LSA 信息，包含 LSA 的摘要信息。&lt;/p&gt;
+</content>
+        <updated>2022-10-25T09:40:49.667Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2022/10/24/2022.10.24/</id>
         <title>HCIA(六) 2020.10.24</title>
