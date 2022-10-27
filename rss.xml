@@ -5,8 +5,62 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Wed, 26 Oct 2022 17:42:24 +0800</pubDate>
-        <lastBuildDate>Wed, 26 Oct 2022 17:42:24 +0800</lastBuildDate>
+        <pubDate>Thu, 27 Oct 2022 17:36:48 +0800</pubDate>
+        <lastBuildDate>Thu, 27 Oct 2022 17:36:48 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/27/2022.10.27/</guid>
+            <title>HCIA(九) 2020.10.27</title>
+            <link>http://example.com/2022/10/27/2022.10.27/</link>
+            <pubDate>Thu, 27 Oct 2022 17:36:48 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzA1NjM1Mjg2YmY2NC5hc3B4&#34;&gt;李煜&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzA3YmUwZmIwZTdhNC5hc3B4&#34;&gt;浪淘沙令・帘外雨潺潺&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;帘外雨潺潺，春意阑珊。罗衾不耐五更寒。梦里不知身是客，一晌贪欢。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;独自莫凭栏，无限江山。别时容易见时难。流水落花春去也，天上人间。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;dhcp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dhcp&#34;&gt;#&lt;/a&gt; DHCP：&lt;/h5&gt;
+&lt;p&gt;​	动态主机配置协议&lt;/p&gt;
+&lt;p&gt;​	背景：网络当中存在大量的主机，静态配置 ip 地址等网络参数时，工作量大，并且容易出现 ip 地址冲突等网络错误，或者容易出现用户自己修改网络参数导致无法上网。&lt;/p&gt;
+&lt;p&gt;​	作用：为网络中的主机分配 IP 地址等参数，减少网络工程师的工作量，以及降低网络故障率。&lt;/p&gt;
+&lt;h6 id=&#34;报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#报文&#34;&gt;#&lt;/a&gt; 报文：&lt;/h6&gt;
+&lt;p&gt;​	DHCP discover（发现报文）：用于发现网络中的 DHCP 服务器。&lt;/p&gt;
+&lt;p&gt;​	DHCP offer（提供报文）：用于为主机提供 ip 地址等网络参数&lt;/p&gt;
+&lt;p&gt;​	DHCP request（请求报文）：&lt;/p&gt;
+&lt;p&gt;​	1. 用于向服务器确认是否是自己的分配的参数&lt;/p&gt;
+&lt;p&gt;​	2. 告知网络中的其他 DHCP 服务器回收为自己分配的 ip 等参数&lt;/p&gt;
+&lt;p&gt;​	DHCP ACK (确认): 对 request 报文的确认&lt;/p&gt;
+&lt;p&gt;​	DHCP NAK（否认）: 对 request 报文的否认&lt;/p&gt;
+&lt;p&gt;​	DHCP RELEASE（释放）: 主机主动释放 ip 地址等&lt;/p&gt;
+&lt;h6 id=&#34;地址池&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#地址池&#34;&gt;#&lt;/a&gt; 地址池：&lt;/h6&gt;
+&lt;p&gt;​	用于承载为主机分配的 IP 地址等&lt;/p&gt;
+&lt;p&gt;​	分类：接口地址池和全局地址池&lt;/p&gt;
+&lt;p&gt;​	接口地址池：ip 地址范围，于接口 ip 地址同一段的地址都会分配给主机使用&lt;/p&gt;
+&lt;p&gt;​	全局地址池：需要手工写地址范围&lt;/p&gt;
+&lt;h6 id=&#34;工作过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#工作过程&#34;&gt;#&lt;/a&gt; 工作过程：&lt;/h6&gt;
+&lt;p&gt;​	1. 主机以广播形式发送 DHCP discover，用于寻找网络中的 DHCP 服务器&lt;/p&gt;
+&lt;p&gt;​	2.DHCP 服务器以单播发送 DHCP office 报文，为主机提供 IP 地址等参数&lt;/p&gt;
+&lt;p&gt;​	3. 主机以广播形式发送 DHCP request 报文，向服务器进行确认是否为自己分配的 IP 等参数，同时告知网络中其他 DHCP 服务器 自己使用的 ip，让他们进行回收为自己分配的参数&lt;/p&gt;
+&lt;p&gt;​	4. 服务器以单播发送 DHCP ACK 同意主机使用自己分配的 IP 等参数&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h6 id=&#34;dhcp续租过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dhcp续租过程&#34;&gt;#&lt;/a&gt; DHCP 续租过程：&lt;/h6&gt;
+&lt;p&gt;​	1. 当主机的租期只剩 50% 时，会向原来的 DHCP 服务器以单播形式发送 DHCP request 报文，用于刷新租期&lt;/p&gt;
+&lt;p&gt;​	2. 如果服务器愿意续租，则回应 ACK 报文，将主机的 IP 地址租期重置。如果不愿意则回应 NAK，不进行刷新租期&lt;/p&gt;
+&lt;p&gt;​	3. 如果服务器由于网络或者自身原因没有收到，主机的 request，主机将继续使用原有的租期&lt;/p&gt;
+&lt;p&gt;​	4. 当主机的租期只剩 12.5%，会以广播的形式发送 request 报文，用于寻址网络中的所有 DHCP 服务器，用于重绑定。&lt;/p&gt;
+&lt;p&gt;​	5. 如果原来服务器回应 ACK，直接将地址刷新，如果回应 NAK，被动释放地址。或者等待租期结束后被动释放地址&lt;/p&gt;
+&lt;p&gt;​	6. 后续会周期发送 discover 报文寻找网络中的 DHCP 服务。&lt;/p&gt;
+&lt;p&gt;int g0/0/0&lt;/p&gt;
+&lt;p&gt;ip add 10.1.1.1 24&lt;/p&gt;
+&lt;p&gt;ip pool huawe 	// 创建并进入地址池&lt;/p&gt;
+&lt;p&gt;gateway-list 10.1.1.1 	// 设置网关&lt;br&gt;
+ network 10.1.1.0 mask 24	 // 宣告为主机分配的 IP 地址段&lt;br&gt;
+ lease day 0 hour 0 minute 1 	 // 设置租期&lt;br&gt;
+ dns-list 8.8.8.8 114.114.114.114  	// 设置 dns 服务器&lt;/p&gt;
+&lt;p&gt;[Huawei] dhcp enable 	// 在全局视图下使能 DHCP 服务&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/0] dhcp select global  	// 接口视图下使能 DHCP 全局模式&lt;/p&gt;
+&lt;p&gt;dhcp select&lt;/p&gt;
+&lt;p&gt;au s c&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/26/2022.10.26/</guid>
             <title>HCIA(八) 2020.10.26</title>
