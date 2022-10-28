@@ -5,8 +5,92 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Thu, 27 Oct 2022 17:36:48 +0800</pubDate>
-        <lastBuildDate>Thu, 27 Oct 2022 17:36:48 +0800</lastBuildDate>
+        <pubDate>Fri, 28 Oct 2022 17:31:08 +0800</pubDate>
+        <lastBuildDate>Fri, 28 Oct 2022 17:31:08 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/28/2022.10.28/</guid>
+            <title>HCIA(九) 2020.10.28</title>
+            <link>http://example.com/2022/10/28/2022.10.28/</link>
+            <pubDate>Fri, 28 Oct 2022 17:31:08 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;[白天的诗意和转瞬即逝的效果，多雾天气的哀愁，阳光的突然闪闪发亮，黑夜的静寂和魅力，黎明的神秘，每个烟囱飘起的轻烟，这个神奇的自然界里的种种偶然现象，都是我熟悉的，都能给我带来欢乐。]___[巴尔扎克《》]&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vlan&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vlan&#34;&gt;#&lt;/a&gt; VLAN：&lt;/h5&gt;
+&lt;p&gt;​	虚拟局域网&lt;/p&gt;
+&lt;p&gt;​	背景：网络中的 BUM 帧（广播帧，未知单播帧，组播帧）过多，交换机每接收到这些数据帧时，都需要进行泛洪处理，可能会影响正常的业务通信。&lt;/p&gt;
+&lt;p&gt;​	解决方式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 部署路由
+2. VLAN
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不受地域限制，可以跨交换机部署&lt;/li&gt;
+&lt;li&gt;只能与相同 VLAN 之间通信&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;vlan标志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vlan标志&#34;&gt;#&lt;/a&gt; VLAN 标志：&lt;/h6&gt;
+&lt;p&gt;​	范围：0-4095     	0 和 4095 保留，可用 1-4094&lt;/p&gt;
+&lt;p&gt;​	默认交换机所有接口数据 VLAN1&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h6 id=&#34;8021q数据帧&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#8021q数据帧&#34;&gt;#&lt;/a&gt; 802.1Q 数据帧：&lt;/h6&gt;
+&lt;p&gt;​	在原始的以太网 Ⅱ 帧新增 802.1Q 字段&lt;/p&gt;
+&lt;p&gt;​	帧格式：&lt;/p&gt;
+&lt;p&gt;​	D.MAC+S.MAC+802.1Q+TYPE+DATA+FCS&lt;/p&gt;
+&lt;p&gt;​	802.1Q 字段：&lt;/p&gt;
+&lt;p&gt;​		TPID: 为 0x8100 时，标识数据帧为 802.1Q 帧&lt;/p&gt;
+&lt;p&gt;​		VLAN ID：标识不同虚拟局域网&lt;/p&gt;
+&lt;h6 id=&#34;vlan的划分方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vlan的划分方式&#34;&gt;#&lt;/a&gt; VLAN 的划分方式：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 基于交换机接口划分
+2. 基于MAC地址划分
+3. 基于子网划分
+4. 基于协议划分
+5. 基于策略划分
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现网中一般采用基于交换机接口划分&lt;/p&gt;
+&lt;h5 id=&#34;交换机的接口类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#交换机的接口类型&#34;&gt;#&lt;/a&gt; 交换机的接口类型：&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;h6 id=&#34;access接入接口只允许一种vlan脱标签通过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#access接入接口只允许一种vlan脱标签通过&#34;&gt;#&lt;/a&gt; access (接入接口)：只允许一种 VLAN 脱标签通过&lt;/h6&gt;
+&lt;p&gt;a）接收数据帧时&lt;/p&gt;
+&lt;p&gt;​	i. 接收到一个不带标签的数据帧时，打上接口 PVID 一致的标签值并接收&lt;/p&gt;
+&lt;p&gt;​	ii. 接收到一个带标签的数据帧时，并且与接口的 PVID 一致，直接接收&lt;/p&gt;
+&lt;p&gt;​	iii. 接收到一个带标签的数据帧，并且数据帧中的标签值与接口 PVID 不一致，不接收&lt;/p&gt;
+&lt;p&gt;b) 发送数据帧时&lt;/p&gt;
+&lt;p&gt;​	i. 发送的数据携带的标签值与接口处的 PVID 值一致，脱标签进行发送&lt;/p&gt;
+&lt;p&gt;​	ii. 发送的数据帧携带的标签值与接口处的 PVID 值不一致，则不允许从该接口发出&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h6 id=&#34;trunk骨干接口允许多种vlan带标签通过和允许一种vlan不带标签通过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#trunk骨干接口允许多种vlan带标签通过和允许一种vlan不带标签通过&#34;&gt;#&lt;/a&gt; trunk（骨干接口）：允许多种 VLAN 带标签通过和允许一种 vlan 不带标签通过&lt;/h6&gt;
+&lt;p&gt;a）接收数据帧时&lt;/p&gt;
+&lt;p&gt;​	i. 接收到一个不带标签的数据帧时，打上接口 PVID 一致的标签，查看允许通过列表，存在则接收，不存在则拒绝接收&lt;/p&gt;
+&lt;p&gt;​	ii. 接收到一个带标签的数据帧，假设标签值是否存在允许通过列表，接收数据帧&lt;/p&gt;
+&lt;p&gt;​	iii. 接收到一个带标签的数据帧，假设标签值不在允许通过列表，拒绝接收&lt;/p&gt;
+&lt;p&gt;b）发送数据帧时&lt;/p&gt;
+&lt;p&gt;​	i. 发送的数据帧标签值在允许通过列表中，并且标签值与接口 PVID 相同，进行脱标签转发&lt;/p&gt;
+&lt;p&gt;​	ii. 发送的数据帧标签值在允许通过列表中，但是标签与接口 PVID 不一致，则进行带标签转发&lt;/p&gt;
+&lt;p&gt;​	iii. 发送的数据帧的标签值不允许通过列表中，拒绝该数据帧从该接口发出&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h6 id=&#34;hybrid混合接口允许多种vlan带标签通过和允许多种vlan不带标签通过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hybrid混合接口允许多种vlan带标签通过和允许多种vlan不带标签通过&#34;&gt;#&lt;/a&gt; hybrid（混合接口）：允许多种 VLAN 带标签通过和允许多种 vlan 不带标签通过&lt;/h6&gt;
+&lt;p&gt;a）接收数据帧时&lt;/p&gt;
+&lt;p&gt;​	i. 收到不带标签的数据帧时，打上接口 PVID 相同的标签，查看是否允许通过列表中，是则接收，不是则拒绝接收&lt;/p&gt;
+&lt;p&gt;​	ii. 收到带标签的数据帧，查看标签假设在允许通过列表中，则接收&lt;/p&gt;
+&lt;p&gt;​	iii. 收到带标签的数据帧，查看标签，假设不再允许通过列表，则拒绝接收&lt;/p&gt;
+&lt;p&gt;b）发送数据帧时&lt;/p&gt;
+&lt;p&gt;​	i. 发送数据帧的标签，在允许通过列表中，并且标签值与接口的 PVID，脱标签转发&lt;/p&gt;
+&lt;p&gt;​	ii. 发送数据帧的标签，在允许通过列表中，并且标签值与接口 PVID 不一致，带标签转发&lt;/p&gt;
+&lt;p&gt;​	iii. 发送数据帧的标签，在允许不带标签通过列表，无论标签值是否与 PVID 一致，都会进行脱标签转发&lt;/p&gt;
+&lt;p&gt;​	iv. 发送的数据帧的标签，不存在允许通过列表和允许不带标签通过列表，拒绝从该接口发送数据帧&lt;/p&gt;
+&lt;p&gt;配置命令&lt;/p&gt;
+&lt;p&gt;[Huawei] vlan batch 10 20 // 创建 vlan&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/1] port link-type access // 配置接口类型&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/1] port default vlan 10  // 修改默认 PVID&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/3] port link-type trunk  // 配置接口类型&lt;/p&gt;
+&lt;p&gt;[Huawei-GigabitEthernet0/0/3] port trunk allow-pass vlan 10 20  // 配置允许通过的 vlan id&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;、&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/27/2022.10.27/</guid>
             <title>HCIA(九) 2020.10.27</title>
