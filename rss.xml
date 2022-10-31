@@ -5,8 +5,68 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Fri, 28 Oct 2022 17:31:08 +0800</pubDate>
-        <lastBuildDate>Fri, 28 Oct 2022 17:31:08 +0800</lastBuildDate>
+        <pubDate>Mon, 31 Oct 2022 17:24:25 +0800</pubDate>
+        <lastBuildDate>Mon, 31 Oct 2022 17:24:25 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/10/31/2022.10.31/</guid>
+            <title>HCIA(十一) 2020.10.31</title>
+            <link>http://example.com/2022/10/31/2022.10.31/</link>
+            <pubDate>Mon, 31 Oct 2022 17:24:25 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzIyNTUwMTM4Mjg4Yy5hc3B4&#34;&gt;毛泽东&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzlhZDNlNzAzMWY1Ni5hc3B4&#34;&gt;忆秦娥・娄山关&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;西风烈，长空雁叫霜晨月。霜晨月，马蹄声碎，喇叭声咽。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;雄关漫道真如铁，而今迈步从头越。从头越，苍山如海，残阳如血。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vlan间通信&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vlan间通信&#34;&gt;#&lt;/a&gt; VLAN 间通信：&lt;/h5&gt;
+&lt;p&gt;​	背景：划分完 VLAN 后，部分不同的 VLAN 之间有互访的需求，使用 hybrid 能够解决互访需求，但是，如果不同的 VLAN 使用不同的网段，hybrid 无法再满足需求。&lt;/p&gt;
+&lt;p&gt;​	解决方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 部署路由器
+2. 三层交换
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1.&lt;strong&gt; 部署路由器&lt;/strong&gt;：可以使用路由器的物理接口实现不同 VLAN 间的正常通信&lt;/p&gt;
+&lt;p&gt;​	a) 使用物理接口：每一个 VLAND 都需要对应一个物理接口，浪费接口&lt;/p&gt;
+&lt;p&gt;​	b）使用子接口（单臂路由）：使用一个路由器的物理接口逻辑虚拟成多个子接口，每个子接口对应一个 VLAN, 实现不同 VLAN 之间通信。&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt; 三层交换&lt;/strong&gt;：在交换机上创建三层接口用于作为 VLAN 下主机的网关，给交换机开通路由功能，能够进行查表转发的动作&lt;/p&gt;
+&lt;h5 id=&#34;stp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stp&#34;&gt;#&lt;/a&gt; STP：&lt;/h5&gt;
+&lt;p&gt;​	生成树协议&lt;/p&gt;
+&lt;p&gt;​	背景：在传统的二层网络中，容易出现单点故障，导致网络中的部分设备无法正常通信，此时如果部署冗余链路会导致出现&lt;strong&gt;广播风暴以及 MAC 地址漂移&lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&#34;三层网络环路解决&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三层网络环路解决&#34;&gt;#&lt;/a&gt; 三层网络环路解决：&lt;/h6&gt;
+&lt;p&gt;​		通过 IP 头怒的 TTL 字段进行防环，当 TTL=0 时，不再进行转发操作。&lt;/p&gt;
+&lt;h6 id=&#34;二次网络环路解决&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二次网络环路解决&#34;&gt;#&lt;/a&gt; 二次网络环路解决：&lt;/h6&gt;
+&lt;p&gt;​		无法通过帧头中的某个字段进行防环，只能引入其他协议帮助&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h6 id=&#34;名称解释&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#名称解释&#34;&gt;#&lt;/a&gt; 名称解释：&lt;/h6&gt;
+&lt;p&gt;​	port ID (端口 ID)：由端口优先级和端口号组成，用于确定端口角色&lt;/p&gt;
+&lt;p&gt;​		端口优先级：默认 128&lt;/p&gt;
+&lt;p&gt;​		取值范围：0-255&lt;/p&gt;
+&lt;p&gt;​		步长：16&lt;/p&gt;
+&lt;p&gt;​	BID（桥 ID）: 由桥优先级和桥 MAC 两部分组成，用于选举根桥，优先比较优先级，相同时，比较 MAC 地址&lt;/p&gt;
+&lt;p&gt;​		桥优先级：默认 32768&lt;/p&gt;
+&lt;p&gt;​		取值范围：0-65535&lt;/p&gt;
+&lt;p&gt;​		步长（取 0 或者 4096 的整数倍）：4096&lt;/p&gt;
+&lt;p&gt;​	Root (根桥)：在所有的交换机中选举出一台交换机作为根桥，基于根桥构建 STP 树&lt;/p&gt;
+&lt;p&gt;​	cost（开销）：链路或者接口的开销，不同的参考标准会使得相同的链路出现不同的 cost 值，建议将网络中的所有交换机的参考标准改为一致&lt;/p&gt;
+&lt;p&gt;​	RPC（根路径开销）：设备或者设备接口去往根桥的所有路径开销总和（入向接口的开销总和）&lt;/p&gt;
+&lt;p&gt;​	BPDU (网桥协议数据单元)：网络中的交换机通过交互 BPDU 来完成网络拓扑收敛，&lt;/p&gt;
+&lt;p&gt;​		配置 BPDU:&lt;/p&gt;
+&lt;p&gt;​		用于平时交互使用&lt;/p&gt;
+&lt;p&gt;​		TCN BPDU：&lt;/p&gt;
+&lt;p&gt;​		用于当拓扑发生改变后发送&lt;/p&gt;
+&lt;p&gt;​	BPDU 参数：&lt;/p&gt;
+&lt;p&gt;​		PID: 协议 ID&lt;/p&gt;
+&lt;p&gt;​		PVI: 版本 ID&lt;/p&gt;
+&lt;p&gt;​		BPDUtype：BPDU 类型，用于标识该 BPDU 是配置 BPDU 还是 TCN BPDU&lt;/p&gt;
+&lt;p&gt;​		Flags：标志位，共 8bit，只使用了最高 bit 位和最低 bit 位，最高位是表示位 TCA, 最低置位表示位 TC&lt;/p&gt;
+&lt;p&gt;​		Root ID: 网络中根桥的桥 ID，初始状态下，网络中所有设备都认为自己是根桥&lt;/p&gt;
+&lt;p&gt;​		RPC: 根路径开销&lt;/p&gt;
+&lt;p&gt;​		BID：产生设备或者发送设备的桥 ID&lt;/p&gt;
+&lt;p&gt;​		Port ID: 产生设备或者发送设备的端口 ID&lt;/p&gt;
+&lt;p&gt;​		Massage Age：消息寿命，从根桥发送后，每经过一台网桥都会进行 + 1 操作，作用类似 TTL 值&lt;/p&gt;
+&lt;p&gt;​		Max age：最大生存时间，默认 20s&lt;/p&gt;
+&lt;p&gt;​		Hello time ：发送 BPDU 的时间间隔，默认 2s&lt;/p&gt;
+&lt;p&gt;​		Forward delay: 转发延迟时间，15s&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/28/2022.10.28/</guid>
             <title>HCIA(十) 2020.10.28</title>
