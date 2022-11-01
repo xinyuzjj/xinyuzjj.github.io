@@ -3,7 +3,165 @@
     <id>http://example.com</id>
     <title>峻峻尼的个人博客</title>
     <link href="http://example.com" />
-    <updated>2022-10-31T09:24:25.018Z</updated>
+    <updated>2022-11-01T10:06:52.419Z</updated>
+    <entry>
+        <id>http://example.com/2022/11/01/2022.11.1/</id>
+        <title>HCIA(十二）11.1</title>
+        <link rel="alternate" href="http://example.com/2022/11/01/2022.11.1/"/>
+        <content type="html">&lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzViYWQwZGZjNTgyMS5hc3B4&#34;&gt;赵恒&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52X2EyMzM0OWNkZGYxZS5hc3B4&#34;&gt;劝学诗&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;富家不用买良田，书中自有千钟粟。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;安居不用架高堂，书中自有黄金屋。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;出门莫恨无人随，书中车马多如簇。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;娶妻莫恨无良媒，书中自有颜如玉。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;男儿欲遂平生志，五经勤向窗前读。&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;在 STP 中，只有根桥能够主动发送配置 BPDU，其他非根交换机收到根桥的配置 BPDU 后，才能进行转发，并且修改其中一些参数 (RPC,BID,PID)&lt;/p&gt;
+&lt;h6 id=&#34;stp的工作过程选举过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stp的工作过程选举过程&#34;&gt;#&lt;/a&gt; STP 的工作过程（选举过程）：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;运行 STP 的交换机初始情况下，都会认为自己是根桥，往外发送以自己为根桥的配置 BPDU，收到对方的配置 BPDU 后进行根桥的选举，选择 BID 最小的设备作为根桥&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在每台非根交换机上选举出一个 RP 根端口，用来接收最优的配置 BPDU&lt;/p&gt;
+&lt;p&gt;先比较接口的 RPC，以小为优&lt;/p&gt;
+&lt;p&gt;再比较接口连接对端设备的 BID，以小为优&lt;/p&gt;
+&lt;p&gt;再比较接口连接对端接口的 PID，以小为优&lt;/p&gt;
+&lt;p&gt;最后比较本端接口的 PID，以小为优&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在每个链路上选举出一个 DP 指定端口，用来发送最优的配置 BPDU&lt;/p&gt;
+&lt;p&gt;比较本端设备上最小的 RPC，一笑为优&lt;/p&gt;
+&lt;p&gt;比较本地设备的 BID&lt;/p&gt;
+&lt;p&gt;比较本地接口的 PID&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;阻塞非根非指定端口，也就是 AP 阻塞端口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;stp的端口类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stp的端口类型&#34;&gt;#&lt;/a&gt; STP 的端口类型：&lt;/h6&gt;
+&lt;p&gt;​	RP: 根端口，用来接收最优的配置 BPDU&lt;/p&gt;
+&lt;p&gt;​	DP: 指定端口，用来发送最优的配置 BPDU&lt;/p&gt;
+&lt;p&gt;​	AP: 阻塞端口，用来储存最优的 BPDU&lt;/p&gt;
+&lt;h6 id=&#34;stp的端口状态&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stp的端口状态&#34;&gt;#&lt;/a&gt; STP 的端口状态：&lt;/h6&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;状态&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;侦听 BPDU&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;发送 BPDU&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;学习 MAC 地址&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;转发数据&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;disable 禁用&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Blocking 阻塞&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Listening 侦听&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Learning 学习&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Forwarding 转发&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;[huawei] stp enable // 使能 STP, 华为默认使能&lt;/p&gt;
+&lt;p&gt;[huawei] stp  mode stp// 修改 STP 模式，默认 MSTP&lt;/p&gt;
+&lt;p&gt;[huawei-g0/0/1] stp cost 200001/ 修改接口的 STP 的开销&lt;/p&gt;
+&lt;p&gt;[huawei] stp priority 0 / 修改设备的桥优先级&lt;/p&gt;
+&lt;h6 id=&#34;stp的重收敛&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stp的重收敛&#34;&gt;#&lt;/a&gt; STP 的重收敛：&lt;/h6&gt;
+&lt;p&gt;​	收敛：网络初次运行到稳定状态以及网络变更恢复到稳定状态的时间&lt;/p&gt;
+&lt;p&gt;当 STP 网络稳定运行后，只有根桥会周期性从 DP 口发送配置 BPDU，通告自己的存活状态，其他设备的 RP 口和 AP 口都是能周期性收到根桥的配置 BPDU&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根桥故障：50s=20s 老化时间 + 2 个转发延迟时间 15s&lt;/p&gt;
+&lt;p&gt;​	根桥出现故障，不在周期性发送配置 BPDU，其他非根交换机就无法再收到根桥的配置 BPDU，那么当保存的根桥配置 BPDU 在 20s 老化之后，就会认为根桥出现故障，重新进行 STP 的选举，端口角色发送变化，还需要经过 2 个转发延迟时间才能转发用户数据流量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直连故障：30s = 两个转发延迟时间&lt;/p&gt;
+&lt;p&gt;​	交换机上存在 RP 和 AP，如果 RP 端口出现故障，无法再收到根桥的配置 BPDU，但是 AP 还能收到根桥的配置 BPDU，就会将 AP 变为 RP，端口角色发生变化，还需要等待 2 个转发延迟时间才能转发用户数据流量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;非直连故障：&lt;/p&gt;
+&lt;p&gt;​	交换机上存在 RP，但不存在 AP，但 RP 出现故障，无法收到根桥的配置 BPDU，那么交换机就无法从其他任何一个接口收到根桥的配置 BPDU，等待根桥之前发生的配置 BPDU 的 20s 老化后，认为根桥故障，重新进行 STP 选举，往外发生以自己为根的配置 BPDU，其他设备 AP 口收到之后，和端口上保存的之前根桥发生的配置 BPDU 进行比较，发现次优，不会进行回应，等到端口上保存的更优的配置 BPDU，才会将从其他接口收到的根桥配置 BPDU，端口角色发生变化还需要等待 2 个转发延迟时间才能进行用户数据流量转发&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;拓扑变更:&lt;/p&gt;
+&lt;p&gt;​	问题：当网络发生故障后，虽然 STP 能够在 30s 或者 50s 完成收敛，但是由于交换机上还存在错误的 MAC 地址表项，所以用户终端还是无法进行通信&lt;/p&gt;
+&lt;p&gt;​	解决：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 故障交换机会向上游交换机发送TCN BPDU，通知拓扑发送变更
+2. 上游交换机收到TCN BPDU后，先进行TCA置位的配置BPDU进行回应，确认自己已经收到，下游交换机收到TCA后会停止发送TCN BPDU，接着上游交换机还需要继续向根桥发送TCN BPDU，传达到根桥之前重复改流程
+3. 根桥收到TCN BPDU后，会将自己的MAC地址表项的老化时间刷新为15s，然后向下游回应TC置位的配置BPDU
+4. 其他交换机收到TC置位的配置BPDU后，将自己的MAC地址表项的老化时间置为15s，再进行配置BPDU的转发，让整个交换网络中的交换机进行MAC地址表项的刷新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Smart-link&lt;/p&gt;
+&lt;p&gt;smart-link group1 / 创建 SMART-link 组&lt;/p&gt;
+&lt;p&gt;restore enable / 开启回切&lt;/p&gt;
+&lt;h5 id=&#34;以太网链路聚合&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#以太网链路聚合&#34;&gt;#&lt;/a&gt; 以太网链路聚合&lt;/h5&gt;
+&lt;p&gt;​	背景：随着网络规模的不断发展，对网络的可靠性有以及带宽的要求也不断增大，可以通过升级 / 增加设备方式来提高可靠性和带宽，但是成本高，就产生了以太网链路聚合技术，使用现用的资源提高可靠性和带宽&lt;/p&gt;
+&lt;h6 id=&#34;链路聚合的作用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链路聚合的作用&#34;&gt;#&lt;/a&gt; 链路聚合的作用：&lt;/h6&gt;
+&lt;p&gt;​	通过将多条物理属性相同的链路从逻辑上虚拟成一条链路，提高网络可靠性以及带宽&lt;/p&gt;
+&lt;h6 id=&#34;基本术语&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基本术语&#34;&gt;#&lt;/a&gt; 基本术语：&lt;/h6&gt;
+&lt;p&gt;​	聚合口：将多条链路加入到一个聚合口中，逻辑上虚拟成一条链路&lt;/p&gt;
+&lt;p&gt;​	成员链路：聚合口中的链路都是该聚合组的成员链路&lt;/p&gt;
+&lt;p&gt;​	活动链路：参与数据转发的链路&lt;/p&gt;
+&lt;p&gt;​	备份链路：不参与数据转发的链路，作为备份&lt;/p&gt;
+&lt;h6 id=&#34;聚合的前提条件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#聚合的前提条件&#34;&gt;#&lt;/a&gt; 聚合的前提条件：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;链路聚合两端设备参与聚合的接口数量，流控方式，双工模式，速率等都需要一样&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一个聚合口最多允许 8 个成员链路&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;聚合口不能在被聚合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;聚合口连接对端设备只能是一台设备，不能是多台设备&lt;/p&gt;
+&lt;h6 id=&#34;链路聚合模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链路聚合模式&#34;&gt;#&lt;/a&gt; 链路聚合模式：&lt;/h6&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	手工静态聚合：管理员手工将接口加入到聚合口中，所有成员接口都会参与数据的转发，无备份，也不需要交互协议报文&lt;/p&gt;
+&lt;p&gt;​	LACP 手工聚合：&lt;/p&gt;
+&lt;h5 id=&#34;华为交换机系列&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#华为交换机系列&#34;&gt;#&lt;/a&gt; 华为交换机系列：&lt;/h5&gt;
+&lt;p&gt;​	S：园区网交换机&lt;/p&gt;
+&lt;p&gt;​	CE：数据中心交换机&lt;/p&gt;
+&lt;p&gt;[huawei] interface Eth-Trunk1 / 创建聚合口&lt;/p&gt;
+&lt;p&gt;[huawei-eth-Trunk1] mode manual load-balance / 指定链路聚合模式&lt;/p&gt;
+&lt;p&gt;[huawei-eth-Trunk1] trunkport g0/0/1 to 0/0/3  / 加入成员接口&lt;/p&gt;
+&lt;p&gt;[huawei] interface g0/0/1 / 方法二&lt;/p&gt;
+&lt;p&gt;[lsw1-g1]eth-trunk 1&lt;/p&gt;
+</content>
+        <updated>2022-11-01T10:06:52.419Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2022/10/31/2022.10.31/</id>
         <title>HCIA(十一) 2020.10.31</title>
