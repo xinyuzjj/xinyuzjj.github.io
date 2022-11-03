@@ -3,7 +3,116 @@
     <id>http://example.com</id>
     <title>峻峻尼的个人博客</title>
     <link href="http://example.com" />
-    <updated>2022-11-01T10:06:52.419Z</updated>
+    <updated>2022-11-03T11:03:08.990Z</updated>
+    <entry>
+        <id>http://example.com/2022/11/03/2022.11.3/</id>
+        <title>HCIA(十四）11.3</title>
+        <link rel="alternate" href="http://example.com/2022/11/03/2022.11.3/"/>
+        <content type="html">&lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2X2VmZDVkYTBlZDFhMS5hc3B4&#34;&gt;陆游&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzUxYzU2MDUyOWQyYS5hc3B4&#34;&gt;冬夜读书示子聿&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;古人学问无遗力，少壮工夫老始成。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;纸上得来终觉浅，绝知此事要躬行。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;nat&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nat&#34;&gt;#&lt;/a&gt; NAT:&lt;/h5&gt;
+&lt;p&gt;​	网络地址转换&lt;/p&gt;
+&lt;p&gt;​	背景：&lt;/p&gt;
+&lt;p&gt;​	随着网络的飞速发展，网络设备迅速增多，IPV4 地址已经不够用了，虽然部署 IPV6 能够直接解决 IPV4 不够用的问题，但是要想部署 IPV6 的话，需要更换现有的网络设备，成本高，所以产生了很多缓解 IPV4 地址枯竭的技术，NAT 就是其中一种&lt;/p&gt;
+&lt;p&gt;​	缓解 IPV4 地址枯竭的技术：&lt;/p&gt;
+&lt;p&gt;​		VLSM: 可变长子网掩码，通过网络位向主机位借位，让一个网段内的 IP 地址数量减少，避免 IP 地址的浪费&lt;/p&gt;
+&lt;p&gt;​		NAT&lt;/p&gt;
+&lt;p&gt;​	解决 IPV4 地址枯竭的技术 IPV6&lt;/p&gt;
+&lt;p&gt;​		IPV4 的地址空间 / 数量：2&lt;sup&gt;32&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;​		IPV6 的地址空间 / 数量：2&lt;sup&gt;128&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;​	两种 IP 地址:&lt;/p&gt;
+&lt;p&gt;​		私网 ip 地址：可以随意使用，但只能在私网内使用，不能直接和公网进行通信，私网 IP 地址允许在没有访问需求的两个私网内重复使用&lt;/p&gt;
+&lt;p&gt;​		公网 IP 地址：需要向 IANA 组织进行申请，全球唯一，能够直接在公网上进行通信，公网 IP 地址有两种获取方式：&lt;/p&gt;
+&lt;p&gt;​		1. 向 ISP（网络服务提供商）申请&lt;/p&gt;
+&lt;p&gt;​		2.PPPoE 获取&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	NAT 的作用：&lt;/p&gt;
+&lt;p&gt;​	通过对私网 IP 地址和公网 IP 地址进行转换，实现私网和公网的通信，节约公网 IP 地址数量&lt;/p&gt;
+&lt;p&gt;​	NAT 的分类：&lt;/p&gt;
+&lt;p&gt;​	静态 NAT：管理员手工指定私网 IP 地址和公网 IP 地址的一对一映射，配置量大，公网 IP 地址利用率低，容易造成公网 IP 地址的闲置，而且起不到节约公网 IP 地址数量的目的&lt;/p&gt;
+&lt;p&gt;​	动态 NAT: 需要配置 NAT 公网地址池和 ACL,NAT 公网地址池可以回收未被使用的公网 IP 地址，提高公网 IP 地址的利用率，ACL 可以限制使用该 NAT 地址池转换的私网 IP 地址，动态 NAT 能够简化配置量，不需要一一配置，本质上还是属于私网 IP 地址和公网 IP 地址的一对一映射，也无法实现节约公网 IP 地址数量的目的&lt;/p&gt;
+&lt;p&gt;​	配置：&lt;/p&gt;
+&lt;p&gt;​		acl number 2000&lt;/p&gt;
+&lt;p&gt;​		rule 5 permit&lt;/p&gt;
+&lt;p&gt;​	NAPT：&lt;/p&gt;
+&lt;p&gt;​		在动态 NAT 的基础上，对源端口也进行转换，能够实现私网 IP 地址和公网 IP 地址的多对一映射，真正能够起到节约公网 IP 地址数量的目的&lt;/p&gt;
+&lt;p&gt;​	配置：nat outbound 2000 address-group 1&lt;/p&gt;
+&lt;p&gt;​	Easy-ip：&lt;/p&gt;
+&lt;p&gt;​		不再需要 NAT 地址池，直接使用私网网关设备连接公网的接口上的公网 IP 地址进行转换，同样也会对源端口进行转换，实现私网 IP 地址和公网 IP 地址的多对一映射，节约公网 IP 地址数量，配置也简单&lt;/p&gt;
+&lt;p&gt;​	配置:nat outbound 2000&lt;/p&gt;
+&lt;p&gt;​	NAT-Server：&lt;/p&gt;
+&lt;p&gt;​	将私网地址映射到公网地址上，公网设备只需要对该公网地址进行访问就可以到对应的私网地址，实现公网到私网的通信&lt;/p&gt;
+</content>
+        <updated>2022-11-03T11:03:08.990Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2022/11/03/2022.11.2/</id>
+        <title>HCIA(十三）11.2</title>
+        <link rel="alternate" href="http://example.com/2022/11/03/2022.11.2/"/>
+        <content type="html">&lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzRmYmEzY2E4YjlmZS5hc3B4&#34;&gt;王贞白&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzA1NjRkN2Y4YjA2Yi5hc3B4&#34;&gt;白鹿洞二首・其一&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;读书不觉已春深，一寸光阴一寸金。(已春深 一作：春已深)&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt; 不是道人来引笑，周情孔思正追寻。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;acl&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#acl&#34;&gt;#&lt;/a&gt; ACL:&lt;/h5&gt;
+&lt;p&gt;​	访问控制列表&lt;/p&gt;
+&lt;p&gt;​	作用：通过对流量进行识别和分类，对不同类别的流量进行相对应的处理，提高网络安全性和服务质量&lt;/p&gt;
+&lt;p&gt;​	本质：流量过滤&lt;/p&gt;
+&lt;p&gt;​	服务质量的性能指标：&lt;/p&gt;
+&lt;p&gt;​		带宽：带宽是指端到端通信链路上单位时间内传输的最大数据量&lt;/p&gt;
+&lt;p&gt;​		时延：数据包从源端到目的端所需要的时间&lt;/p&gt;
+&lt;p&gt;​		抖动：时延的变化就是抖动，时衡量网络稳定性的指标，越小代表网络越稳定&lt;/p&gt;
+&lt;p&gt;​		丢包率：在数据传输过程中，丢弃报文占全部报文的百分比&lt;/p&gt;
+&lt;p&gt;​		可用性：可靠性，HA&lt;/p&gt;
+&lt;h6 id=&#34;acl的组成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#acl的组成&#34;&gt;#&lt;/a&gt; ACL 的组成：&lt;/h6&gt;
+&lt;p&gt;​		规则编号：一个 ACL 下可以创建多个规则 RULE，使用规则编号进行标识&lt;/p&gt;
+&lt;p&gt;​			手工指定：管理员手工指定规则编号&lt;/p&gt;
+&lt;p&gt;​			自动生成：如果管理员没有指定的话，系统会根据步长自动进行匹配，步长默认 5&lt;/p&gt;
+&lt;p&gt;​		处理行为：执行的动作&lt;/p&gt;
+&lt;p&gt;​			permit：允许通过&lt;/p&gt;
+&lt;p&gt;​			deny：拒绝通过&lt;/p&gt;
+&lt;p&gt;​		匹配条件：匹配上该规则的条件，根据不同类型的 ACL 能够使用不同的条件&lt;/p&gt;
+&lt;p&gt;​		比如源 / 目 IP, 源 / 目 MAC 地址，协议类型，时间，分片信息&lt;/p&gt;
+&lt;h6 id=&#34;acl的分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#acl的分类&#34;&gt;#&lt;/a&gt; ACL 的分类：&lt;/h6&gt;
+&lt;p&gt;​		接口 ACL:1000-1999&lt;/p&gt;
+&lt;p&gt;​		基本 ACL:2000-2999, 能够匹配报文的源 IP 地址，分片信息，时间&lt;/p&gt;
+&lt;p&gt;​		高级 ACL:3000-3999, 能够匹配源 / 目 IP 地址，源 / 目端口，协议类型，时间&lt;/p&gt;
+&lt;p&gt;​			五元组：源 IP 地址，目的 IP 地址，源端口，目的端口，协议类型（三层协议）&lt;/p&gt;
+&lt;p&gt;​		二层 ACL：4000-4999，能够匹配源 MAC，目的 MAC，二层协议&lt;/p&gt;
+&lt;p&gt;​		用户自定义 ACL:5000-5999&lt;/p&gt;
+&lt;p&gt;​		用户 ACL:6000-6999&lt;/p&gt;
+&lt;p&gt;​	ACL 的匹配规则：&lt;/p&gt;
+&lt;p&gt;​		按照规则编号从小到大匹配&lt;/p&gt;
+&lt;p&gt;​			如果匹配上该规则的匹配条件，则执行该规则的相应动作，不再继续匹配&lt;/p&gt;
+&lt;p&gt;​			如果没有匹配上该规则的匹配条件，则进行下一跳规则的匹配&lt;/p&gt;
+&lt;p&gt;​		如果所有规则都没有匹配上，那么执行底层的默认动作&lt;/p&gt;
+&lt;p&gt;​			如果是匹配数据流量，底层默认动作是允许所有&lt;/p&gt;
+&lt;p&gt;​			如果是匹配路由信息，底层默认动作是拒绝所有&lt;/p&gt;
+&lt;p&gt;​	通配符：&lt;/p&gt;
+&lt;p&gt;​		如果匹配条件是 IP 地址的话，需要在后面配置对应的通配符，表示该规则匹配的 IP 地址范围，通配符 32bit 和 IP 地址类似，不要求是连续的 0 或者连续的 1 组成&lt;/p&gt;
+&lt;p&gt;​		如果通配符取值为 0 的话，表示该比特位对应的 IP 地址比特位需要精确匹配&lt;/p&gt;
+&lt;p&gt;​		如果通配符取值为 1 的话，表示该比特位对应的 IP 地址比特位任意匹配&lt;/p&gt;
+&lt;p&gt;​	举例：&lt;/p&gt;
+&lt;p&gt;​		192.168.1.1 0.0.0.0 ：匹配 192.168.1.1&lt;/p&gt;
+&lt;p&gt;​		192.168.1.0 0.0.0.255 匹配 192.168.1.0-192.168.1.255&lt;/p&gt;
+&lt;p&gt;​		192.168.1.0.0.0.254 匹配 192.168.1.0-192.168.1.255 的偶数地址&lt;/p&gt;
+&lt;p&gt;​		192.168.1.1.0.0.254 匹配 192.168.1.0-192.168.1.255 的奇数地址&lt;/p&gt;
+&lt;p&gt;​		0.0.0.0 255.255.255.255 ：所有地址&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	Traffic-Filter：流量过滤，属于一种调用工具，能够调用 ACL，本身并不具备动作，具体的动作由调用的 ACL 决定&lt;/p&gt;
+&lt;p&gt;​	ACL 配置：&lt;/p&gt;
+&lt;p&gt;​		1. 创建 ACL   acl number 3000&lt;/p&gt;
+&lt;p&gt;​		2. 创建规则 rule 3 deny icmp source 192.168.1.3 0 destination192.168.2.2 0 time-range haha&lt;/p&gt;
+&lt;p&gt;​		3. 接口使用 Traffic-Filter&lt;/p&gt;
+&lt;p&gt;​		[R1-G0/0/1]	Traffic-Filter inbound acl 3000&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+</content>
+        <updated>2022-11-03T11:03:08.987Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2022/11/01/2022.11.1/</id>
         <title>HCIA(十二）11.1</title>
@@ -110,17 +219,18 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;非直连故障：&lt;/p&gt;
-&lt;p&gt;​	交换机上存在 RP，但不存在 AP，但 RP 出现故障，无法收到根桥的配置 BPDU，那么交换机就无法从其他任何一个接口收到根桥的配置 BPDU，等待根桥之前发生的配置 BPDU 的 20s 老化后，认为根桥故障，重新进行 STP 选举，往外发生以自己为根的配置 BPDU，其他设备 AP 口收到之后，和端口上保存的之前根桥发生的配置 BPDU 进行比较，发现次优，不会进行回应，等到端口上保存的更优的配置 BPDU，才会将从其他接口收到的根桥配置 BPDU，端口角色发生变化还需要等待 2 个转发延迟时间才能进行用户数据流量转发&lt;/p&gt;
+&lt;p&gt;​	交换机上存在 RP，但不存在 AP，但 RP 出现故障，无法收到根桥的配置 BPDU，那么交换机就无法从其他任何一个接口收到根桥的配置 BPDU，认为根桥故障，重新进行 STP 选举，往外发生以自己为根的配置 BPDU，其他设备 AP 口收到之后，和端口上保存的之前根桥发生的配置 BPDU 进行比较，发现次优，不会进行回应，等到端口上保存的更优的配置 BPDU，才会将从其他接口收到的根桥配置 BPDU，端口角色发生变化还需要等待 2 个转发延迟时间才能进行用户数据流量转发&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;拓扑变更:&lt;/p&gt;
+&lt;h6 id=&#34;拓扑变更&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拓扑变更&#34;&gt;#&lt;/a&gt; 拓扑变更:&lt;/h6&gt;
 &lt;p&gt;​	问题：当网络发生故障后，虽然 STP 能够在 30s 或者 50s 完成收敛，但是由于交换机上还存在错误的 MAC 地址表项，所以用户终端还是无法进行通信&lt;/p&gt;
 &lt;p&gt;​	解决：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1. 故障交换机会向上游交换机发送TCN BPDU，通知拓扑发送变更
-2. 上游交换机收到TCN BPDU后，先进行TCA置位的配置BPDU进行回应，确认自己已经收到，下游交换机收到TCA后会停止发送TCN BPDU，接着上游交换机还需要继续向根桥发送TCN BPDU，传达到根桥之前重复改流程
-3. 根桥收到TCN BPDU后，会将自己的MAC地址表项的老化时间刷新为15s，然后向下游回应TC置位的配置BPDU
-4. 其他交换机收到TC置位的配置BPDU后，将自己的MAC地址表项的老化时间置为15s，再进行配置BPDU的转发，让整个交换网络中的交换机进行MAC地址表项的刷新
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;故障交换机会向上游交换机发送 TCN BPDU，通知拓扑发送变更&lt;/li&gt;
+&lt;li&gt;上游交换机收到 TCN BPDU 后，先进行 TCA 置位的配置 BPDU 进行回应，确认自己已经收到，下游交换机收到 TCA 后会停止发送 TCN BPDU，接着上游交换机还需要继续向根桥发送 TCN BPDU，传达到根桥之前重复改流程&lt;/li&gt;
+&lt;li&gt;根桥收到 TCN BPDU 后，会将自己的 MAC 地址表项的老化时间刷新为 15s，然后向下游回应 TC 置位的配置 BPDU&lt;/li&gt;
+&lt;li&gt;其他交换机收到 TC 置位的配置 BPDU 后，将自己的 MAC 地址表项的老化时间置为 15s，再进行配置 BPDU 的转发，让整个交换网络中的交换机进行 MAC 地址表项的刷新&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Smart-link&lt;/p&gt;
 &lt;p&gt;smart-link group1 / 创建 SMART-link 组&lt;/p&gt;
 &lt;p&gt;restore enable / 开启回切&lt;/p&gt;
@@ -135,22 +245,36 @@
 &lt;p&gt;​	备份链路：不参与数据转发的链路，作为备份&lt;/p&gt;
 &lt;h6 id=&#34;聚合的前提条件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#聚合的前提条件&#34;&gt;#&lt;/a&gt; 聚合的前提条件：&lt;/h6&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;链路聚合两端设备参与聚合的接口数量，流控方式，双工模式，速率等都需要一样&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;一个聚合口最多允许 8 个成员链路&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;聚合口不能在被聚合&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;聚合口连接对端设备只能是一台设备，不能是多台设备&lt;/p&gt;
-&lt;h6 id=&#34;链路聚合模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链路聚合模式&#34;&gt;#&lt;/a&gt; 链路聚合模式：&lt;/h6&gt;
-&lt;/li&gt;
+&lt;li&gt;链路聚合两端设备参与聚合的接口数量，流控方式，双工模式，速率等都需要一样&lt;/li&gt;
+&lt;li&gt;一个聚合口最多允许 8 个成员链路&lt;/li&gt;
+&lt;li&gt;聚合口不能在被聚合&lt;/li&gt;
+&lt;li&gt;聚合口连接对端设备只能是一台设备，不能是多台设备&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h6 id=&#34;链路聚合模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链路聚合模式&#34;&gt;#&lt;/a&gt; 链路聚合模式：&lt;/h6&gt;
 &lt;p&gt;​	手工静态聚合：管理员手工将接口加入到聚合口中，所有成员接口都会参与数据的转发，无备份，也不需要交互协议报文&lt;/p&gt;
-&lt;p&gt;​	LACP 手工聚合：&lt;/p&gt;
+&lt;p&gt;​		优点：1. 没有协议报文的交互，节省链路和设备资源&lt;/p&gt;
+&lt;p&gt;​			2. 所有接口都会参与数据的转发，接口资源利用率高&lt;/p&gt;
+&lt;p&gt;​		缺点：无法察觉对方的状态，只要物理层 UP 那么聚合口就能 UP&lt;/p&gt;
+&lt;p&gt;​	LACP 静态聚合：使用 LACP 协议，需要交互协议报文，可以配置备份链路，&lt;/p&gt;
+&lt;p&gt;​		工作过程：&lt;/p&gt;
+&lt;p&gt;​		1. 设备之间会通过成员链路发送 LACP 报文（LACPDU）, 其中携带用于选举的参数，比如系统优先级，端口号，MAC 地址，接口优先级&lt;/p&gt;
+&lt;p&gt;​		2. 收到对方的 LACP 报文后进行主动端的选举&lt;/p&gt;
+&lt;p&gt;​			①. 先比较系统优先级，默认 32768，范围 0-65535 ，以小为优&lt;/p&gt;
+&lt;p&gt;​			②再比较 MAC 地址，以小为优&lt;/p&gt;
+&lt;p&gt;​		3. 主动端选择完毕后，由主动端来进行活动端口的选举&lt;/p&gt;
+&lt;p&gt;​			①先比较接口优先级，默认 32768，范围 0-65535 ，以小为优&lt;/p&gt;
+&lt;p&gt;​			②再比较接口号，以小为优&lt;/p&gt;
+&lt;p&gt;​		4. 主动端选择完活动端口后，通过 LACP 报文通告给另一端，另一端根据主动端的选择将对应的接&lt;/p&gt;
+&lt;p&gt;口置为活动端口&lt;/p&gt;
+&lt;h6 id=&#34;负载分担模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#负载分担模式&#34;&gt;#&lt;/a&gt; 负载分担模式：&lt;/h6&gt;
+&lt;p&gt;​		数据包：单个数据包&lt;/p&gt;
+&lt;p&gt;​		数据流：一组具有相同属性的数据包的集合，比如对同一个 IP 地址的 ICMP Request 报文&lt;/p&gt;
+&lt;p&gt;​		ICMP Requset 报文&lt;/p&gt;
+&lt;p&gt;​		逐包负载：&lt;/p&gt;
+&lt;p&gt;​			按照数据包个数依次再每根链路上按照权重进行轮询，因为实际情况下每根链路的状态都不一样，比如时延，容易导致数据包到达对端设备后出现乱序情况&lt;/p&gt;
+&lt;p&gt;​		逐流负载：&lt;/p&gt;
+&lt;p&gt;​			按照数据流依次再每根链路上按照权重进行轮询，因为一个数据流都走同一根链路进行传输，所以不会出现报文的乱序情况&lt;/p&gt;
+&lt;p&gt;​			分类依据：S.IP ，D.IP，协议类型，S.MAC，D.MAC 等等&lt;/p&gt;
 &lt;h5 id=&#34;华为交换机系列&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#华为交换机系列&#34;&gt;#&lt;/a&gt; 华为交换机系列：&lt;/h5&gt;
 &lt;p&gt;​	S：园区网交换机&lt;/p&gt;
 &lt;p&gt;​	CE：数据中心交换机&lt;/p&gt;
