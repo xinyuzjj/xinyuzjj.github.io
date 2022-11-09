@@ -3,7 +3,338 @@
     <id>http://example.com</id>
     <title>峻峻尼的个人博客</title>
     <link href="http://example.com" />
-    <updated>2022-11-03T11:03:08.990Z</updated>
+    <updated>2022-11-09T10:11:29.343Z</updated>
+    <entry>
+        <id>http://example.com/2022/11/09/2022.11.8/</id>
+        <title>HCIA(十六）11.8</title>
+        <link rel="alternate" href="http://example.com/2022/11/09/2022.11.8/"/>
+        <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzU4NmNiOGVmNDgyMi5hc3B4&#34;&gt;陈师道&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzBiMTNlZmZkYTFiOS5hc3B4&#34;&gt;绝句・书当快意读易尽&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;书当快意读易尽，客有可人期不来。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;世事相违每如此，好怀百岁几回开？&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;ppp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ppp&#34;&gt;#&lt;/a&gt; PPP&lt;/h5&gt;
+&lt;h6 id=&#34;数据链路层协议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据链路层协议&#34;&gt;#&lt;/a&gt; 数据链路层协议：&lt;/h6&gt;
+&lt;hr&gt;
+&lt;p&gt;​		局域网：Ethernet，IEEE802.3&lt;/p&gt;
+&lt;p&gt;​		广域网：PPP，HDLC 高级数据链路控制协议，FR 帧中继，ATM 信元传输 ，X.25&lt;/p&gt;
+&lt;h6 id=&#34;广域网设备角色分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#广域网设备角色分类&#34;&gt;#&lt;/a&gt; 广域网设备角色分类：&lt;/h6&gt;
+&lt;hr&gt;
+&lt;p&gt;​		CE: 用户边缘设备，属于用户，用来和广域网进行连接，作为私网的出口网关设备&lt;/p&gt;
+&lt;p&gt;​		PE: 运营商边缘设备，属于运营商，需要和私网的 CE 连接&lt;/p&gt;
+&lt;p&gt;​		P: 运营商骨干设备，属于运营商，不需要和用户边缘设备连接&lt;/p&gt;
+&lt;h6 id=&#34;ppp特点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ppp特点&#34;&gt;#&lt;/a&gt; ppp 特点：&lt;/h6&gt;
+&lt;hr&gt;
+&lt;p&gt;​		支持全双工的同步和异步传输&lt;/p&gt;
+&lt;p&gt;​		支持数据链路层协商，LCP&lt;/p&gt;
+&lt;p&gt;​		支持对链路进行认证&lt;/p&gt;
+&lt;p&gt;​		支持网络层协商，NCP&lt;/p&gt;
+&lt;p&gt;​		良好的扩展性，比如 PPPoE&lt;/p&gt;
+&lt;h6 id=&#34;ppp报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ppp报文格式&#34;&gt;#&lt;/a&gt; PPP 报文格式：&lt;/h6&gt;
+&lt;hr&gt;
+&lt;p&gt;​	Flag：标识数据帧的起始和结尾，用于区分不同的数据帧&lt;/p&gt;
+&lt;p&gt;​	Address：用来唯一标识对端设备，但是由于点到点网络中，对端设备只有一台，所有没有使用该字段标识对端的数据链路层地址，全部填充 1，对应十六进置 F&lt;/p&gt;
+&lt;p&gt;​	Control：无意义，固定取值 0x03&lt;/p&gt;
+&lt;p&gt;​		Address+Control 固定取值为 0xFF03，能够用来标识 PPP 封装类型&lt;/p&gt;
+&lt;p&gt;​	Protocol：协议字段，用来标识后面数据使用的封装协议&lt;/p&gt;
+&lt;p&gt;​	information：信息，PPP 报文封装的载荷&lt;/p&gt;
+&lt;p&gt;​		LCP 封装格式：&lt;/p&gt;
+&lt;p&gt;​			Code：代码，用来标识 LCP 报文类型&lt;/p&gt;
+&lt;p&gt;​			identifier：标识同一种类型的不同报文&lt;/p&gt;
+&lt;p&gt;​			Length：LCP 报文长度&lt;/p&gt;
+&lt;p&gt;​			Data：协商数据，采用 TLV 结构封装&lt;/p&gt;
+&lt;p&gt;​				T: TYPE，类型&lt;/p&gt;
+&lt;p&gt;​				L:Length，长度&lt;/p&gt;
+&lt;p&gt;​				V: Value ， 取值&lt;/p&gt;
+&lt;p&gt;​	FCS：用来校验数据帧的完整性&lt;/p&gt;
+&lt;p&gt;​	Flag：同上&lt;/p&gt;
+&lt;h6 id=&#34;ppp的工作流程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ppp的工作流程&#34;&gt;#&lt;/a&gt; PPP 的工作流程：&lt;/h6&gt;
+&lt;hr&gt;
+&lt;p&gt;1.LCP, 数据链路层协商：用于数据链路层参数的协商，建立，维护和拆除链路层连接&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;LCP 报文类型：&lt;br&gt;
+1. 配置请求报文：Request，用来请求建立数据链路层的连接，携带协商参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;  2. 配置确认报文：ACK，用来对请求进行确认回应，表示参数协商成功
+
+  3. 配置否认报文：NAK，用来对请求进行否认回应，表示参数协商失败，携带协商失败的参数
+
+  4. 配置拒绝报文：Reject，用来对请求进行拒绝回应，表示参数不识别，携带无法识别的参数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;LCP 协商参数：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MRU: 最大接收单元，接口单位时间内能够接收的最大数据量，默认 1500B，单位字节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;2. 认证类型:不认证，PAP，CHAP，默认不认证
+
+3. 魔术字:魔术字是一个随机的取值，用来防止环路 ，如果收到的LCP报文的魔术字和自己产生的魔术字相同，则认为产生环路，丢弃报文
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;LCP 协商流程：数据链路层的连接是单向的，双方都需要建立&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;1. 双方会发送配置请求报文，携带LCP协商参数（MRU,认证，魔术字）
+
+2. 收到对方的配置请求后，检查其中的携带参数：
+
+   ①如果参数协商成功，回应ACK，表示参数协商成功
+
+   ②如果参数协商失败，回应NCK,表示参数协商失败，同时会携带上协商失败的参数
+
+   ③如果参数不识别，回应Reject，表示参数不识别，同时会携带上不识别的参数
+
+3. 收到对方回应后：
+
+​	①如果收到ACK，表示数据链路层连接建立完成
+
+​	②如果收到NAK，表示协商失败，根据NAK中指定的协商失败参数修改本地对应参数，然后再进行配置请求重新建立链路层连接
+
+​	③如果收到Reject，表示参数不识别，就需要删除Reject中指定的参数再重新发生配置请求建立链路层的连接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2. 认证：使用 LCP 协商的认证类型对链路进行认证，PAP 或者 CHAP&lt;/p&gt;
+&lt;p&gt;​	不认证：默认不进行认证&lt;/p&gt;
+&lt;p&gt;​	PAP：密码认证协议&lt;/p&gt;
+&lt;p&gt;​		特点：被认证方发起，两次交互完成，密码明文携带，不安全不可靠不推荐&lt;/p&gt;
+&lt;p&gt;​		流程：&lt;/p&gt;
+&lt;p&gt;​			1. 被认证方将自己的用户名和密码发送给我们的认证方，密码明文发送&lt;/p&gt;
+&lt;p&gt;​			2. 认证方收到之后，根据其中携带的用户名，查找数据库中该用户对应的密码，如果密码和报文携带的一样，就说明认证成功，回应 ACK；如果不一致，就说明认证失败，回应 NAK&lt;/p&gt;
+&lt;p&gt;​		配置：&lt;/p&gt;
+&lt;p&gt;​			认证方:&lt;/p&gt;
+&lt;p&gt;​				1. 接口指定 PPP 认证模式&lt;/p&gt;
+&lt;p&gt;​					[R1-Serial4/0/0]ppp authentication-mode pap&lt;/p&gt;
+&lt;p&gt;​				2. 再 AAA 下创建对应的用户和密码，并指定其为 PPP 服务&lt;/p&gt;
+&lt;p&gt;​					[r1]aaa&lt;/p&gt;
+&lt;p&gt;​					[r1-aaa] local -user haha passwrod 123&lt;/p&gt;
+&lt;p&gt;​					[r1-aaa] local -user haha service-type ppp&lt;/p&gt;
+&lt;p&gt;​			被认证方：&lt;/p&gt;
+&lt;p&gt;​				1. 接口配置用户名和密码&lt;/p&gt;
+&lt;p&gt;​				[r2-s4/0/0] ppp pap local–user haha password cipher huawei123&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	CHAP：挑战握手认证协议&lt;/p&gt;
+&lt;p&gt;​		特点：认证方发起，三次交互，密码是加密传输，安全可靠推荐使用&lt;/p&gt;
+&lt;p&gt;​		流程：&lt;/p&gt;
+&lt;p&gt;​			1. 认证方向被认证方发送挑战信息，其中携带 ID，随机值，用户名（可选）&lt;/p&gt;
+&lt;p&gt;​			2. 被认证方收到后，将本地的密码，ID 以及随机值进行 Hash 计算，得到摘要值，将本地用户名和摘要值以及 ID 响应给认证方&lt;/p&gt;
+&lt;p&gt;​			3. 认证方收到后，根据携带的用户名查找本地数据库，找到对应的密码，将密码，ID 以及随机值同样进行 Hash 计算，得到摘要值，将自己计算的摘要值和报文中携带的摘要值进行对比：&lt;/p&gt;
+&lt;p&gt;​			如果一致则说明密码正确，回应认证成功&lt;/p&gt;
+&lt;p&gt;​			如果不一致则说明密码错误，回应认证失败&lt;/p&gt;
+&lt;p&gt;​		配置：&lt;/p&gt;
+&lt;p&gt;​		认证方:&lt;/p&gt;
+&lt;p&gt;​				1. 接口指定 PPP 认证模式&lt;/p&gt;
+&lt;p&gt;​						[R1-Serial4/0/0]ppp authentication-mode chap&lt;/p&gt;
+&lt;p&gt;​				2. 再 AAA 下创建对应的用户和密码，并指定其为 PPP 服务&lt;/p&gt;
+&lt;p&gt;​					[r1]aaa&lt;/p&gt;
+&lt;p&gt;​					[r1-aaa] local -user haha passwrod 123&lt;/p&gt;
+&lt;p&gt;​					[r1-aaa] local -user haha service-type ppp&lt;/p&gt;
+&lt;p&gt;​		被认证方：&lt;/p&gt;
+&lt;p&gt;​					[r2-Serial4/0/0] PPP chap user haha&lt;/p&gt;
+&lt;p&gt;​					[r2-Serial4/0/0] PPP chap password cipher huawei123&lt;/p&gt;
+&lt;p&gt;3.NCP，网络层协商：协商使用的网络层协议已经网络逻辑地址&lt;/p&gt;
+&lt;p&gt;​	IPCP&lt;/p&gt;
+&lt;p&gt;​	NCP 报文分类：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;配置请求报文：Request，用来请求建立的连接，携带协商参数&lt;/li&gt;
+&lt;li&gt;配置确认报文：ACK，用来对请求进行确认回应，表示参数协商成功&lt;/li&gt;
+&lt;li&gt;配置否认报文：NAK，用来对请求进行否认回应，表示参数协商失败，携带协商失败的参数&lt;/li&gt;
+&lt;li&gt;配置拒绝报文：Reject，用来对请求进行拒绝回应，表示参数不识别，携带无法识别的参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;工作流程：&lt;/p&gt;
+&lt;p&gt;​	静态 NCP 协商：双方都配置了 IP 地址&lt;/p&gt;
+&lt;p&gt;​		1. 双方向对方发送配置请求，其中携带 IP 地址用于协商&lt;/p&gt;
+&lt;p&gt;​		2. 收到对方的配置请求后，检查携带的 IP 地址是否合法，如果合法回应 ACK，不合法就回应 NAK&lt;/p&gt;
+&lt;p&gt;​			ppp 判断 IP 地址是否合法：只要 IP 地址不是自己使用的地址，也就是无冲突就算合法；&lt;/p&gt;
+&lt;p&gt;​		注意：如果配置请求携带的 IP 地址为 0.0.0.0 也会认为不合法&lt;/p&gt;
+&lt;p&gt;​	IPCP 动态协商：一方没有配置 IP 地址&lt;/p&gt;
+&lt;p&gt;​		1. 没有配置 IP 地址的一方会发送配置请求报文，其中携带的 IP 地址 0.0.0.0&lt;/p&gt;
+&lt;p&gt;​		2. 另一方收到后，检查其中携带的 IP 地址，发现是 0.0.0.0，不合法，就会回应 NAK，其中携带上分配给对方使用的 IP 地址&lt;/p&gt;
+&lt;p&gt;​		3. 没有配置 IP 地址的一方收到 NAK 后，会使用其中携带的 IP 地址，然后再发送配置请求，其中的 IP 地址新获取的 IP 地址&lt;/p&gt;
+&lt;p&gt;​		4. 另一方收到后，检测 IP 地址，合法回应 ACK，不合法 NAK&lt;/p&gt;
+&lt;p&gt;​	配置：&lt;/p&gt;
+&lt;p&gt;​	配置 IP 地址的一方：&lt;/p&gt;
+&lt;p&gt;​	[r1-serial4/0/0]remote address 10.1.12.2&lt;/p&gt;
+&lt;p&gt;​	没有配置 IP 地址的一方:&lt;/p&gt;
+&lt;p&gt;​	[R2-Serial4/0/0]ip address ppp-negotiate&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;MTU: 最大传输单元，接口单位时间（1s）内能够传输的最大数据量，默认 1500，单位字节&lt;/p&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;pppoe&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pppoe&#34;&gt;#&lt;/a&gt; PPPOE&lt;/h5&gt;
+&lt;p&gt;​	pppoe , 以太网承载 PPP 协议&lt;/p&gt;
+&lt;p&gt;​	背景：运营商需要对上网的用户进行认证和计费，这是 PPP 能够实现的，但是如果使用 PPP 的话，一台 CE 就需要连接到一台 PE 的一个接口，成本高，不现实，运营商希望多台 CE 能够接入到同一台 PE 的一个接口上，这是 Ethernet 能够实现的，但 Ethernet 又不支持认证和计费，所有产生 PPPoE，结合 PPP 和以太网的优点&lt;/p&gt;
+&lt;h6 id=&#34;pppoe作用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pppoe作用&#34;&gt;#&lt;/a&gt; PPPOE 作用：&lt;/h6&gt;
+&lt;p&gt;​	将 PPP 数据帧封装到 Ethernet 数据帧的有效载荷部分，结合 PPP 的认证，计费和 Ethernet 多路访问的优点，实现多台 CE 连接到同一台 PE 的一个接口进行认证和计费，节约成本&lt;/p&gt;
+&lt;p&gt;​	PPPoE 采用 C/S 架构，客户端 / 服务器&lt;/p&gt;
+&lt;hr&gt;
+&lt;h6 id=&#34;pppoe报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pppoe报文格式&#34;&gt;#&lt;/a&gt; PPPOE 报文格式:&lt;/h6&gt;
+&lt;p&gt;​	封装格式：&lt;/p&gt;
+&lt;p&gt;​	D.MAC|S.MAC|TYPE| PPPOE 头部 | PPP 数据帧 | FCS&lt;/p&gt;
+&lt;p&gt;​	PPPoE 头部字段：&lt;/p&gt;
+&lt;p&gt;​	Version：标识版本，固定 0X01&lt;/p&gt;
+&lt;p&gt;​	TYPE: 固定 0X01&lt;/p&gt;
+&lt;p&gt;​	code：标识 PPPoE 报文类型&lt;/p&gt;
+&lt;p&gt;​	Session：PPPoE 会话 ID，和 S.MAC,D.MAC 一起用来唯一标识一个 PPPoE 会话&lt;/p&gt;
+&lt;p&gt;​	Length：ppp 数据帧的长度，不包括 PPPoE 报文字段长度&lt;/p&gt;
+&lt;p&gt;​	Ethernet 的 Type 取值：标识 PPPoE 报头&lt;/p&gt;
+&lt;p&gt;​	发现阶段：0x8863&lt;/p&gt;
+&lt;p&gt;​	会话阶段：0x8864&lt;/p&gt;
+&lt;p&gt;​	终结阶段：0x8863&lt;/p&gt;
+&lt;hr&gt;
+&lt;h6 id=&#34;pppoe报文类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pppoe报文类型&#34;&gt;#&lt;/a&gt; PPPoE 报文类型：&lt;/h6&gt;
+&lt;p&gt;​	PADI: 初始化报文，客户端广播发送，用来寻址 PPPoE 服务器&lt;/p&gt;
+&lt;p&gt;​	PADO: 服务报文，服务器单播回应客户端，携带服务器的 MAC 地址&lt;/p&gt;
+&lt;p&gt;​	PADR: 请求报文，客户端单播发送给服务器请求建立 PPPoE 的会话，并请求获取 PPPoE 会话 ID&lt;/p&gt;
+&lt;p&gt;​	PADS: 会话确认报文，服务器单播发送给客户端，携带 PPPoE 会话 ID&lt;/p&gt;
+&lt;p&gt;​	PADT: 终止报文，在 PPPoE 会话建立完成后，任何一方都可以随时通过单播发送该报文断开 PPPoE 会话连接&lt;/p&gt;
+&lt;hr&gt;
+&lt;h6 id=&#34;pppoe工作流程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pppoe工作流程&#34;&gt;#&lt;/a&gt; PPPoE 工作流程：&lt;/h6&gt;
+&lt;p&gt;​	发现阶段：客户端发现服务器，建立 PPPoE 会话，获取 PPPoE 会话 ID&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;客户端广播发送 PADI，用来寻址服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务器收到 PADI，先检查自己能够提供对应的服务（有无地址可分配），如果能提供服务的话，就会单播回应客户端 PADO 报文，携带服务器的 MAC 地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;客户端收到 PADO 后，优先选择先收到的进行回应，单播回应服务器 PADR 报文，请求建立 PPPoE 会话，并请求获取 PPPoE 会话 ID&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务器收到 PADR 后，建立 PPPoE 会话连接，并单播回应客户端 PADS 报文，携带 PPPoE 会话 id，后续交互的所有 PPPoE 报文都会携带上该会话 ID&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;客户端 PADS 后，表示 PPPoE 会话建立完成，双方都获取到对方的 MAC 地址以及 PPPoE 会话 ID, 发现阶段完成&lt;/p&gt;
+&lt;p&gt;备注：DHCP 广播发送 Request 报文的原因：&lt;/p&gt;
+&lt;p&gt;​	①向服务器请求 IP 地址&lt;/p&gt;
+&lt;p&gt;​	②拒绝其他服务器，让其它服务器能够及时回收 IP 地址，避免浪费&lt;/p&gt;
+&lt;p&gt;​	PPPoE 单播发送给 PADR 的原因：&lt;/p&gt;
+&lt;p&gt;​	PADO 报文并不会携带 IP 地址，只会携带 MAC 地址，并不会造成地址浪费问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	会话阶段：分为 PPP 协商过程以及后续的 PPP 数据传输&lt;/p&gt;
+&lt;p&gt;​	PPP 协商：&lt;/p&gt;
+&lt;p&gt;​		lcp：协商数据链路层参数&lt;/p&gt;
+&lt;p&gt;​		认证：PPPoE 一定会进行认证流程，CHAP&lt;/p&gt;
+&lt;p&gt;​		ncp：PPPoE 客户端通过 IPCP 动态协商从服务器获取公网 IP 地址&lt;/p&gt;
+&lt;p&gt;​	PPP 数据传输：获取到公网 IP 地址后，用户就可以正常上网&lt;/p&gt;
+&lt;p&gt;​	终止阶段：PPPoE 会话建立完成后，任何一方都可以随时通过单播发送对方 PADT 报文来终止 PPPoE 会话&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;配置：&lt;br&gt;
+1、在 AAA 中创建对应的宽带账号和密码，用于 PPPoE 拨号&lt;br&gt;
+ [r2] aaa&lt;br&gt;
+[r2-aaa]local-user 123456 password cipher huawei123&lt;br&gt;
+ 创建宽带账号以及对应的密码&lt;br&gt;
+ [r2-aaa] local-user 123456 service-type ppp&lt;br&gt;
+ 配置用户为 PPP 服务&lt;br&gt;
+ 2、创建公网地址池，用来分配给客户端&lt;br&gt;
+ [r2] ip pool pppoe&lt;br&gt;
+[r2-ip-pool-pppoe]network 10.1.12.0 mask 24&lt;br&gt;
+3、创建虚拟模板接口&lt;br&gt;
+ [r2] interface Virtual-Template 1&lt;br&gt;
+[r2-Virtual-Template1]ip address 10.1.12.1 24&lt;br&gt;
+[r2-Virtual-Template1]remote address pool pppoe&lt;br&gt;
+ 配置为客户端分配地址使用的地址池&lt;br&gt;
+ [r2-Virtual-Template1] ppp authentication-mode chap&lt;br&gt;
+ 配置认证模式为 CHAP&lt;br&gt;
+4、将虚拟模板接口绑定到物理接口上&lt;br&gt;
+ [r2-GigabitEthernet0/0/0] pppoe-server bind virtual-template 1&lt;/p&gt;
+&lt;p&gt;客户端配置：&lt;br&gt;
+1、创建拨号规则&lt;br&gt;
+ [r1] dialer-rule&lt;br&gt;
+[r1-dialer-rule]dialer-rule 1 ip permit&lt;br&gt;
+ 允许所有 IP 流量进行拨号&lt;br&gt;
+ 2、创建虚拟拨号接口&lt;br&gt;
+ [r1] interface Dialer 1&lt;br&gt;
+[r1-Dialer1]dialer user dianxin&lt;br&gt;
+ 配置拨号接口的用户标识&lt;br&gt;
+ [r1-Dialer1] dialer-group 1&lt;br&gt;
+ 配置拨号组&lt;br&gt;
+ [r1-Dialer1] dialer bundle 222&lt;br&gt;
+ 配置拨号接口绑定到物理接口的编号&lt;br&gt;
+ [r1-Dialer1] ip address ppp-negotiate&lt;br&gt;
+IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
+ [1-Dialer1] ppp chap user 123456	&lt;br&gt;
+配置 CHAP 认证使用的宽带账号&lt;br&gt;
+ [r1-Dialer1] ppp chap password cipher huawei123&lt;br&gt;
+ 配置 CHAP 认证使用的宽带密码&lt;br&gt;
+ 3、将虚拟拨号接口绑定到物理接口上&lt;br&gt;
+ [r1-G0/0/0] pppoe-client dial-bundle-number 222&lt;/p&gt;
+&lt;p&gt;客户端查看：&lt;br&gt;
+[r1]display pppoe-client session summary&lt;br&gt;
+ 服务器查看：&lt;br&gt;
+[r2]display pppoe-server session all&lt;/p&gt;
+</content>
+        <updated>2022-11-09T10:11:29.343Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2022/11/09/2022.11.4/</id>
+        <title>HCIA(十五）11.4</title>
+        <link rel="alternate" href="http://example.com/2022/11/09/2022.11.4/"/>
+        <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2X2MxZmFmMGU2Y2RjYi5hc3B4&#34;&gt;范成大&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52X2M1Y2UwYWM1NjBlYS5hc3B4&#34;&gt;车遥遥篇&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;车遥遥，马憧憧。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;君游东山东复东，安得奋飞逐西风。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;愿我如星君如月，夜夜流光相皎洁。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;月暂晦，星常明。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;留明待月复，三五共盈盈。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;aaa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#aaa&#34;&gt;#&lt;/a&gt; AAA:&lt;/h5&gt;
+&lt;p&gt;​	认证，授权，计费的简称，是一种网络安全的管理架构，提供认证，授权和计费的功能&lt;/p&gt;
+&lt;p&gt;​	认证：Authentication，对访问者的身份进行认证，确保访问者的身份合法性&lt;/p&gt;
+&lt;p&gt;​	授权：Authorization，对不同用户进行不同的授权，限制其能够使用的网络服务或者说网络资源&lt;/p&gt;
+&lt;p&gt;​	计费：Accounting，对用户使用网络服务的行为进行记录&lt;/p&gt;
+&lt;h6 id=&#34;aaa架构csc是客户端clients是服务器server&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#aaa架构csc是客户端clients是服务器server&#34;&gt;#&lt;/a&gt; AAA 架构：C/S，C 是客户端 Client，S 是服务器 Server&lt;/h6&gt;
+&lt;p&gt;​	Client：需要进行认证的设备&lt;/p&gt;
+&lt;p&gt;​	NAS：网络接入服务器，负载收集网络中用户的身份信息，提交给 AAA 服务器，并根据 AAA 服务器返回的结果进行相应的处理&lt;/p&gt;
+&lt;p&gt;​	AAA 服务器：存储用户信息，根据收到的用户信息查找数据库，然后返回给 NAS 认证结果，以及一些授权信息&lt;/p&gt;
+&lt;h6 id=&#34;认证方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#认证方式&#34;&gt;#&lt;/a&gt; 认证方式：&lt;/h6&gt;
+&lt;p&gt;​	不认证：完全信任访问者的身份，不对用户身份进行认证&lt;/p&gt;
+&lt;p&gt;​	本地认证：将用户信息存储在 NAS 上，此时 NAS 也作为 AAA 服务器，只需要在本地进行认证&lt;/p&gt;
+&lt;p&gt;​		优点：&lt;/p&gt;
+&lt;p&gt;​			部署成本低&lt;/p&gt;
+&lt;p&gt;​			处理速度快&lt;/p&gt;
+&lt;p&gt;​		缺点：&lt;/p&gt;
+&lt;p&gt;​			不方便进行统一的配置和管理&lt;/p&gt;
+&lt;p&gt;​			存储的用户信息受网络设备硬件限制&lt;/p&gt;
+&lt;p&gt;​	远端认证：将用户信息存储在 AAA 服务器上，此时 NAS 会作为客户端将用户信息发送给 AAA 服务器进行认证，AAA 服务器再返回对应的认证结果&lt;/p&gt;
+&lt;p&gt;授权方式：&lt;/p&gt;
+&lt;p&gt;​	不授权：▫不对用户进行授权处理。&lt;/p&gt;
+&lt;p&gt;​	本地授权：▫根据 NAS 上对应域下的配置进行授权。&lt;/p&gt;
+&lt;p&gt;​	远端授权：&lt;/p&gt;
+&lt;p&gt;计费方式：&lt;/p&gt;
+&lt;p&gt;​	不计费：提供免费的网络服务，不对用户进行计费&lt;/p&gt;
+&lt;p&gt;​	远端计费：使用远端的 AAA 服务器进行计费&lt;/p&gt;
+&lt;p&gt;域：AAA 是基于域来对用户进行管理，每个用户都会属于一个域，在每个域下可以配置单独的认证，授权和计费方案（模板）&lt;/p&gt;
+&lt;p&gt;​	根据用户输入的用户名决定用户所属的域，用户名 @域名，如果没有后面的 @则表示是默认域&lt;/p&gt;
+&lt;p&gt;​		普通用户：default&lt;/p&gt;
+&lt;p&gt;​		管理用户：default_admin&lt;/p&gt;
+&lt;p&gt;AAA 使用的一些协议：&lt;/p&gt;
+&lt;p&gt;​	RADIUS: 公有&lt;/p&gt;
+&lt;p&gt;​	HWTACACS: 私有&lt;/p&gt;
+&lt;p&gt;​	LDAP:&lt;/p&gt;
+&lt;p&gt;Telnet 命令：&lt;br&gt;
+[r1]telnet server enable&lt;br&gt;
+[r2]user-interface vty 0 4&lt;br&gt;
+[r2-ui-vty0-4]authentication-mode aaa&lt;br&gt;
+[r1]aaa&lt;br&gt;
+[r2-aaa]local-user user02 password cipher huawei123 privilege level 3&lt;br&gt;
+[r2-aaa]local-user user02 service-type telnet&lt;/p&gt;
+&lt;p&gt;FTP 命令：&lt;br&gt;
+[r1]ftp server enable&lt;br&gt;
+[r1]aaa&lt;br&gt;
+[r1-aaa] local-user user01 password cipher huawei123&lt;br&gt;
+[r1-aaa] local-user user01 privilege level 3&lt;br&gt;
+[r1-aaa] local-user user01 ftp-directory flash:/&lt;br&gt;
+[r1-aaa] local-user user01 service-type ftp&lt;/p&gt;
+&lt;p&gt;Console 口的认证&lt;br&gt;
+ [r2] user-interface  console 0&lt;br&gt;
+[r2-ui-console0]authentication-mode aaa&lt;br&gt;
+[r2]aaa&lt;br&gt;
+[r2-aaa]local-user user02 service-type terminal&lt;/p&gt;
+</content>
+        <updated>2022-11-09T10:11:20.425Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2022/11/03/2022.11.3/</id>
         <title>HCIA(十四）11.3</title>
