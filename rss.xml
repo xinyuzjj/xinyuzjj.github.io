@@ -5,11 +5,394 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Wed, 09 Nov 2022 18:11:29 +0800</pubDate>
-        <lastBuildDate>Wed, 09 Nov 2022 18:11:29 +0800</lastBuildDate>
+        <pubDate>Mon, 14 Nov 2022 19:00:44 +0800</pubDate>
+        <lastBuildDate>Mon, 14 Nov 2022 19:00:44 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/11/14/2022.11.11/</guid>
+            <title>HCIP(一) 2022.11.11</title>
+            <link>http://example.com/2022/11/14/2022.11.11/</link>
+            <pubDate>Mon, 14 Nov 2022 19:00:44 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzY4MmJkZjBmZDM0ZS5hc3B4&#34;&gt;柳永&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzRkNzk1OTQ0Yjg1Ni5hc3B4&#34;&gt;雨霖铃・寒蝉凄切&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;寒蝉凄切，对长亭晚，骤雨初歇。都门帐饮无绪，留恋处，兰舟催发。执手相看泪眼，竟无语凝噎。念去去，千里烟波，暮霭沉沉楚天阔。&lt;/mark&gt;&lt;br&gt;
+&lt;mark&gt;多情自古伤离别，更那堪，冷落清秋节！今宵酒醒何处？杨柳岸，晓风残月。此去经年，应是良辰好景虚设。便纵有千种风情，更与何人说？(好景 一作：美景)&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;ospf报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf报文格式&#34;&gt;#&lt;/a&gt; OSPF 报文格式：&lt;/h5&gt;
+&lt;p&gt;​	OSPF 通用报文头部：&lt;/p&gt;
+&lt;p&gt;​		Version：版本&lt;/p&gt;
+&lt;p&gt;​		type：标识报文类型&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;报文名称&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;报文功能&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Hello&lt;/td&gt;
+&lt;td&gt;发现和维护邻居关系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Database Description&lt;/td&gt;
+&lt;td&gt;交互链路状态数据库摘要&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Link State Request&lt;/td&gt;
+&lt;td&gt;请求特定的链路状态信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Link State Update&lt;/td&gt;
+&lt;td&gt;发送详细的链路状态信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;Link State Ack&lt;/td&gt;
+&lt;td&gt;确认 LSA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;​		Packet length：报文长度&lt;/p&gt;
+&lt;p&gt;​		router id：产生报文路由器的 router id&lt;/p&gt;
+&lt;p&gt;​		Area id ：产生报文的区域&lt;/p&gt;
+&lt;p&gt;​		CheckSum：校验和，用于检验数据包的完整性&lt;/p&gt;
+&lt;p&gt;​		Auth type：认证类型&lt;/p&gt;
+&lt;p&gt;​		Authentication：认证数据&lt;/p&gt;
+&lt;h6 id=&#34;hello报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hello报文&#34;&gt;#&lt;/a&gt; hello 报文：&lt;/h6&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;长 度&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Network Mask&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;发送 Hello 报文的接口所在网络的掩码。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HelloInterval&lt;/td&gt;
+&lt;td&gt;16 比特&lt;/td&gt;
+&lt;td&gt;发送 Hello 报文的时间间隔。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Options&lt;/td&gt;
+&lt;td&gt;8 比特&lt;/td&gt;
+&lt;td&gt;可选项：  E：允许 Flood AS-External-LSAs  MC：转发 IP 组播报文  N/P：处理 Type-7 LSAs  DC：处理按需链路&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rtr Pri&lt;/td&gt;
+&lt;td&gt;8 比特&lt;/td&gt;
+&lt;td&gt;DR 优先级。默认为 1。如果设置为 0，则路由器不能参与 DR 或 BDR 的选举。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RouterDeadInterval&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;失效时间。如果在此时间内未收到邻居发来的 Hello 报文，则认为邻居失效。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Designated Router&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;DR 的接口地址。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Backup Designated Router&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;BDR 的接口地址。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Neighbor&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;邻居，以 Router ID 标识。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;​	Network Mask：发送 hello 报文的接口网段掩码&lt;/p&gt;
+&lt;p&gt;​	Hello Interval：接口发送 hello 报文的时间间隔，广播网络默认 10s&lt;/p&gt;
+&lt;p&gt;​	Options：可选能力参数&lt;/p&gt;
+&lt;p&gt;​		E: 支持传递外部路由&lt;/p&gt;
+&lt;p&gt;​		N/P: 支持 7 转 5 类 LSA&lt;/p&gt;
+&lt;p&gt;​		MC: 支持组播能力&lt;/p&gt;
+&lt;p&gt;​		DC: 支持按需链路&lt;/p&gt;
+&lt;p&gt;​	Router priority：接口 DR 优先级，如果优先级为 0，不参与选举 DR&lt;/p&gt;
+&lt;p&gt;​	Router Dead Interval：邻居失效时间，时间为 hello 间隔的 4 倍&lt;/p&gt;
+&lt;p&gt;​	Designated Router ：接口所处网段的 DR 的 ip 地址&lt;/p&gt;
+&lt;p&gt;​	Backup Designated Router：接口所处网段的 BDR 的 ip 地址&lt;/p&gt;
+&lt;p&gt;​	Active neighbor ：接口下的活跃邻居列表&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;DD 报文：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;长度&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Interface MTU&lt;/td&gt;
+&lt;td&gt;16 比特&lt;/td&gt;
+&lt;td&gt;在不分片的情况下，此接口最大可发出的 IP 报文长度。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Options&lt;/td&gt;
+&lt;td&gt;8 比特&lt;/td&gt;
+&lt;td&gt;可选项：  E：允许 Flood AS-External-LSAs； MC：转发 IP 组播报文； N/P：处理 Type-7 LSAs； DC：处理按需链路。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;1 比特&lt;/td&gt;
+&lt;td&gt;当发送连续多个 DD 报文时，如果这是第一个 DD 报文，则置为 1，否则置为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M  (More)&lt;/td&gt;
+&lt;td&gt;1 比特&lt;/td&gt;
+&lt;td&gt;当发送连续多个 DD 报文时，如果这是最后一个 DD 报文，则置为 0。否则置为 1，表示后面还有其他的 DD 报文。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M/S (Master/Slave)&lt;/td&gt;
+&lt;td&gt;1 比特&lt;/td&gt;
+&lt;td&gt;当两台 OSPF 路由器交换 DD 报文时，首先需要确定双方的主从关系，Router  ID 大的一方会成为 Master。当值为 1 时表示发送方为 Master。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DD  sequence number&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;DD 报文序列号。主从双方利用序列号来保证 DD 报文传输的可靠性和完整性。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSA Headers&lt;/td&gt;
+&lt;td&gt;可变&lt;/td&gt;
+&lt;td&gt;该 DD 报文中所包含的 LSA 的头部信息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;​	Interface MTU: 接口最大发送数据长度，两端不一致无法建立邻接关系&lt;/p&gt;
+&lt;p&gt;​	Options：&lt;/p&gt;
+&lt;p&gt;​		E: 支持传递外部路由&lt;/p&gt;
+&lt;p&gt;​		N/P: 支持 7 转 5 类 LSA&lt;/p&gt;
+&lt;p&gt;​		MC: 支持组播能力&lt;/p&gt;
+&lt;p&gt;​		DC: 支持按需链路&lt;/p&gt;
+&lt;p&gt;​	I：当一次性发送多个 DD 报文时，标识报文是否为第一个 DD 报文，是就置位为 1&lt;/p&gt;
+&lt;p&gt;​	M：当一次性发送多个 DD 报文时，标识报文是否为最后一个 DD 报文，是就置位为 0&lt;/p&gt;
+&lt;p&gt;​	master/slave：标识设备为 master 还是 slave 角色 ，置位为 1 标识发送者为 master 设备&lt;/p&gt;
+&lt;p&gt;​	DD sep：DD 报文序列号，用于保证报文传递可靠性&lt;/p&gt;
+&lt;p&gt;​	AN LSA hearder：所有 LSA 的头部，用于描述 LSDB 摘要信息&lt;/p&gt;
+&lt;h6 id=&#34;lsr报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsr报文&#34;&gt;#&lt;/a&gt; LSR 报文：&lt;/h6&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;长度&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LS  type&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;LSA 的类型号。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Link  State ID&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;根据 LSA 中的 LS Type 和 LSA description 在路由域中描述一个 LSA。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Advertising Router&lt;/td&gt;
+&lt;td&gt;32 比特&lt;/td&gt;
+&lt;td&gt;产生此 LSA 的路由器的 Router ID。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;​	LS type：标识 LSA 的类型&lt;/p&gt;
+&lt;p&gt;​	LS ID: 和 LS type ，advertise 唯一标识一条 LSA&lt;/p&gt;
+&lt;p&gt;​	advertise：始发者路由器，产生路由器&lt;/p&gt;
+&lt;h6 id=&#34;lsu报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsu报文&#34;&gt;#&lt;/a&gt; LSU 报文：&lt;/h6&gt;
+&lt;p&gt;​	Number of LSAs：标识 LSU 具体携带 LSA 数量&lt;/p&gt;
+&lt;p&gt;​	LSAs：LSA 的明确信息&lt;/p&gt;
+&lt;h6 id=&#34;ls-ack报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ls-ack报文&#34;&gt;#&lt;/a&gt; LS ACK 报文：&lt;/h6&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;长度&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSAs Headers&lt;/td&gt;
+&lt;td&gt;可变&lt;/td&gt;
+&lt;td&gt;通过 LSA 的头部信息确认收到该 LSA。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;​	AN LSA header ：具体收到所有的 LSA 的头部信息&lt;/p&gt;
+&lt;p&gt;​	内容和 LSR 类型&lt;/p&gt;
+&lt;h6 id=&#34;ospf邻居建立不成功的原因&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf邻居建立不成功的原因&#34;&gt;#&lt;/a&gt; OSPF 邻居建立不成功的原因：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 版本 不一致
+2. area id不一致
+3. 认证类型不一致
+4. 掩码不一致（广播网络中）
+5. ip地址不处于同一网段
+6. router id 一致
+7. 认证数据不一致
+8. 邻居失效时间
+9. hello 时间间隔不一致
+10. 可选参数不一致
+11. 网络类型不一致
+12. 接口未宣告OSPF
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;ospf邻接关系建立不成功的原因&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf邻接关系建立不成功的原因&#34;&gt;#&lt;/a&gt; OSPF 邻接关系建立不成功的原因：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;MTU 值不一致&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;ospf认证类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf认证类型&#34;&gt;#&lt;/a&gt; OSPF 认证类型：&lt;/h6&gt;
+&lt;p&gt;​	区域认证：区域中的所有设备都需要配置区域认证，对区域中的 OSPF 报文进行认证&lt;/p&gt;
+&lt;p&gt;​			认证类型和数据均在 OSPF 通用头部中&lt;/p&gt;
+&lt;p&gt;​	接口认证：对接口下收发的 OSPF 报文进行认证，认证类型和数据均在 OSPF 通用头部中&lt;/p&gt;
+&lt;h6 id=&#34;ospf认证方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf认证方式&#34;&gt;#&lt;/a&gt; OSPF 认证方式：&lt;/h6&gt;
+&lt;p&gt;​	不认证：不对 OSPF 报文进行认证&lt;/p&gt;
+&lt;p&gt;​	简单明文：对 OSPF 报文进行明文认证，使 OSPF 报文携带明文的密钥进行认证，安全性不高&lt;/p&gt;
+&lt;p&gt;​	MD5: 对密钥进行 MD5 计算后，放入报文中，进行认证，安全性更高&lt;/p&gt;
+&lt;p&gt;​	keychain：周期性更换密钥和加密算法，达到动态更新密钥的能力&lt;/p&gt;
+&lt;h6 id=&#34;ospf网络类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf网络类型&#34;&gt;#&lt;/a&gt; OSPF 网络类型：&lt;/h6&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;OSPF 网络类型&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;常见链路层协议&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;是否    选举 DR&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;是否和邻居建立邻接关系&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;P2P             (点对点)&lt;/td&gt;
+&lt;td&gt;PPP 链路 ；HDLC 链路&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Broadcast&lt;/td&gt;
+&lt;td&gt;以太网链路&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;DR 与 BDR 、DRother 建立邻接关系   BDR 与 DR 、  DRother 建立邻接关系    DRother 之间只建立邻居关系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NBMA     （非广播多路访问）&lt;/td&gt;
+&lt;td&gt;帧中继链路&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;DR 与 BDR 、DRother 建立邻接关系   BDR 与 DR 、DRother 建立邻接关系    DRother 之间只建立邻居关系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;P2MP          （点对多点）&lt;/td&gt;
+&lt;td&gt;需手工指定&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/11/14/2022.11.14/</guid>
+            <title>HCIP(二) 2022.11.14</title>
+            <link>http://example.com/2022/11/14/2022.11.14/</link>
+            <pubDate>Mon, 14 Nov 2022 19:00:44 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
+&lt;h2 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2X2E3OTAwNjY2NDk3Zi5hc3B4&#34;&gt;辛弃疾&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52X2YwOTBkNjUyMTJmNC5hc3B4&#34;&gt;西江月・夜行黄沙道中&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;明月别枝惊鹊，清风半夜鸣蝉。稻花香里说丰年，听取蛙声一片。&lt;br&gt;
+七八个星天外，两三点雨山前。旧时茅店社林边，路转溪桥忽见。(溪桥 一作：溪头)&lt;/mark&gt;&lt;/p&gt;
+&lt;h6 id=&#34;链路状态信息的通用头部&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链路状态信息的通用头部&#34;&gt;#&lt;/a&gt; 链路状态信息的通用头部：&lt;/h6&gt;
+&lt;p&gt;​	LS age：生存时间，最大 3600s，按时间增加，每到 1800s 时将由产生这条 LSA 的路由器重新产生&lt;/p&gt;
+&lt;p&gt;​	Option：可选项，一些可选参数&lt;/p&gt;
+&lt;p&gt;​	LS type：LSA 的类型，1，2，3，4，5，6，7&lt;/p&gt;
+&lt;p&gt;​	LS ID：每一种 LSA 的对应不同的含义&lt;/p&gt;
+&lt;p&gt;​	Advertise router：始发者路由器，用于描述 LSA 是谁产生的，router id&lt;/p&gt;
+&lt;p&gt;​		注：LS type，LS ID ，advertise  router 三元组，用于唯一标识一条 LSA&lt;/p&gt;
+&lt;p&gt;​	LS sequence number：序列号，用于比较 LSA 的新旧，取值 0x80000001-0x7FFFFFFF&lt;/p&gt;
+&lt;p&gt;​	LS checksum：校验和，用于检验 LSA 的完整性，并且用于比较 LSA 的新旧&lt;/p&gt;
+&lt;p&gt;​	Length：整个 LSA 长度&lt;/p&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;区域内路由计算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#区域内路由计算&#34;&gt;#&lt;/a&gt; 区域内路由计算：&lt;/h5&gt;
+&lt;p&gt;​	一类 LSA（router lsa）：运行了 OSPF 的每一台路由器都会产生一条，用于描述自己的拓扑和网络信息	作用：用于区域内的路由计算&lt;/p&gt;
+&lt;p&gt;​	LS ID ：产生者的 router id&lt;/p&gt;
+&lt;p&gt;​		V：当置位为 1 时，代表一类产生的类型为虚连接&lt;/p&gt;
+&lt;p&gt;​		E：当置位为 1 时，代表产生者是 ASBR 设备&lt;/p&gt;
+&lt;p&gt;​		B：当置位为 1 时，代表产生者时 ABR 设备&lt;/p&gt;
+&lt;p&gt;​		links：用于标识一类 LSA 携带 link 数量&lt;/p&gt;
+&lt;p&gt;​			link id: 不同网络类型代表不同的含义&lt;/p&gt;
+&lt;p&gt;​			link data: 不同网络类型代表不同的含义&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Link type&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Link ID&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Link data&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;P2P&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对端邻居的 router-id&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;自身接口 IP 地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;trasnet&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;DR 的接口 ip 地址&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;自身接口 IP 地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;subnet&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;接口所属网段&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;接口 IP 的掩码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;v-link&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对端邻居的 router-id&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;自身接口 IP 地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1668397198970.png&#34; alt=&#34;1668397198970&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1668397232299.png&#34; alt=&#34;1668397232299&#34;&gt;&lt;/p&gt;
+&lt;p&gt;二类 LSA (network LSA): 由 DR 产生，用于描述 MA 网络的拓扑信息和路由信息，&lt;/p&gt;
+&lt;p&gt;​	作用：用于计算区域内的路由信息&lt;/p&gt;
+&lt;p&gt;​	Link State ID ：DR 的接口 IP 地址。&lt;/p&gt;
+&lt;p&gt;​	Network Mask：MA 网络的子网掩码&lt;/p&gt;
+&lt;p&gt;​	Attached Router：形成邻接关系的设备的 router id&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1668397165898.png&#34; alt=&#34;1668397165898&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;区域间路由计算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#区域间路由计算&#34;&gt;#&lt;/a&gt; 区域间路由计算：&lt;/h5&gt;
+&lt;p&gt;​	三类 LSA (network summary LSA) ：由 ABR 产生，用于传递不同区域之间的路由信息&lt;/p&gt;
+&lt;p&gt;​	作用：用于区域间的路由计算 是&lt;/p&gt;
+&lt;p&gt;​	LS ID: 目的网段信息&lt;/p&gt;
+&lt;p&gt;​	advertise router ：ABR 的 router id ，&lt;/p&gt;
+&lt;p&gt;​	Network mask：目的网络掩码&lt;/p&gt;
+&lt;p&gt;​	metric：ABR 去往目的网络的开销&lt;/p&gt;
+&lt;h6 id=&#34;区域间路由计算方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#区域间路由计算方式&#34;&gt;#&lt;/a&gt; 区域间路由计算方式：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 由ABR去往目的网段的3类LSA传递到区域中
+2. 区域中的路由器收到3类LSA后，得到ABR去往目的网段的开销
+3. 根据区域内的SPF计算得出，路由器自身去往ABR的开销
+4. 将自身去往ABR的开销+ABR去往目的网段的开销=自身去往目的网段开销&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/09/2022.11.8/</guid>
-            <title>HCIA(十六）11.8</title>
+            <title>HCIA(十六）2022.11.8</title>
             <link>http://example.com/2022/11/09/2022.11.8/</link>
             <pubDate>Wed, 09 Nov 2022 18:11:29 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -272,7 +655,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/09/2022.11.4/</guid>
-            <title>HCIA(十五）11.4</title>
+            <title>HCIA(十五）2022.11.4</title>
             <link>http://example.com/2022/11/09/2022.11.4/</link>
             <pubDate>Wed, 09 Nov 2022 18:11:20 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -340,7 +723,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/03/2022.11.3/</guid>
-            <title>HCIA(十四）11.3</title>
+            <title>HCIA(十四）2022.11.3</title>
             <link>http://example.com/2022/11/03/2022.11.3/</link>
             <pubDate>Thu, 03 Nov 2022 19:03:08 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
@@ -384,7 +767,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/03/2022.11.2/</guid>
-            <title>HCIA(十三）11.2</title>
+            <title>HCIA(十三）2022.11.2</title>
             <link>http://example.com/2022/11/03/2022.11.2/</link>
             <pubDate>Thu, 03 Nov 2022 19:03:08 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
@@ -449,7 +832,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/01/2022.11.1/</guid>
-            <title>HCIA(十二）11.1</title>
+            <title>HCIA(十二）2022.11.1</title>
             <link>http://example.com/2022/11/01/2022.11.1/</link>
             <pubDate>Tue, 01 Nov 2022 18:06:52 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h1&gt;
@@ -622,7 +1005,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/31/2022.10.31/</guid>
-            <title>HCIA(十一) 2020.10.31</title>
+            <title>HCIA(十一) 2022.10.31</title>
             <link>http://example.com/2022/10/31/2022.10.31/</link>
             <pubDate>Mon, 31 Oct 2022 17:24:25 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -682,7 +1065,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/28/2022.10.28/</guid>
-            <title>HCIA(十) 2020.10.28</title>
+            <title>HCIA(十) 2022.10.28</title>
             <link>http://example.com/2022/10/28/2022.10.28/</link>
             <pubDate>Fri, 28 Oct 2022 17:31:08 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -766,7 +1149,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/27/2022.10.27/</guid>
-            <title>HCIA(九) 2020.10.27</title>
+            <title>HCIA(九) 2022.10.27</title>
             <link>http://example.com/2022/10/27/2022.10.27/</link>
             <pubDate>Thu, 27 Oct 2022 17:36:48 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -820,7 +1203,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/26/2022.10.26/</guid>
-            <title>HCIA(八) 2020.10.26</title>
+            <title>HCIA(八) 2022.10.26</title>
             <link>http://example.com/2022/10/26/2022.10.26/</link>
             <pubDate>Wed, 26 Oct 2022 17:42:24 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -901,7 +1284,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/25/2022.10.25/</guid>
-            <title>HCIA(七) 2020.10.25</title>
+            <title>HCIA(七) 2022.10.25</title>
             <link>http://example.com/2022/10/25/2022.10.25/</link>
             <pubDate>Tue, 25 Oct 2022 17:40:49 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -992,7 +1375,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/24/2022.10.24/</guid>
-            <title>HCIA(六) 2020.10.24</title>
+            <title>HCIA(六) 2022.10.24</title>
             <link>http://example.com/2022/10/24/2022.10.24/</link>
             <pubDate>Mon, 24 Oct 2022 19:53:37 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -1062,7 +1445,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/21/2022.10.21/</guid>
-            <title>HCIA(五) 2020.10.21</title>
+            <title>HCIA(五) 2022.10.21</title>
             <link>http://example.com/2022/10/21/2022.10.21/</link>
             <pubDate>Fri, 21 Oct 2022 15:59:34 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -1239,7 +1622,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/21/2022.10.20/</guid>
-            <title>HCIA(四) 2020.10.20</title>
+            <title>HCIA(四) 2022.10.20</title>
             <link>http://example.com/2022/10/21/2022.10.20/</link>
             <pubDate>Fri, 21 Oct 2022 15:59:32 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -1258,7 +1641,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/19/2022.10.19/</guid>
-            <title>HCIA(三) 2020.10.19</title>
+            <title>HCIA(三) 2022.10.19</title>
             <link>http://example.com/2022/10/19/2022.10.19/</link>
             <pubDate>Wed, 19 Oct 2022 18:31:39 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -1372,7 +1755,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/18/2022.10.18/</guid>
-            <title>HCIA(二) 2020.10.18</title>
+            <title>HCIA(二) 2022.10.18</title>
             <link>http://example.com/2022/10/18/2022.10.18/</link>
             <pubDate>Tue, 18 Oct 2022 13:19:22 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
@@ -1436,7 +1819,7 @@ IP 地址通过 PPP 的 IPCP 协商获取&lt;br&gt;
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/10/18/2022.10.17/</guid>
-            <title>HCIA(一) 2020.10.17</title>
+            <title>HCIA(一) 2022.10.17</title>
             <link>http://example.com/2022/10/18/2022.10.17/</link>
             <pubDate>Tue, 18 Oct 2022 08:50:00 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
