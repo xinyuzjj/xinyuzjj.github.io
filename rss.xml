@@ -5,8 +5,130 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Mon, 14 Nov 2022 19:00:44 +0800</pubDate>
-        <lastBuildDate>Mon, 14 Nov 2022 19:00:44 +0800</lastBuildDate>
+        <pubDate>Wed, 16 Nov 2022 07:36:33 +0800</pubDate>
+        <lastBuildDate>Wed, 16 Nov 2022 07:36:33 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/11/16/2022.11.15/</guid>
+            <title>HCIP(三) 2022.11.15</title>
+            <link>http://example.com/2022/11/16/2022.11.15/</link>
+            <pubDate>Wed, 16 Nov 2022 07:36:33 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
+&lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
+&lt;p&gt;&lt;mark&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9hdXRob3J2XzI0ZjhhNWZiZGY2Yi5hc3B4&#34;&gt;王士祯&lt;/span&gt;《&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5ndXNoaXdlbi5jbi9zaGl3ZW52XzMyYzRjNzkyMWViZS5hc3B4&#34;&gt;题秋江独钓图&lt;/span&gt;》&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;一蓑一笠一扁舟，一丈丝纶一寸钩。&lt;br&gt;
+一曲高歌一樽酒，一人独钓一江秋。&lt;/mark&gt;&lt;/p&gt;
+&lt;h5 id=&#34;ospf外部路由&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf外部路由&#34;&gt;#&lt;/a&gt; OSPF 外部路由：&lt;/h5&gt;
+&lt;p&gt;​	OSPF 外部路由通过 5 类 LSA 进行传递&lt;/p&gt;
+&lt;p&gt;​	泛洪区域：整个 OSPF 区域&lt;/p&gt;
+&lt;h6 id=&#34;5类lsaas-external-lsa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#5类lsaas-external-lsa&#34;&gt;#&lt;/a&gt; 5 类 LSA（AS-external-lsa）：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;LS ID: 外部目的的网络地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Advertise：ABSR 的 router id&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Network mask：目的网络掩码&lt;/p&gt;
+&lt;p&gt;​	E：标识外部路由的类型&lt;/p&gt;
+&lt;p&gt;​		0：外部路由为 1 类&lt;/p&gt;
+&lt;p&gt;​		1：外部路由为 2 类&lt;/p&gt;
+&lt;p&gt;​		1 类外部路由认为内部和外部的开销参考值一致，同时计算内部和外部的路由开销&lt;/p&gt;
+&lt;p&gt;​		2 类外部路由认为内部和外部的开销参考值不一致，不计算外部开销，只计算内部开销&lt;/p&gt;
+&lt;p&gt;​		默认情况下，外部路由使用 2 类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;metric：ASBR 去往目的网络的开销&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Forwarding address ：转发地址，用于解决次优路径，一般默认为 0.0.0.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;external route tag ：给外部路由打上标签（tag），&lt;span style=&#34;color:red&#34;&gt;用于匹配做策略&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;4类lsaasbr-summary-lsa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#4类lsaasbr-summary-lsa&#34;&gt;#&lt;/a&gt; 4 类 LSA (ASBR-summary LSA):&lt;/h6&gt;
+&lt;p&gt;​	作用：告知其他区域 ASBR 的位置信息，以及怎么去往 ASBR&lt;/p&gt;
+&lt;p&gt;​	泛洪区域：与 ABR 相邻的区域&lt;/p&gt;
+&lt;p&gt;​	LS ID：ASBR 的 router id，标识哪台 ASBR&lt;/p&gt;
+&lt;p&gt;​	Advertise ：ABR 的 router id ，&lt;/p&gt;
+&lt;p&gt;​	metric：开销，ABR 去往 ASBR 的开销&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h6 id=&#34;ospf路由的优先级&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf路由的优先级&#34;&gt;#&lt;/a&gt; OSPF 路由的优先级：&lt;/h6&gt;
+&lt;p&gt;​	域内路由 &amp;gt; 域间路由 &amp;gt; 1 类外部路由 &amp;gt; 2 类外部路由&lt;/p&gt;
+&lt;h6 id=&#34;外部路由计算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#外部路由计算&#34;&gt;#&lt;/a&gt; 外部路由计算：&lt;/h6&gt;
+&lt;p&gt;​		1 类外部路由：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;	1. 查看5类LSA得到ASBR去往外部路由的域外开销
+            		2. 查看对应4类LSA得到ABR去往ASBR的域间开销
+              		3. 使用1类和2类得到自身去往ABR的域内开销
+                            		4. 将域外开销+域间开销+域内开销=自身去往外部目的网段的开销
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		2 类外部路由：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;查看对应 4 类 LSA 得到 ABR 去往 ASBR 的域间开销&lt;/li&gt;
+&lt;li&gt;使用 1 类和 2 类得到自身去往 ABR 的域内开销&lt;/li&gt;
+&lt;li&gt;将域间开销 + 域内开销 = 自身去往外部目的网段的开销&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;ospf同步lsdb过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf同步lsdb过程&#34;&gt;#&lt;/a&gt; OSPF 同步 LSDB 过程：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;查看序列号，将序列号大的放入 LSDB 中进行路由计算，一致则查看第二步&lt;/li&gt;
+&lt;li&gt;查看 LSA 中的校验和，将校验和大的放入 LSDB 中进行路由计算，一致则进行第三步&lt;/li&gt;
+&lt;li&gt;查看生存时间，先查看是否存在生存时间为 3600s，存在则直接将 3600 的加入 LSDB 进行路由计算&lt;/li&gt;
+&lt;li&gt;如果没有 3600 则查看两条 LSA 的生存时间差值大于 900s
+&lt;ol&gt;
+&lt;li&gt;大于 900s，则将生存时间小的放入 LSDB 中，进行路由计算&lt;/li&gt;
+&lt;li&gt;小于 900s，则认为两条是一致的 LSA，不进行处理&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;ospf的路由更新过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf的路由更新过程&#34;&gt;#&lt;/a&gt; OSPF 的路由更新过程：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;域内路由更新：&lt;/p&gt;
+&lt;p&gt;路由器感知到拓扑发生改变，产生一条新的一类 LSA，序列号 + 1，生存时间重置&lt;/p&gt;
+&lt;p&gt;网络类型为 MA 网络，则 DR 也会产生一条 2 类的 LSA，序列号 + 1，生存时间重置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;域间路由更新：&lt;/p&gt;
+&lt;p&gt;ABR 路由器感知到路由发生变化，产生一条新的 3 类 LSA，序列号 + 1，生存时间重置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;域外路由更新：&lt;/p&gt;
+&lt;p&gt;ASBR 路由器感知到路由发生变化，产生一条新的 5 类 LSA，序列号 + 1，生存时间重置&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;ospf的路由撤销过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf的路由撤销过程&#34;&gt;#&lt;/a&gt; OSPF 的路由撤销过程：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;域内路由撤销：&lt;/p&gt;
+&lt;p&gt;相关的路由器产生一条新的 1 类 LSA，序列号 + 1，LSA 中不再包含被撤销网络的 link 信息&lt;/p&gt;
+&lt;p&gt;在 MA 网络中，则 DR 会产生一条 2 类 LSA，序列号不变，老化时间为 3600s&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;域间路由撤销：&lt;/p&gt;
+&lt;p&gt;ABR 产生一条生存时间为 3600s 的 3 类 LSA，序列号不变，用于删除区域中其他路由的 LSDB 中自己原来产生的 3 类 LSA。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;域外路由撤销：&lt;/p&gt;
+&lt;p&gt;ASBR 产生一条生存时间为 3600s 的 5 类 LSA，序列号不变，用于删除区域中其他路由的 LSDB 中自己原来产生的 5 类 LSA。&lt;/p&gt;
+&lt;p&gt;ASBR 还引入了其他的外部路由，则不会将对应的 4 类进行删除&lt;/p&gt;
+&lt;p&gt;ASBR 没有引入外部的路由，ABR 删除对应的 4 类 LSA。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;5类lsa中的转发地址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#5类lsa中的转发地址&#34;&gt;#&lt;/a&gt; 5 类 LSA 中的转发地址：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;一般情况下，默认为 0.0.0.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;置位条件&lt;/p&gt;
+&lt;p&gt;ASBR 连接外部路由的接口需要宣告到 OSPF 区域&lt;/p&gt;
+&lt;p&gt;OSPF 域中有其他设备接口也处于同一网段&lt;/p&gt;
+&lt;p&gt;FA 地址为 ASBR 去往外部网段的下一跳地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/14/2022.11.11/</guid>
             <title>HCIP(一) 2022.11.11</title>
