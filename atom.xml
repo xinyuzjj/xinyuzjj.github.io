@@ -3,10 +3,261 @@
     <id>http://example.com</id>
     <title>峻峻尼的个人博客</title>
     <link href="http://example.com" />
-    <updated>2022-11-16T09:39:12.461Z</updated>
+    <updated>2022-11-23T23:29:59.803Z</updated>
+    <entry>
+        <id>http://example.com/2022/11/24/2022.11.22/</id>
+        <title>HCIP(七) 2022.11.22</title>
+        <link rel="alternate" href="http://example.com/2022/11/24/2022.11.22/"/>
+        <content type="html">&lt;h4 id=&#34;路由策略与路由控制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由策略与路由控制&#34;&gt;#&lt;/a&gt; 路由策略与路由控制：&lt;/h4&gt;
+&lt;p&gt;路由策略：可以针对路由的发布，接收，引入进行影响，影响路由的长度 / 学习，从而影响数据的转发可达性&lt;/p&gt;
+&lt;p&gt;路由匹配工具：匹配满足条件的路由，最终的动作由路由策略工具决定&lt;/p&gt;
+&lt;h6 id=&#34;acl访问控制列表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#acl访问控制列表&#34;&gt;#&lt;/a&gt; ACL：访问控制列表&lt;/h6&gt;
+&lt;p&gt;分类：基本 ACL（2000-2999），高级 ACL（3000-3999），二层 ACL（4000-4999），用户自定义 ACL（5000-5999），用户 ACL（6000-6999）&lt;/p&gt;
+&lt;p&gt;注：只有基本 ACL 可以匹配路由（路由默认拒绝）&lt;/p&gt;
+&lt;p&gt;一个 ACL 由多条规则组成，规则之间通过 rule id 进行区分，默认情况下按照 rule id 进行从小到大进行匹配（配置顺序），只要匹配中其中一个即停止匹配，执行相应的动作（permit/deny），如果所有规则都没有匹配上，是路由默认拒绝，是数据默认通过&lt;/p&gt;
+&lt;p&gt;注：如果是自动排序则是按照 rule 规则的精确度匹配，越精确的越优先匹配（两种排序发送）&lt;/p&gt;
+&lt;p&gt;* 通配符：32bit，与前缀一一对应，通配符为 0 表示对应的前缀必须相同，为 1 表示任意取值&lt;/p&gt;
+&lt;h6 id=&#34;ip-perfix-list&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ip-perfix-list&#34;&gt;#&lt;/a&gt; IP-Perfix List：&lt;/h6&gt;
+&lt;p&gt;IP 前缀列表（只能匹配路由）&lt;/p&gt;
+&lt;p&gt;一个前缀列表可以由多个索引组成（index），匹配路由时按照索引号从小到大匹配，步长值为 10，一条索引由动作，前缀，掩码以及掩码范围组成，动作为 permit/deny，前缀和掩码可以确定匹配的路由前缀，掩码范围可以确定匹配的路由掩码长度，如果没有匹配任何 index，默认拒绝&lt;/p&gt;
+&lt;p&gt;注：只有一种排序方式，没有自动排序&lt;/p&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;p&gt;[Huawei]ip ip-prefix name1 index 10 permit 10.1.1.1 24 greater-equal 26 less-equal 29  &lt;a href=&#34;//xn--name11010-u02ox2vnhk08fm5li99bgj8cw0hri2d.1.1.0/24%E6%8E%A9%E7%A0%81%E8%8C%83%E5%9B%B4%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E26%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E29%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%9A%E8%BF%87&#34;&gt;// 允许名字 name1 索引号 10 网段 10.1.1.0/24 掩码范围大于等于 26 小于等于 29 的路由通过&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&#34;acl和ip-perfix-list的区别&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#acl和ip-perfix-list的区别&#34;&gt;#&lt;/a&gt; ACL 和 IP-Perfix List 的区别：&lt;/h6&gt;
+&lt;p&gt;1、ACL 可以匹配路由以及数据，前缀列表只能匹配路由&lt;/p&gt;
+&lt;p&gt;2、ACL 匹配路由时只能匹配前缀，无法匹配前缀长度，前缀列表可以匹配前缀长度&lt;/p&gt;
+&lt;p&gt;3、ACl 有配置顺序及自动排序，前缀列表只能按照索引号从小到大匹配&lt;/p&gt;
+&lt;p&gt;4、ACl 默认步长为 5，前缀列表默认步长为 10&lt;/p&gt;
+&lt;p&gt;5、ACl 按照进程号分为多种，前缀列表就一种&lt;/p&gt;
+&lt;h6 id=&#34;路由策略工具&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由策略工具&#34;&gt;#&lt;/a&gt; 路由策略工具：&lt;/h6&gt;
+&lt;p&gt;Filter-policy：可以针对路由的发布，接收，引入进行影响，本身没有动作，可以继承匹配工具的动作，匹配工具为 permit 就是允许，匹配工具为 deny 就是拒绝，可以应用于各个协议视图下，如果应用于距离矢量路径协议，&lt;strong&gt;可以在入方向（import）和出方向（export）对路由进行影响，如果是链路状态路由协议，入方向只能影响自己本地不加入 IP 路由表，出方向只能影响引入的路由（引入算发送，是发给邻居传递路由），不能影响链路状态信息的传递&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;例：[Huawei-ospf-1] filter-policy 2000 import&lt;/p&gt;
+&lt;p&gt;1、先定义匹配工具规则&lt;/p&gt;
+&lt;p&gt;2、再通过 filter-policy 调用匹配工具&lt;/p&gt;
+&lt;p&gt;[Huawei-ospf-100] filter-policy acl-number/ip-prefix name import  // 对 OSPF 接收的路由进行过滤（调用匹配工具，acl 和前缀列表）&lt;/p&gt;
+&lt;p&gt;[Huawei-ospf-100] filter-policy acl-number/ip-prefix name export  // 对 OSPF 引入的路由对外发布时过滤（调用匹配工具，acl 和前缀列表）&lt;/p&gt;
+&lt;h6 id=&#34;route-policy&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#route-policy&#34;&gt;#&lt;/a&gt; Route-Policy：&lt;/h6&gt;
+&lt;p&gt;不仅可以对路由的发布，接收，引入进行影响，还可以修改路由的属性&lt;/p&gt;
+&lt;p&gt;一个 route-policy 可以定义多个 node 节点，一个 node 节点中可以包含多个 if-match 条件语句和 apply 执行语句，其中 node 节点之间是 “或” 的关系（匹配到一个 node 节点就停止匹配），按照 node 节点号从小到大匹配，node 节点中的 if-match 语句之间是 “与” 的关系，只有满足所有 if-match 语句条件，才是匹配了该 node 节点，如果一个 node 节点都未匹配，底层默认拒绝，node 节点也有匹配模式，permit、deny，只有在 permit 的模式下才会定义 apply 语句&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;匹配工具 ACL 和 ip 前缀&lt;/th&gt;
+&lt;th&gt;Node 节点&lt;/th&gt;
+&lt;th&gt;结果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Permit&lt;/td&gt;
+&lt;td&gt;Permit&lt;/td&gt;
+&lt;td&gt;允许通过，运行 apply 语句&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Permit&lt;/td&gt;
+&lt;td&gt;Deny&lt;/td&gt;
+&lt;td&gt;拒绝通过&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Deny&lt;/td&gt;
+&lt;td&gt;Permit/Deny&lt;/td&gt;
+&lt;td&gt;不匹配该 node 节点，继续匹配下一个节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;[Huawei] route-policy 1 permit node 10  // 创建策略 1 节点 10 并进入视图&lt;/p&gt;
+&lt;p&gt;[Huawei-route-policy] if-match acl 2000  // 匹配条件调用 ACL2000&lt;/p&gt;
+&lt;p&gt;[Huawei-route-policy] apply cost-type type-1  // 匹配中时执行将开销改为 1 的操作&lt;/p&gt;
+&lt;p&gt;[Huawei-ospf-1] filter-policy route-policy 1 import  // 接收路由时调用策略 1&lt;/p&gt;
+&lt;p&gt;[Huawei-ospf-1] import-route direct route-policy 1  // 引入路由时调用策略 1&lt;/p&gt;
+</content>
+        <updated>2022-11-23T23:29:59.803Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2022/11/24/2022.11.21/</id>
+        <title>HCIP(六) 2022.11.21</title>
+        <link rel="alternate" href="http://example.com/2022/11/24/2022.11.21/"/>
+        <content type="html">&lt;h6 id=&#34;isis在广播网络lsdb的同步过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis在广播网络lsdb的同步过程&#34;&gt;#&lt;/a&gt; ISIS 在广播网络 LSDB 的同步过程：&lt;/h6&gt;
+&lt;p&gt;​	在广播网络中，邻接关系建立完成后，会选举 DIS，所有路由器都将自己的 LSP 发往组播地址，DIS 就会有所有的 LSP 信息构建完整的 LSDB，之后通过周期性发送 CSNP 报文进行同步&lt;/p&gt;
+&lt;p&gt;​	如果此时新加入一台设备：&lt;/p&gt;
+&lt;p&gt;1. 新加入设备将自己的 LSP 发往组播地址，DIS 收到后加入 LSDB，后续发 CSNP 报文携带摘要&lt;/p&gt;
+&lt;p&gt;2. 信加入设备收到 DIS 的 CSNP 报文后可以判断自己缺少了那些 LSP, 然后发送 PSNP 报文进行请求&lt;/p&gt;
+&lt;p&gt;3.DIS 收到请求后，将完整的 LSP 信息发送给新加入的设备&lt;/p&gt;
+&lt;p&gt;注：广播网络中 PSNP 报文只有请求的作用，不需要确认，通过 DIS 周期性发送 CSNP 报文进行隐式确认&lt;/p&gt;
+&lt;h6 id=&#34;组播地址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#组播地址&#34;&gt;#&lt;/a&gt; 组播地址：&lt;/h6&gt;
+&lt;p&gt;level-1：0180-c200-0014&lt;/p&gt;
+&lt;p&gt;level-2：0180-c200-0015&lt;/p&gt;
+&lt;h6 id=&#34;p2p环境下lsdb的同步过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#p2p环境下lsdb的同步过程&#34;&gt;#&lt;/a&gt; P2P 环境下 LSDB 的同步过程：&lt;/h6&gt;
+&lt;p&gt;R1— — R2&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设备建立完邻接关系后，互相交互 CSNP 报文，判断 LSDB 是否同步&lt;/li&gt;
+&lt;li&gt;如果没有同步，通过发送 PSNP 报文向对方请求&lt;/li&gt;
+&lt;li&gt;收到 PSNP 请求的设备会将完整的 LSP 信息发送给对端，并启动一个重传计时器 5s&lt;/li&gt;
+&lt;li&gt;收到完整 LSP 信息的设备会回复 PSNP 报文进行确认&lt;/li&gt;
+&lt;li&gt;如果发送完整 LSP 信息的设备会在重传计时器超时没有收到确认报文，会将 LSP 进行重传，直至收到确认报文为止&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ISIS 进程号（1-65535）&lt;/p&gt;
+&lt;p&gt;network-entity 49.0001.0000.0000.0001.00&lt;/p&gt;
+&lt;p&gt;is-level 路由器类型&lt;/p&gt;
+&lt;p&gt;接口宣告：ISIS enable 进程号&lt;/p&gt;
+&lt;p&gt;dis isis lsdb 0000.0000.0001.00-00 verbose 详细信息&lt;/p&gt;
+&lt;h6 id=&#34;isis的路由计算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis的路由计算&#34;&gt;#&lt;/a&gt; ISIS 的路由计算：&lt;/h6&gt;
+&lt;p&gt;level-1 路由器：本区域内通过交互 Level-1LSP 进行路由计算，其他区域通过自己产生的默认路由访问&lt;/p&gt;
+&lt;p&gt;level-1/2 路由器：访问 Level-1 区域通过 Level-1LSP 计算，访问 Level-2 区域通过 Level-2LSP 计算，默认会将 Level-1 区域的路由传递给 Level-2 区域，不会将 L-2 的路由传递给 L-1 区域&lt;/p&gt;
+&lt;p&gt;Level-2 区域路由器：通过交互 Level-2LSP 进行计算（去往 level-1 区域通过 Level-1/2 的 LSP 计算）&lt;/p&gt;
+&lt;h6 id=&#34;att置位条件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#att置位条件&#34;&gt;#&lt;/a&gt; ATT 置位条件：&lt;/h6&gt;
+&lt;p&gt;​	①是一个 Level-1/2 路由器&lt;/p&gt;
+&lt;p&gt;​	②建立了 Level-2 邻接关系&lt;/p&gt;
+&lt;p&gt;​	③建立了 Level-1 邻接关系&lt;/p&gt;
+&lt;p&gt;注：Level-1 路由器的默认路由是通过收到 Level-1/2 设备的 ATT 置位的 L-1LSP 自动产生的，下一跳指向该 L-1/2 设备&lt;/p&gt;
+&lt;h6 id=&#34;路由渗透&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由渗透&#34;&gt;#&lt;/a&gt; 路由渗透：&lt;/h6&gt;
+&lt;p&gt;​	由于 Level-1 路由器通过默认路由访问 Level-2 区域，可能会产生次优路径，可以在 Level-1/2 设备上将 Level-2 区域的路由引入到 Level-1 区域，让 Level-1 路由器学习到 Level-2 区域的明细路由，避免次优路径&lt;/p&gt;
+&lt;p&gt;​	在 isis 下配置 impact isis l2 into l1&lt;/p&gt;
+&lt;h6 id=&#34;lsp的新旧比较&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsp的新旧比较&#34;&gt;#&lt;/a&gt; LSP 的新旧比较：&lt;/h6&gt;
+&lt;p&gt;先比较序列号是否相同，不相同则取序列号大的为优&lt;/p&gt;
+&lt;p&gt;相同在比较保活时间是否 = 0s，是则保活时间为 0 的为优&lt;/p&gt;
+&lt;p&gt;不为 0，在比较校验和是否相同，不相同取校验和大的为优&lt;/p&gt;
+&lt;p&gt;相同则不处理该 LSP.&lt;/p&gt;
+&lt;h6 id=&#34;isis的认证&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis的认证&#34;&gt;#&lt;/a&gt; ISIS 的认证：&lt;/h6&gt;
+&lt;p&gt;​	接口认证：针对 ISIS 邻接关系的建立进行认证，认证通过才可以建立邻接关系&lt;/p&gt;
+&lt;p&gt;​	区域认证：针对 Level-1 的 LSDB 进行认证，开启认证后会在发送的 Level-1 报文中携带认证信息（Level-1LSP,Level-1SNP）, 对收到的报文也会进行认证检查，检查通过才可以加入 LSDB&lt;/p&gt;
+&lt;p&gt;​	路由器认证：针对 Level-2 的 LSDB 进行认证，开启认证后会在发送的 Level-2 报文中携带认证信息，对收到的报文也会进行认证检查&lt;/p&gt;
+</content>
+        <updated>2022-11-23T23:29:59.801Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2022/11/24/2022.11.17/</id>
+        <title>HCIP(五) 2022.11.17</title>
+        <link rel="alternate" href="http://example.com/2022/11/24/2022.11.17/"/>
+        <content type="html">&lt;h6 id=&#34;isis建立邻接关系的原则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis建立邻接关系的原则&#34;&gt;#&lt;/a&gt; ISIS 建立邻接关系的原则：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 只有同一层次的路由器之间才能建立邻接关系（level 1/2 即属于level 1 有属于level 2）
+2. 对于level 1 路由器来说，area id 必须一致
+3. 两端设备的ISIS网络类型必须一致
+4. ISIS两端的ip地址需要处于同一网段（特殊情况除外- - -&amp;gt;p2p）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;hello-报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hello-报文格式&#34;&gt;#&lt;/a&gt; hello 报文格式  ：&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Reserved/Circuit Type：用于表示路由器类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Source ID&lt;/strong&gt;：发送设备的 System id&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Holding Time ：邻接关系的失效时间，一般为 3 倍的 hello 间隔&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PDU length：整个报文的长度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Priority&lt;/strong&gt;：优先级，用于选举 DIS 时使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LAN ID:DIS 的 system id 加上一个字节的 01/10, 只存在于广播网络中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Local Circuit ID：本地链路 ID，用于 P2P 网络类型协商&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Variable Length  Fields：可选择携带的某些参数值或者可选功能&lt;/p&gt;
+&lt;p&gt;​	采用 TLV 结构进行携带，需要提供某种功能时，只需要加载对于对应的 TLV 即可&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;广播型网络邻接关系的建立三次握手&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#广播型网络邻接关系的建立三次握手&#34;&gt;#&lt;/a&gt; 广播型网络邻接关系的建立：（三次握手）&lt;/h6&gt;
+&lt;p&gt;​	R1&amp;lt;——————————&amp;gt;R2&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 设备初始状态都处于down状态
+2. 运行或激活接口ISIS后，发送hello报文，假设R1先发送Hello 报文
+3. R2收到R1的hello 报文后，状态转变为initial ，同时将R1的System id 写入自己hello 的邻接列表
+4. R2 发送hello 报文，邻接列表中含有R1的System id
+5. R1收到后，将R2列为自己的邻接路由器，同时将R2的System id 列入自己的hello 报文中，发送给R2
+6. R2收到R1 发送的hello 报文后，将自己的状态转变为UP状态，此时邻接关系建立完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;点到点网络两次握手默认采用三次握手&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#点到点网络两次握手默认采用三次握手&#34;&gt;#&lt;/a&gt; 点到点网络（两次握手，默认采用三次握手）&lt;/h6&gt;
+&lt;p&gt;​	R1&amp;lt;——————————&amp;gt;R2&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设备初始状态都处于 down 状态&lt;/li&gt;
+&lt;li&gt;运行或激活接口 ISIS 后，发送 hello 报文，假设 R1 先发送 Hello 报文&lt;/li&gt;
+&lt;li&gt;R1 发送 hello 报文后，报文中的邻接列表为空&lt;/li&gt;
+&lt;li&gt;R2 收到 R1 的 hello 报文后，直接将 R1 列为自己的邻接路由器，并将状态转变为 UP&lt;/li&gt;
+&lt;li&gt;R2 发送 hello 报文，报文中的邻接列表中有 R1 的 System id&lt;/li&gt;
+&lt;li&gt;R1 收到 R2 的 hello 报文后，将 R2 列为自己的邻接路由器，邻接关系建立完成&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;配置接口使用两次握手建立邻接关系：&lt;/p&gt;
+&lt;p&gt;配置接口交互 hello 次数：isis ppp- negotiation 2-way&lt;/p&gt;
+&lt;p&gt;PPP 链路两端 IP 不处于同一网段使用&lt;/p&gt;
+&lt;p&gt;[huawei-serial 1/0/0] isis peer-ip-ignore // 配置 PPP 链路不检查对端 IP 地址&lt;/p&gt;
+&lt;h6 id=&#34;dis和伪节点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dis和伪节点&#34;&gt;#&lt;/a&gt; DIS 和伪节点：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. DIS通过所有路由器选举产生
+2. 负责产生伪节点的LSP
+3. 用于周期发送CSNP报文，同步网络中的路由器的LSDB
+4. 伪节点LSP使用DIS的system id 和 circuit id 进行标识，当circuit id 为非零时，表示LSP为伪节点LSP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;dis的选举规则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dis的选举规则&#34;&gt;#&lt;/a&gt; DIS 的选举规则：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;比较设备的优先级，以大为优，优先级越高越容易成为 DIS 设备&lt;/p&gt;
+&lt;p&gt;设备优先级：0-127，默认 63，&lt;strong&gt;ISIS 的优先级为 0 的设备参与选举 DIS&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;优先级相同时，比较 MAC 地址，MAC 地址大的作为 DIS 设备&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ISIS 的 hello 报文间隔时间为 10s，DIS 的 hello 时间间隔为 10/3, 邻接失效时间 3 倍 10s&lt;/p&gt;
+&lt;h6 id=&#34;isis的dis和ospf的dr的对比&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis的dis和ospf的dr的对比&#34;&gt;#&lt;/a&gt; ISIS 的 DIS 和 OSPF 的 DR 的对比：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 优先级为0的设备参不参与选举
+2. 抢占，DIS支持抢占，DR不支持
+3. 选举规则不同，优先级相同时，DIS比较MAC地址,DR比较router id
+4. hello 时间间隔，DR的时间间隔为10/3,死亡时间
+5. 有无备份,DR存在备份BDR,DIS不存在备份
+6. 作用不同，DR的作用-减少邻接关系，DIS的作用-周期发送CSNP同步LSDB
+7. 选择过程不同，DR选举过程为其他路由器感知自己为DR设备，DIS初始化默认自己为DIS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;lsp报文格式900s&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsp报文格式900s&#34;&gt;#&lt;/a&gt; LSP 报文格式：900s&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;PDU length：报文的长度&lt;/li&gt;
+&lt;li&gt;Remaining Lifetime：生存时间，时间范围 0 —1200 , 时间为递减&lt;/li&gt;
+&lt;li&gt;LSP ID：由 System id，伪节点 id，LSP 分片 id 组成，用于标识一条 LSP&lt;/li&gt;
+&lt;li&gt;Sequence number ：序列号，与 OSPF 的 LSA 的序列号作用一致&lt;/li&gt;
+&lt;li&gt;check sum：校验和，用于检验 LSP 的完整性&lt;/li&gt;
+&lt;li&gt;P：是否支持自动修复&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ATT&lt;/strong&gt;：由 level 1/2 路由器产生的 LSP 置位，用于 level 1 区域的路由器访问 level 2 区域使用&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OL(overload)&lt;/strong&gt;：过载比特位，当 LSP 的 OL 置位后，其他路由器将不会使用 LSP 进行路由计算&lt;/li&gt;
+&lt;li&gt;IS type：标识生成此条 LSP 的路由角色&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <updated>2022-11-23T23:29:59.800Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2022/11/24/2022.11.23/</id>
+        <title></title>
+        <link rel="alternate" href="http://example.com/2022/11/24/2022.11.23/"/>
+        <content type="html">&lt;h4 id=&#34;策略路由&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#策略路由&#34;&gt;#&lt;/a&gt; 策略路由：&lt;/h4&gt;
+&lt;p&gt;​	针对数据报文进行控制，可以不按照路由表转发，策略路由优先级高于路由表&lt;/p&gt;
+&lt;p&gt;PBR: Policy-based-routing ，可以由多个 Node 节点组成，不同 Node 节点之间是 “或” 的关系，一个 Node 节点中可以包含多个 if-match 条件语句和 apply 执行语句，if-match 语句之间是 “与” 的关系，如果 Node 节点模式为 Permit，满足所有 if-match 语句的数据执行 apply 语句定义的动作，如果 Node 节点模式为 Deny，满足条件的数据报文被拒绝通过&lt;/p&gt;
+&lt;p&gt;PBR 分为本地 PBR 和接口 PBR，本地 PBR 针对设备本地产生的报文，接口 PBR 针对设备转发的报文（本地 PBR 和接口 PBR 只是调用的视图不相同，本地 PBR 全局调用，接口 PBR 接口视图下调用）&lt;/p&gt;
+&lt;p&gt;​	结构：policy-based-route 1 permit node&lt;/p&gt;
+&lt;p&gt;​			if-match 条件语句&lt;/p&gt;
+&lt;p&gt;​			apply 执行语句&lt;/p&gt;
+&lt;p&gt;​	注：需要先通过 acl 匹配满足条件的数据&lt;/p&gt;
+&lt;p&gt;acl 3000&lt;/p&gt;
+&lt;p&gt;rule permit ip source 1.1.1.1 0 destination 10.1.23.3 0&lt;/p&gt;
+&lt;h6 id=&#34;mqc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mqc&#34;&gt;#&lt;/a&gt; MQC:&lt;/h6&gt;
+&lt;p&gt;模块化的 QoS 命令行，属于接口策略路由，由 Traffic classifier 流分类，Traffic behavior 流行为和 Traffice policy 流策略三个模块组成，先通过流分类匹配满足条件的数据，再执行对应的流行为定义的动作，流策略将流分类和流行为进行绑定，最后再接口下调用流策略&lt;/p&gt;
+&lt;p&gt;（inbound/outbound)&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;创建acl匹配数据：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;acl 3000&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	rule permit ip source * destination*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;创建流分类调用acl：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;traffice classifier 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	if-match acl 3000&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;创建流行为修改数据下一跳：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;traffice behavior 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	redirect ip-nexthop *&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;创建流策略绑定流分类和流行为：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;traffice policy 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	classifier 1 behavior 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;接口下：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;raffic-policy 1 inbound&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&#34;策略路由的区别&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#策略路由的区别&#34;&gt;#&lt;/a&gt; 策略路由的区别：&lt;/h6&gt;
+&lt;p&gt;​	本地策略路由：针对本地产生的报文，对转发的不生效&lt;/p&gt;
+&lt;p&gt;​	接口策略路由：针对转发的报文，对本地的不生效&lt;/p&gt;
+&lt;p&gt;Traffic-filter：流量过滤，可以再入方向 / 出方向对数据进行精准过滤（acl 动作为 deny 即为拒绝数据通过）&lt;/p&gt;
+&lt;p&gt;路由策略与策略路由的区别:&lt;/p&gt;
+&lt;p&gt;​	路由策略：针对的是路由，直接影响路由表，基于控制层面&lt;/p&gt;
+&lt;p&gt;​	策略路由：针对数据报文，可以不按照路由表转发，优先级高于路由表，基于转发层面，需要手工逐跳进行配置&lt;/p&gt;
+</content>
+        <updated>2022-11-23T23:29:59.797Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2022/11/16/2022.11.16/</id>
-        <title></title>
+        <title>HCIP(四) 2022.11.16</title>
         <link rel="alternate" href="http://example.com/2022/11/16/2022.11.16/"/>
         <content type="html">&lt;h3 id=&#34;随记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#随记&#34;&gt;#&lt;/a&gt; 随记&lt;/h3&gt;
 &lt;h4 id=&#34;mood&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mood&#34;&gt;#&lt;/a&gt; mood&lt;/h4&gt;
@@ -137,8 +388,8 @@
 &lt;p&gt;​	宽度量：0-16777215&lt;/p&gt;
 &lt;p&gt;​	更改开销的方式：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;	1. 接口下直接更改
-		2. 设置全局开销
-  		3. 自动计算开销：根据接口的带宽进行计算开销
+    		2. 设置全局开销
+        		3. 自动计算开销：根据接口的带宽进行计算开销
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;​&lt;/p&gt;
 &lt;h5 id=&#34;isis报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis报文格式&#34;&gt;#&lt;/a&gt; ISIS 报文格式：&lt;/h5&gt;
