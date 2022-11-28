@@ -5,8 +5,103 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Fri, 25 Nov 2022 07:37:56 +0800</pubDate>
-        <lastBuildDate>Fri, 25 Nov 2022 07:37:56 +0800</lastBuildDate>
+        <pubDate>Tue, 29 Nov 2022 07:24:49 +0800</pubDate>
+        <lastBuildDate>Tue, 29 Nov 2022 07:24:49 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/11/29/2022.11.28/</guid>
+            <title>HCIP(十一) 2022.11.28</title>
+            <link>http://example.com/2022/11/29/2022.11.28/</link>
+            <pubDate>Tue, 29 Nov 2022 07:24:49 +0800</pubDate>
+            <description><![CDATA[ &lt;h5 id=&#34;路由反射器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由反射器&#34;&gt;#&lt;/a&gt; 路由反射器:&lt;/h5&gt;
+&lt;p&gt;在 AS 内部用于传递路由，解决 IBGP 全互联的问题，包含 RR（路由反思器）和 Client 角色，其余为非客户端&lt;/p&gt;
+&lt;p&gt;注：IBGP 全互联需要维护大量的 TCP 连接以及 BGP 对等体关系，并且扩展性较差&lt;/p&gt;
+&lt;h6 id=&#34;rr反射规则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rr反射规则&#34;&gt;#&lt;/a&gt; RR 反射规则：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 从客户端收到的路由可以反射给所有的非客户端和其他的客户端，其他的客户端以及发送给EBGP的对等体
+2. 从非客户端收到的路由可以反射给所有的客户端以及发送给EBGP对等体
+3. 从EBGP对等体收到的路由可以反射给所有的客户端和非客户端
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;路由反射簇&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由反射簇&#34;&gt;#&lt;/a&gt; 路由反射簇：&lt;/h6&gt;
+&lt;p&gt;由 RR 以及对应的客户端组成，在 RR 反射路由时，可能会出现环路的问题，可以通过 Originator_ID (起源 ID) 和 Cluster_list (簇列表 / 集群列表) 进行防环&lt;/p&gt;
+&lt;p&gt;​	Originator_ID：由收到路由的第一个 RR 所添加，表示路由是哪个路由器发送出来的（通过 Router ID 表示），当路由器收到路由包含自身的 RID 则忽略该路由&lt;/p&gt;
+&lt;p&gt;​	Cluster_list：由 Cluster_ID 组成，集群 ID 是用来区分不同的路由反射簇的，没有手工指定的情况下默认 RR 的 Router ID ，当 RR 收到一条路由的 Cluster_LIST 中包含自身的集群 ID 则忽略该路由&lt;/p&gt;
+&lt;p&gt;注：起源 ID 和集群列表都属于可选非过渡属性&lt;/p&gt;
+&lt;h6 id=&#34;bgp防环&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bgp防环&#34;&gt;#&lt;/a&gt; BGP 防环：&lt;/h6&gt;
+&lt;p&gt;​	AS 内：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;无 RR 通过 IBGP 水平分割防环&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有 RR 通过起源 ID 和集群列表防环&lt;/p&gt;
+&lt;p&gt;AS 间：通过 AS_path 防环&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;bgp选路原则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bgp选路原则&#34;&gt;#&lt;/a&gt; BGP 选路原则：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 丢弃下一跳不可达的路由
+2. 优选Preference_Value值更大的路由
+3. 优选Local_Preference数值更大的路由
+4. 本地始发的路由优于从对等体学习到的路由，本地始发又分为手动聚合&amp;gt;自动聚合&amp;gt;Network&amp;gt;Incomplete
+5. 优选AS_Path短的路由
+6. Origin，I&amp;gt;e&amp;gt;?.
+7. 优选MED值小的路由 , 默认不比较来自不同AS路由的MED值，可以开启强制比较（**compare-different-as-med**）
+8. 从EBGP对等体学习到的优于IBGP对等体学习的
+9. 优选下一跳IGP开销小的路由
+10. 优选Cluster_List短的路由
+11. 优选Originator_ID小的路由
+12. 优选Router ID小的对等体学习到的路由
+13. 优选IP地址小的对等体 学习的路由&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/11/29/2022.11.25/</guid>
+            <title>HCIP(十) 2022.11.25</title>
+            <link>http://example.com/2022/11/29/2022.11.25/</link>
+            <pubDate>Tue, 29 Nov 2022 07:24:49 +0800</pubDate>
+            <description><![CDATA[ &lt;h5 id=&#34;bgp的属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bgp的属性&#34;&gt;#&lt;/a&gt; BGP 的属性：&lt;/h5&gt;
+&lt;p&gt;​	公认必遵：表示运行了 BGP 的路由器都能识别，并且必须携带在 Update 报文中，不携带就会出错&lt;/p&gt;
+&lt;p&gt;​	公认任意：所有 BGP 路由都能识别，可以携带也可以不携带，不携带也不会出错&lt;/p&gt;
+&lt;p&gt;​	可选过渡：BGP 路由器可以识别也可以不识别，不识别也能继续向下传递&lt;/p&gt;
+&lt;p&gt;​	可选非过渡：BGP 路由器可以识别也可以不识别，不识别不能向下传递&lt;/p&gt;
+&lt;h6 id=&#34;as_path&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#as_path&#34;&gt;#&lt;/a&gt; AS_path:&lt;/h6&gt;
+&lt;p&gt;​	AS 路径信息，属于公认必遵属性，用来表示路由经过了哪些 AS，每经过一个 AS 就把该 AS 号添加到 AS_Path 的最前面，可以用来选路以及防环&lt;/p&gt;
+&lt;p&gt;​	防环：当路由器收到一条路由的 AS_path 中携带了自身所在的 AS 号，不接收该路由&lt;/p&gt;
+&lt;p&gt;​	选路：当存在去往同一个目的地的多条路由时，优先选择 AS_path 更短的路由&lt;/p&gt;
+&lt;p&gt;​	AS_Sep：有序 AS_Path，后经过的 AS 号添加到 AS_path 前面&lt;/p&gt;
+&lt;p&gt;​	AS_Set：无序 AS_Path, 当路由聚合后，无法判断聚合前经过的 AS 先后顺序，可以携带无序的 AS_Path&lt;/p&gt;
+&lt;h6 id=&#34;origin&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#origin&#34;&gt;#&lt;/a&gt; Origin：&lt;/h6&gt;
+&lt;p&gt;​	起源属性，属于公认必遵属性，用来表示路由是如何进入 BGP 的，分为 IGP（i）,EGP（e）,Incomplete（?）,&lt;/p&gt;
+&lt;p&gt;如果是 i，表示路由是通告 Network 宣告进入 BGP，如果是 e，表示路由是通过 EGP 学习到的（由于 EGP 已经被淘汰，正常情况下不存在，但是可以通过路由策略修改），如果是？，表示未知，一般指引入的路由，起源属性可以用于选路：i &amp;gt; e &amp;gt; ?&lt;/p&gt;
+&lt;h6 id=&#34;next_hop&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#next_hop&#34;&gt;#&lt;/a&gt; Next_Hop ：&lt;/h6&gt;
+&lt;p&gt;下一跳属性，属于公认必遵属性，表示访问路由的下一跳地址，路由器本地始发的路由在传递给 BGP 对等体时，下一跳地址更新源地址（与对端建立关系的地址），如果不是本地始发路由，下一跳地址在不同情况下不同：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 将路由传递给EBGP对等体时，正常情况为自己的更新源地址
+2. 将路由传递给IBGP对等体，下一跳地址不变（下一跳不可达时路由无效，要使路由生效需要配置下一跳本地：next-hop-local）
+3. 将BGP路由发送给EBGP对等体时，如果自身去往该路由的下一跳与要发布路由的EBGP对等体处于相同网段，下一跳地址不变 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;local-preference&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#local-preference&#34;&gt;#&lt;/a&gt; Local-Preference :&lt;/h6&gt;
+&lt;p&gt;本地优先级，属于公认任意属性，用来指导数据如何出 AS，只在 AS 内部有效，缺省值 100，数值为越大越优，可以用来选路&lt;/p&gt;
+&lt;h6 id=&#34;community&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#community&#34;&gt;#&lt;/a&gt; Community：&lt;/h6&gt;
+&lt;p&gt;团体属性，属于可选过渡属性，有两个作用：&lt;/p&gt;
+&lt;p&gt;①给路由加上一个团体属性值，将路由分为不同类别，类似于打标机的作用，针对不同的团体属性可以执行不同的策略 (AA:NN 形式 / 十进制形式，AA 为 AS 号，NN 为自定义数值)&lt;/p&gt;
+&lt;p&gt;②限制路由的传递范围，四大公认团体属性，internet 整个网络传递，No-Advertise 不传递，No-Export 本 AS 内传递，NO-export-Sub Confed 联盟本子 AS 内传递&lt;/p&gt;
+&lt;h6 id=&#34;med&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#med&#34;&gt;#&lt;/a&gt; MED:&lt;/h6&gt;
+&lt;p&gt;多出口鉴别器，属于可选非过渡属性，用于指导数据如何进入 AS，MED 值越小越优，默认只比较来自相同 AS 路由的 MED 值，并且 MED 只在相邻的两个 AS 之间有效&lt;/p&gt;
+&lt;p&gt;​	注：如果是本地的直连 / 静态路由注入到 BGP 中，传递给 EBGP 邻居时，默认 MED 值为 0&lt;/p&gt;
+&lt;p&gt;​		如果是通过 IGP 学习到的路由注入到 BGP 中，默认 MED 值为该路由器去往路由的 IGP 开销&lt;/p&gt;
+&lt;p&gt;​		可以修改路由器本地的默认 MED 值（只对引入 / 聚合的路由生效）&lt;/p&gt;
+&lt;h6 id=&#34;atomic_aggregate&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#atomic_aggregate&#34;&gt;#&lt;/a&gt; Atomic_Aggregate:&lt;/h6&gt;
+&lt;p&gt;​	原子聚集体，公认任意属性，携带在聚合路由中，用来表示该路由为聚合路由&lt;/p&gt;
+&lt;h6 id=&#34;aggregate&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#aggregate&#34;&gt;#&lt;/a&gt; Aggregate：&lt;/h6&gt;
+&lt;p&gt;​	聚合属性，可选过渡属性，携带在聚合路由中，用来表示聚合路由的聚合点（聚合所在的 AS 号以及 BGP 路由器的 ID）&lt;/p&gt;
+&lt;h6 id=&#34;preference_value&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#preference_value&#34;&gt;#&lt;/a&gt; Preference_Value:&lt;/h6&gt;
+&lt;p&gt;协议首选值，华为的私有属性，只在设有本地有效，可用于选路，权重值越大越优，范围 0-65535&lt;/p&gt;
+&lt;p&gt;默认为 0&lt;/p&gt;
+&lt;h6 id=&#34;总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#总结&#34;&gt;#&lt;/a&gt; 总结：&lt;/h6&gt;
+&lt;p&gt;​	公认必遵：AS_path（AS 路径信息），Origin（起源属性），Next_Hop （下一跳属性）&lt;/p&gt;
+&lt;p&gt;​	公认任意：Local-Preference （本地优先级），Atomic_Aggregate（原子聚集体）&lt;/p&gt;
+&lt;p&gt;​	可选过渡：Community（团体属性），Aggregate（聚合属性）&lt;/p&gt;
+&lt;p&gt;​	可选非过渡：MED（多出口鉴别器）&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/25/2022.11.24/</guid>
             <title>HCIP(九) 2022.11.24</title>
@@ -104,7 +199,7 @@
 4. BGP和IGP同步（IBGP和IGP同步，当设备将BGP路由发布给IBGP对等体之前，会先检查本地IGP路由表是否存在该路由，如果存在则发送，不存在则不发，为了避免路由黑洞，华为默认永不开启）
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h6 id=&#34;路由黑洞&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#路由黑洞&#34;&gt;#&lt;/a&gt; 路由黑洞：&lt;/h6&gt;
-&lt;p&gt;由于 BGP 可以跨跳建立对等体关系，所以导致中间设备没有运行 BGP，数据到了这里之后由于…。没有路由被丢弃&lt;/p&gt;
+&lt;p&gt;由于 BGP 可以跨跳建立对等体关系，所以导致中间设备没有运行 BGP，数据到了这里之后由于没有路由被丢弃&lt;/p&gt;
 &lt;h6 id=&#34;解决方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决方法&#34;&gt;#&lt;/a&gt; 解决方法：&lt;/h6&gt;
 &lt;pre&gt;&lt;code&gt;1. IBGP 全互联
 2. 将BGP引入IGP
@@ -339,7 +434,7 @@
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/24/2022.11.23/</guid>
-            <title></title>
+            <title>HCIP(八) 2022.11.23</title>
             <link>http://example.com/2022/11/24/2022.11.23/</link>
             <pubDate>Thu, 24 Nov 2022 07:29:59 +0800</pubDate>
             <description><![CDATA[ &lt;h4 id=&#34;策略路由&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#策略路由&#34;&gt;#&lt;/a&gt; 策略路由：&lt;/h4&gt;
