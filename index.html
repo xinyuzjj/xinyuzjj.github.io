@@ -91,12 +91,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
         </ul>
       </div>
     </header>
@@ -123,7 +123,48 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/30/2022.11.29/" itemprop="url" title="HCIP(十二) 2022.11.29"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gicm07ih54j20zk0m84qp.jpg"></a>
+    <a href="/2022/12/01/2022.11.30/" itemprop="url" title="HCIP(十三) 2022.11.30"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2022-12-01 07:29:55">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-01T07:29:55+08:00">2022-12-01</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2022/12/01/2022.11.30/" itemprop="url" title="HCIP(十三) 2022.11.30">HCIP(十三) 2022.11.30</a></h3>
+    <div class="excerpt">
+        # RSTPR 的工作过程：
+1. 初始所有交换机都认为自己是根桥。端口都为指定端口，处于Discarding状态
+2. 所有交换机互相交互RST BPDU ，选举根桥，非根桥选举根端口，链路选举指定端口（选举方式与STP一致）
+3. DP指定端口与根端口RP之间通过P/A协商进入转发状态（DP会继续发送P置位RST BPDU,RP收到后设备进入同步状态，端口进入Forwarding状态，并且回复A置位RST BPDU, DP收到A置位RST BPDU 进入Forwarding状态）
+4. DP指定端口与AP替代端口之间通过慢收敛过程，DP进入转发状态（DP继续发送P置位RST BPDU...
+    </div>
+    <a href="/2022/12/01/2022.11.30/" itemprop="url" title="HCIP(十三) 2022.11.30" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/11/30/2022.11.29/" itemprop="url" title="HCIP(十二) 2022.11.29"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicljitigmj20zk0m87fp.jpg"></a>
   </div>
   <div class="info">
     
@@ -174,7 +215,7 @@ STP 中连接终端用户的端口也需要参与生成树计算，用户访问�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/29/2022.11.28/" itemprop="url" title="HCIP(十一) 2022.11.28"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></a>
+    <a href="/2022/11/29/2022.11.28/" itemprop="url" title="HCIP(十一) 2022.11.28"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></a>
   </div>
   <div class="info">
     
@@ -220,7 +261,7 @@ STP 中连接终端用户的端口也需要参与生成树计算，用户访问�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/29/2022.11.25/" itemprop="url" title="HCIP(十) 2022.11.25"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></a>
+    <a href="/2022/11/29/2022.11.25/" itemprop="url" title="HCIP(十) 2022.11.25"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipewf5l51j20zk0m8b29.jpg"></a>
   </div>
   <div class="info">
     
@@ -264,7 +305,7 @@ STP 中连接终端用户的端口也需要参与生成树计算，用户访问�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/25/2022.11.24/" itemprop="url" title="HCIP(九) 2022.11.24"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1giclhnx9glj20zk0m8npd.jpg"></a>
+    <a href="/2022/11/25/2022.11.24/" itemprop="url" title="HCIP(九) 2022.11.24"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></a>
   </div>
   <div class="info">
     
@@ -308,7 +349,7 @@ BGP...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/24/2022.11.22/" itemprop="url" title="HCIP(七) 2022.11.22"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></a>
+    <a href="/2022/11/24/2022.11.22/" itemprop="url" title="HCIP(七) 2022.11.22"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipevuctzzj20zk0m84qp.jpg"></a>
   </div>
   <div class="info">
     
@@ -351,7 +392,7 @@ BGP...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/24/2022.11.21/" itemprop="url" title="HCIP(六) 2022.11.21"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></a>
+    <a href="/2022/11/24/2022.11.21/" itemprop="url" title="HCIP(六) 2022.11.21"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></a>
   </div>
   <div class="info">
     
@@ -394,7 +435,7 @@ BGP...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/24/2022.11.17/" itemprop="url" title="HCIP(五) 2022.11.17"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gipevgoki5j20zk0m84qp.jpg"></a>
+    <a href="/2022/11/24/2022.11.17/" itemprop="url" title="HCIP(五) 2022.11.17"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></a>
   </div>
   <div class="info">
     
@@ -445,7 +486,7 @@ PDU...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/24/2022.11.23/" itemprop="url" title="HCIP(八) 2022.11.23"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></a>
+    <a href="/2022/11/24/2022.11.23/" itemprop="url" title="HCIP(八) 2022.11.23"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciundwu5j20zk0m8n9e.jpg"></a>
   </div>
   <div class="info">
     
@@ -485,7 +526,7 @@ PBR 分为本地 PBR 和接口 PBR，本地 PBR...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/16/2022.11.16/" itemprop="url" title="HCIP(四) 2022.11.16"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gipevarprfj20zk0m8npd.jpg"></a>
+    <a href="/2022/11/16/2022.11.16/" itemprop="url" title="HCIP(四) 2022.11.16"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></a>
   </div>
   <div class="info">
     
@@ -537,62 +578,6 @@ LS ID
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/11/16/2022.11.15/" itemprop="url" title="HCIP(三) 2022.11.15"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1giclx6phq6j20zk0m8e36.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2022-11-16 07:36:33">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-11-16T07:36:33+08:00">2022-11-16</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.6k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>2 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/2022/11/16/2022.11.15/" itemprop="url" title="HCIP(三) 2022.11.15">HCIP(三) 2022.11.15</a></h3>
-    <div class="excerpt">
-        # 随记
-# mood
-王士祯《题秋江独钓图》
-一蓑一笠一扁舟，一丈丝纶一寸钩。
-一曲高歌一樽酒，一人独钓一江秋。
-# OSPF 外部路由：
-​	OSPF 外部路由通过 5 类 LSA 进行传递
-​	泛洪区域：整个 OSPF 区域
-# 5 类 LSA（AS-external-lsa）：
-
-LS ID: 外部目的的网络地址
-
-Advertise：ABSR 的 router id
-
-Network mask：目的网络掩码
-​	E：标识外部路由的类型
-​		0：外部路由为 1 类
-​		1：外部路由为 2 类
-​		1 类外部路由认为内部和外部的开销参考值一致，同时计算内部和外部的路由开销
-​		2...
-    </div>
-    <a href="/2022/11/16/2022.11.15/" itemprop="url" title="HCIP(三) 2022.11.15" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -628,7 +613,7 @@ Network mask：目的网络掩码
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">34</span>
+        <span class="count">35</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -719,7 +704,7 @@ Network mask：目的网络掩码
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/11/09/2022.11.4/" title="HCIA(十五）2022.11.4">HCIA(十五）2022.11.4</a></span>
+    <span><a href="/2022/11/25/2022.11.24/" title="HCIP(九) 2022.11.24">HCIP(九) 2022.11.24</a></span>
   </li>
 
       
@@ -728,7 +713,7 @@ Network mask：目的网络掩码
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/31/2022.10.31/" title="HCIA(十一) 2022.10.31">HCIA(十一) 2022.10.31</a></span>
+    <span><a href="/2022/11/24/2022.11.21/" title="HCIP(六) 2022.11.21">HCIP(六) 2022.11.21</a></span>
   </li>
 
       
@@ -737,25 +722,7 @@ Network mask：目的网络掩码
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/21/2022.10.20/" title="HCIA(四) 2022.10.20">HCIA(四) 2022.10.20</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/24/2022.10.24/" title="HCIA(六) 2022.10.24">HCIA(六) 2022.10.24</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/18/2022.10.18/" title="HCIA(二) 2022.10.18">HCIA(二) 2022.10.18</a></span>
+    <span><a href="/2022/11/16/2022.11.15/" title="HCIP(三) 2022.11.15">HCIP(三) 2022.11.15</a></span>
   </li>
 
       
@@ -773,25 +740,7 @@ Network mask：目的网络掩码
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/05/pinglun/" title="评论功能 添加">评论功能 添加</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/11/16/2022.11.16/" title="HCIP(四) 2022.11.16">HCIP(四) 2022.11.16</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/27/2022.10.27/" title="HCIA(九) 2022.10.27">HCIA(九) 2022.10.27</a></span>
+    <span><a href="/2022/10/21/2022.10.21/" title="HCIA(五) 2022.10.21">HCIA(五) 2022.10.21</a></span>
   </li>
 
       
@@ -801,6 +750,42 @@ Network mask：目的网络掩码
 </div>
 
     <span><a href="/2022/11/03/2022.11.3/" title="HCIA(十四）2022.11.3">HCIA(十四）2022.11.3</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/06/2022.10.6/" title="模仿大佬模板进行学习和代码复制（一） 👍">模仿大佬模板进行学习和代码复制（一） 👍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/11/09/2022.11.4/" title="HCIA(十五）2022.11.4">HCIA(十五）2022.11.4</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/21/2022.10.20/" title="HCIA(四) 2022.10.20">HCIA(四) 2022.10.20</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/11/16/2022.11.16/" title="HCIP(四) 2022.11.16">HCIP(四) 2022.11.16</a></span>
   </li>
 
   </ul>
@@ -825,13 +810,13 @@ Network mask：目的网络掩码
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">56k 字</span>
+    <span title="站点总字数">58k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">51 分钟</span>
+    <span title="站点阅读时长">53 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
