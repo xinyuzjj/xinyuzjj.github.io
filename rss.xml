@@ -5,8 +5,294 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Thu, 01 Dec 2022 07:29:55 +0800</pubDate>
-        <lastBuildDate>Thu, 01 Dec 2022 07:29:55 +0800</lastBuildDate>
+        <pubDate>Wed, 07 Dec 2022 20:42:31 +0800</pubDate>
+        <lastBuildDate>Wed, 07 Dec 2022 20:42:31 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/12/07/2022.12.7/</guid>
+            <title>HCIP(十六） 2022.12.7</title>
+            <link>http://example.com/2022/12/07/2022.12.7/</link>
+            <pubDate>Wed, 07 Dec 2022 20:42:31 +0800</pubDate>
+            <description><![CDATA[ &lt;h5 id=&#34;igmp特性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmp特性&#34;&gt;#&lt;/a&gt; IGMP 特性：&lt;/h5&gt;
+&lt;h6 id=&#34;igmp-snooping&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmp-snooping&#34;&gt;#&lt;/a&gt; IGMP Snooping：&lt;/h6&gt;
+&lt;p&gt;​	由于路由器一般都会通过交换机与终端相连，在运行了 IGMP 之后，虽然查询器形成了对应的组播表项，但是交换机收到组播报文后默认执行泛洪行为，无论 PC 加入哪一个组播组，都会收到所有组播组的组播数据，开启交换机的 igmp snooping 功能后，交换机会侦听查询器和组播成员交互的 IGMP 报文，形成二层转发表项（组播组对应端口），收到组播数据后，按照二层转发表项将数据转发给正确的接收者 。&lt;/p&gt;
+&lt;h6 id=&#34;igmp-ssm-mapping&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmp-ssm-mapping&#34;&gt;#&lt;/a&gt; IGMP SSM-mapping:&lt;/h6&gt;
+&lt;p&gt;​	在 PC 不支持 IGMPv3 时，想要支持 SSM 模型，需要在查询器上配置 SSM Mapping 的组播组和组播源静态映射关系，形成对应的组播表项（SSM 组地址范围 232.0.0.0-232.255.255.255）&lt;/p&gt;
+&lt;h6 id=&#34;igmp-proxy&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmp-proxy&#34;&gt;#&lt;/a&gt; IGMP Proxy：&lt;/h6&gt;
+&lt;p&gt;​	IGMP 代理，为了减少查询器处理的 IGMP 报文数量，代理设备会过滤掉组成员发送的不必要的 IGMP 报文（例如有新成员加入时，加入的组播组已经存在组播表项，代理设备就不会将成员关系报告报文发送给查询器）&lt;/p&gt;
+&lt;h4 id=&#34;pim&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pim&#34;&gt;#&lt;/a&gt; PIM：&lt;/h4&gt;
+&lt;p&gt;协议无关组播，使用 IP 的协议号 103，使用组播地址 224.0.0.13 发送报文&lt;/p&gt;
+&lt;h5 id=&#34;组播分发树&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#组播分发树&#34;&gt;#&lt;/a&gt; 组播分发树：&lt;/h5&gt;
+&lt;p&gt;​	SPT (最短路径树)，RPT（共享树）&lt;/p&gt;
+&lt;h5 id=&#34;pm-dm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pm-dm&#34;&gt;#&lt;/a&gt; PM DM:&lt;/h5&gt;
+&lt;p&gt;​	PIM Dense Mode，密集模式，适用于组播接收者分布密集的场景，采用推（Push）的方式&lt;/p&gt;
+&lt;h6 id=&#34;工作过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#工作过程&#34;&gt;#&lt;/a&gt; 工作过程：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;邻居发现：运行 PIM DM 的路由器互相交互 hello 报文，协商参数，建立 PIM 邻居关系以及选举 DR，周期性 30s 发送，老化时间 105s，选举 DR 通过 DR 优先级，越大越优，优先级相同比较 IP 地址，越大越优，DR 作为 IGMPv1 查询器，没有其他意义&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;扩散：PIM DM 认为网络中所有地方都存在接收者，当收到组播数据时，会向所有邻居扩散组播数据，沿途路由器都形成（S,G）表项，建立 SPT 树，（S,G）表项老化时间 210s&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RPF 检查：反向路径转发，收到组播数据的路由器第一时间都是进行 RPF 检查，避免次优路径，重复数据以及转发环路问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Assert 断言：组播路由器在转发组播数据时，如果从下游接口收到了相同的组播数据（多台设备拥有同一个下游设备，需要进行竞选避免重复数据），触发 Assert 断言机制，交互 Assert 报文竞选，竞选成功的作为 Assert Winner 继续转发组播数据，竞选失败的作为 Assert Loser 将端口从下游接口删除，Loser 会侦听 Winner 发送组播数据，如果超过 180s 没有接收到 Winner 的数据，重新参与竞选&lt;/p&gt;
+&lt;p&gt;竞选规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;比较去往组播源的单播协议优先级，优先级小的优&lt;/li&gt;
+&lt;li&gt;比较去往组播源的开销，越小越优&lt;/li&gt;
+&lt;li&gt;比较下游接口 IP 地址，越大越优&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Prune 剪枝：当组播路由收到组播数据后，发现没有下游接口，不需要组播数据，此时会主动向上游发送剪枝消息，上游收到剪枝消息后，会将收到消息的端口从下游接口删除，不再向该端口转发组播数据（Assert 断言的失败者 Loser 如果没有其他下游接口也会向上游剪枝）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;状态刷新：由于剪枝存在一个计时器 210s，计时器超时后会重新恢复为下游接口，需要重复剪枝动作，为了维持剪枝状态，第一跳路由器会周期性 60s 发送状态刷新报文，刷新剪枝计时器，使其一直维持剪枝状态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Graft 嫁接：如果已经剪枝的路由器重新有了接收者，需要接收组播数据，可以主动向上游发送 Graft 消息请求加入下游接口，反向建立组播转发路径，上游收到嫁接消息后，回复 Graft-Ack 确认，将端口重新加入下游接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/12/07/2022.12.6/</guid>
+            <title>HCIP(十五) 2022.12.6</title>
+            <link>http://example.com/2022/12/07/2022.12.6/</link>
+            <pubDate>Wed, 07 Dec 2022 14:00:20 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;igmp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmp&#34;&gt;#&lt;/a&gt; IGMP:&lt;/h4&gt;
+&lt;p&gt;​	因特网组管理协议&lt;/p&gt;
+&lt;p&gt;对于最后一跳路由器：需要感知网络中是否存在组播接收者以及存在哪些组播组的接收者&lt;/p&gt;
+&lt;p&gt;对于组播成员：需要声明自己加入哪一个组播组&lt;/p&gt;
+&lt;p&gt;IGMP 分为 v1 ，v2，v3 三个版本&lt;/p&gt;
+&lt;h5 id=&#34;igmpv1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmpv1&#34;&gt;#&lt;/a&gt; IGMPv1：&lt;/h5&gt;
+&lt;h6 id=&#34;普遍组查询报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#普遍组查询报文&#34;&gt;#&lt;/a&gt; 普遍组查询报文：&lt;/h6&gt;
+&lt;p&gt;​	由 IGMP 查询器周期性 60s 发送，用来查询网络中是否存在组播组接收者 (IGMPv1 无法自己选查询器，需要依靠组播路由协议 PIM 选举）&lt;/p&gt;
+&lt;p&gt;​	目的地址为 224.0.0.1 表示查询所有组&lt;/p&gt;
+&lt;h6 id=&#34;成员关系报告报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#成员关系报告报文&#34;&gt;#&lt;/a&gt; 成员关系报告报文：&lt;/h6&gt;
+&lt;p&gt;​	由组播接收者发送，用来告诉查询器要加入哪一个组播组，目的地址为自己加入的组播组地址&lt;/p&gt;
+&lt;h6 id=&#34;响应抑制机制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#响应抑制机制&#34;&gt;#&lt;/a&gt; 响应抑制机制：&lt;/h6&gt;
+&lt;p&gt;​	接收者回应成员关系报告报文时存在在响应抑制机制，在收到查询器的查询报文后，启动一个计时器 1-10s&lt;/p&gt;
+&lt;p&gt;，计时器超时后回应成员关系报告报文，如果发现相同组播组已经有终端回应了成员关系报告报文，自身不再发送&lt;/p&gt;
+&lt;h6 id=&#34;离组机制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#离组机制&#34;&gt;#&lt;/a&gt; 离组机制：&lt;/h6&gt;
+&lt;p&gt;​	IGMPv1 中组成员静默离开，离组时不发送任何报文，查询器通过 130s (查询报文时间 * 健壮系数 2 + 最大响应抑制时间 10s) 没有收到成员关系报告报文判断没有接收者，从而删除对应的组播表项&lt;/p&gt;
+&lt;p&gt;multicast routing-enable&lt;/p&gt;
+&lt;p&gt;interface Gigabit Ethernet 0/0/0&lt;/p&gt;
+&lt;p&gt;pim dm 开启 PIM 选举查询器&lt;br&gt;
+ igmp enable  开启 igmp&lt;br&gt;
+igmp version 1 设置版本&lt;/p&gt;
+&lt;p&gt;配置静态&lt;/p&gt;
+&lt;p&gt;igmp static-group 组地址&lt;/p&gt;
+&lt;h5 id=&#34;igmpv2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmpv2&#34;&gt;#&lt;/a&gt; IGMPv2:&lt;/h5&gt;
+&lt;p&gt;​	相比 v1 来说做了一些改进，新增加了离开报文，并且自主选举查询器&lt;/p&gt;
+&lt;h6 id=&#34;查询器选举&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查询器选举&#34;&gt;#&lt;/a&gt; 查询器选举：&lt;/h6&gt;
+&lt;p&gt;​	当存在多个路由器能够向网段转发组播数据，需要选举出查询器，通过发送普遍组查询报文选举，接口 IP 地址小的作为查询器，负责周期性发送查询报文，选举失败的路由器会监听查询器发送的查询报文，如果 125s 没有收到查询报文，则认为查询器不在，自己重新成为查询器&lt;/p&gt;
+&lt;h6 id=&#34;成员离开报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#成员离开报文&#34;&gt;#&lt;/a&gt; 成员离开报文：&lt;/h6&gt;
+&lt;p&gt;​	组成员离开主动发送离开报文，通知查询器不再接收某个组播组的数据 ，目的地址为 224.0.0.2 （表示发送给所有路由器）&lt;/p&gt;
+&lt;h6 id=&#34;特定组查询报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#特定组查询报文&#34;&gt;#&lt;/a&gt; 特定组查询报文：&lt;/h6&gt;
+&lt;p&gt;​	查询器收到成员离开报文后，需要知道网络中是否还存在该组的其他接收者，通过发送特定组查询报文查询，1s 一次，发两次，如果收到了该组的成员关系报告报文，则保留组播表项，如果没有收到则删除对应的表项，&lt;strong&gt;报文目的地址为查询的组播组地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;注：IGMPv2 在报文中新增了一个最大响应时间字段，表示组播接收者需要在响应时间内发送成员关系报告报文（响应抑制机制），v2 的响应时间可以修改，1-25s，默认 10s（如果接收者少，可以将最大响应时间改小一点，加快成员报告报文的发送，接收者数量多就可以把时间改大，减少成员关系报告报文的重复发送）&lt;/p&gt;
+&lt;p&gt;接口下：&lt;/p&gt;
+&lt;p&gt;​	igmp max-response-time 1-25s&lt;/p&gt;
+&lt;h5 id=&#34;igmpv3&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#igmpv3&#34;&gt;#&lt;/a&gt; IGMPv3：&lt;/h5&gt;
+&lt;p&gt;​	IGMPv1 和 IGMPv2 都适用与 ASM 模型，无法指定组播源，在 SSM 模型下需要指定组播源，可以通过 IGMPv3 实现&lt;/p&gt;
+&lt;h6 id=&#34;报文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#报文&#34;&gt;#&lt;/a&gt; 报文：&lt;/h6&gt;
+&lt;p&gt;​	普遍组查询报文，特定组查询报文，特定源组查询报文&lt;/p&gt;
+&lt;h6 id=&#34;模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#模式&#34;&gt;#&lt;/a&gt; 模式：&lt;/h6&gt;
+&lt;p&gt;​	Include：表示加入某个组播，并且只愿意接收某些组播源发往该组的数据，例如：&lt;/p&gt;
+&lt;p&gt;​	（S1,S2,S3,G1 include）表示加入 G1 这个组组播，并且在接收组播数据时只接收 S1/S2/S3 发送的组播数据，其他组播源发送的不接受&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	Exclude：表示加入某个组播组，但是需要过滤某些组播源发送的组播数据，例如：&lt;/p&gt;
+&lt;p&gt;​	（S1,S2,S3,G1 exclude）表示加入 G1 这个组播组，并且接收除了 S1/S2/S3 之外所有组播源发送的组播数据&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	change_to_include_mode：模式改变为 include，原本是 exclude 过滤某些组播源发送的数据，现在改变为愿意接收（如果模式改变为 include 后，没有指定组播源，表示不接收这个组播组的数据，表示离组）&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	change_to_exclude_mode: 模式改变为 exclude，原本是 include 愿意接收某些组播源发送的组播数据，现在改变为不愿意接收（如果模式改变为 exclude 后，没有指定组播源，表示接收发往这个组播组的所有组播数据）&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	Allow_new_source: 增加新的源，增加接收组播数据的组播源，如果原本是 include 模式，就是在原有基础上增加，如果是 exclude 模式，就是在原有的基础上删除&lt;/p&gt;
+&lt;p&gt;​	Block_old_source：删除旧的源，删除原本接收组播数据的组播源，如果原本是 include，就是在原有的基础上删除，如果是 exclude，就是在原有的基础上增加&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​	注：IGMPv3 没有定义专门的离开报文，通过改变成员关系报告报文的模式离开，并且成员关系报告报文的目的地址为 224.0.0.22（表示发送给所有运行 IGMPv3 的路由器）&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/12/07/2022.12.2/</guid>
+            <title>HCIP(十四) 2022.12.2</title>
+            <link>http://example.com/2022/12/07/2022.12.2/</link>
+            <pubDate>Wed, 07 Dec 2022 14:00:20 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;ip组播基础&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ip组播基础&#34;&gt;#&lt;/a&gt; IP 组播基础&lt;/h4&gt;
+&lt;p&gt;​	组播：一对多发送业务数据（点到多点业务）&lt;/p&gt;
+&lt;p&gt;​	使用单播承载点到多点业务会导致重复流量以及带宽占用严重的问题&lt;/p&gt;
+&lt;p&gt;​	使用广播承载点到多点业务会存在安全隐患&lt;/p&gt;
+&lt;p&gt;​	使用组播承载既没有重复流量不会占用链路带宽，也可以提高数据安全性&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1669965936622.png&#34; alt=&#34;1669965936622&#34;&gt;&lt;/p&gt;
+&lt;p&gt;组播 IP 地址：224.0.0.0 — 239.255.255.255&lt;/p&gt;
+&lt;p&gt;组播 MAC 地址：0x01-00-5e - 第 25bit 位为 0，后 23bit 由组播 IP 映射&lt;/p&gt;
+&lt;p&gt;注：由于组播 IP 地址前 4bit 固定为 1110，后 23bit 映射为组播 MAC，中间 5bit 丢失，会造成 32 个组播 IP 地址映射到同一个组播 MAC 地址&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;范围&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;含义&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;224.0.0.0—224.0.0.255&lt;/td&gt;
+&lt;td&gt;为路由协议预留的永久组地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;224.0.1.0—231.255.255.255    233.0.0.0—238.255.255.255&lt;/td&gt;
+&lt;td&gt;Any-Source 临时组播组地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;232.0.0.0—232.255.255.255&lt;/td&gt;
+&lt;td&gt;Source-Specific 临时组播组地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;239.0.0.0—239.255.255.255&lt;/td&gt;
+&lt;td&gt;本地管理的 Any-Source 临时组播组地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;组播服务模型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#组播服务模型&#34;&gt;#&lt;/a&gt; 组播服务模型：&lt;/h5&gt;
+&lt;p&gt;​	ASM：任意源组播，组播组成员（接收组播数据的设备）只关心数据是不是发往自己所在的组播组，不关心是谁发送的数据&lt;/p&gt;
+&lt;p&gt;​	SSM：指定源组播，组播组成员不仅关心数据是不是发往自身所在的组播组，还关心是谁发送的组播数据&lt;/p&gt;
+&lt;h5 id=&#34;组播网络架构&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#组播网络架构&#34;&gt;#&lt;/a&gt; 组播网络架构：&lt;/h5&gt;
+&lt;p&gt;源端网络：组播源 - 第一跳路由器（接收到组播数据的第一个三层组播设备）&lt;/p&gt;
+&lt;p&gt;组播转发网络：由组播路由器组成，帮忙转发组播数据的网络&lt;/p&gt;
+&lt;p&gt;成员端网络：最后一跳路由器 - 组播组成员（接收组播数据的接收者）&lt;/p&gt;
+&lt;p&gt;组播转发数据时可能会出现环路，重复数据，次优路劲等问题，可以通过 RPF 检查解决&lt;/p&gt;
+&lt;h5 id=&#34;rpf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rpf&#34;&gt;#&lt;/a&gt; RPF:&lt;/h5&gt;
+&lt;p&gt;​	反向路径转发，通过确定去往组播源最优的出接口来保障组播路由器接收到最优的组播数据&lt;/p&gt;
+&lt;h6 id=&#34;检查过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#检查过程&#34;&gt;#&lt;/a&gt; 检查过程：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 组播路由器接收到组播数据
+2. 根据组播数据中的源IP地址查找对应最优的出接口
+3. 检查接收到组播数据的入接口与对应最优的出接口是否一致
+4. 接口一致则接收数据，不一致则丢弃
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;rpf路由选举确定最优出接口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rpf路由选举确定最优出接口&#34;&gt;#&lt;/a&gt; RPF 路由选举（确定最优出接口）：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;将单播路由协议 / MBGP / 组播静态路由中去往组播源的路由作为备选 RPF 路由&lt;/li&gt;
+&lt;li&gt;从备选路由中选则掩码最长的&lt;/li&gt;
+&lt;li&gt;掩码相同 选择协议路由优先级最高的（小）&lt;/li&gt;
+&lt;li&gt;优先级相同 组播静态 &amp;gt; MBGP &amp;gt; 单播路由&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注：所有组播路由器&lt;/p&gt;
+&lt;p&gt;在接收到组播数据时都需要进行 RPF 检查，检查通过才能接收&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2022/12/07/2022.12.1/</guid>
+            <title>HCIP(十三) 2022.12.1</title>
+            <link>http://example.com/2022/12/07/2022.12.1/</link>
+            <pubDate>Wed, 07 Dec 2022 14:00:20 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;交换机堆叠与集群&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#交换机堆叠与集群&#34;&gt;#&lt;/a&gt; 交换机堆叠与集群&lt;/h4&gt;
+&lt;p&gt;堆叠：istack，可以将多台支持堆叠特性的物理交换机虚拟为一台逻辑交换机（一般是盒式交换机）&lt;/p&gt;
+&lt;p&gt;集群：CSS，可以将两台支持集群特性的物理交换机虚拟为一台逻辑交换机（一般是框式交换机）&lt;/p&gt;
+&lt;h5 id=&#34;堆叠系统&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠系统&#34;&gt;#&lt;/a&gt; 堆叠系统：&lt;/h5&gt;
+&lt;p&gt;通过堆叠技术形成的虚拟交换机由多台物理交换机组成，交换机角色分为主交换机，备交换机，从交换机&lt;/p&gt;
+&lt;p&gt;​	主交换机：负载收集成员交换机信息以及管理成员交换机&lt;/p&gt;
+&lt;p&gt;​	备交换机：会同步主交换机的信息，作为主交换机的备份&lt;/p&gt;
+&lt;p&gt;​	从交换机：主要负载业务数据的转发&lt;/p&gt;
+&lt;h5 id=&#34;堆叠id&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠id&#34;&gt;#&lt;/a&gt; 堆叠 ID：&lt;/h5&gt;
+&lt;p&gt;在对端系统中唯一标识一台交换机，缺省堆叠 ID 为 0，当一个堆叠系统中堆叠 ID 冲突时，会由主交换机重新分配&lt;/p&gt;
+&lt;h5 id=&#34;堆叠连接方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠连接方式&#34;&gt;#&lt;/a&gt; 堆叠连接方式：&lt;/h5&gt;
+&lt;p&gt;​	堆叠卡堆叠：通过专用的堆叠接口和堆叠线缆连接进行堆叠&lt;/p&gt;
+&lt;p&gt;​	业务口堆叠：利用现有的业务接口连接，再将业务接口加入堆叠逻辑接口进行堆叠&lt;/p&gt;
+&lt;h5 id=&#34;堆叠逻辑接口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠逻辑接口&#34;&gt;#&lt;/a&gt; 堆叠逻辑接口：&lt;/h5&gt;
+&lt;p&gt;stack port n/1 和 stack port n/2 ，其中 n 为设备的堆叠 ID，再进行堆叠时，设备连接其他物理设备的逻辑接口必须是 n/1 连接 n/2（n/2 连接 n/1）&lt;/p&gt;
+&lt;h5 id=&#34;堆叠拓扑类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠拓扑类型&#34;&gt;#&lt;/a&gt; 堆叠拓扑类型：&lt;/h5&gt;
+&lt;p&gt;​	链形连接：容易增加新的成员设备，但是可靠性更低（某条链路 / 设备故障堆叠系统就断开了）&lt;/p&gt;
+&lt;p&gt;​	环形连接：增加新的设备需要先断开环，然后增加，但是可靠性更高&lt;/p&gt;
+&lt;h5 id=&#34;堆叠系统组建过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠系统组建过程&#34;&gt;#&lt;/a&gt; 堆叠系统组建过程：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 物理连接，上电
+2. 选举主交换机
+3. 主交换机收集拓扑信息，分配堆叠ID等
+4. 将信息同步给成员交换机后稳定运行               
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;主交换机选举&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#主交换机选举&#34;&gt;#&lt;/a&gt; 主交换机选举：&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;比较堆叠系统启动时间，已经稳定运行的优先与处于启动状态的交换机，20s 以内认为是同时启动&lt;/li&gt;
+&lt;li&gt;比较堆叠优先级，越大越优&lt;/li&gt;
+&lt;li&gt;比较 MAC 地址，越小越优&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;堆叠成员退出&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠成员退出&#34;&gt;#&lt;/a&gt; 堆叠成员退出：&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;从交换机退出，更新拓扑信息进行同步即可&lt;/li&gt;
+&lt;li&gt;备交换机退出，重新选举新的备交换机，然后更新拓扑信息&lt;/li&gt;
+&lt;li&gt;主交换机退出，备交换机成为新的主交换机，再选举一个备交换机，更新拓扑信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;堆叠成员加入&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠成员加入&#34;&gt;#&lt;/a&gt; 堆叠成员加入：&lt;/h5&gt;
+&lt;p&gt;​	一个未上电的设备连接到堆叠系统中之后再启动，自动成为从交换机&lt;/p&gt;
+&lt;h5 id=&#34;堆叠合并&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠合并&#34;&gt;#&lt;/a&gt; 堆叠合并：&lt;/h5&gt;
+&lt;p&gt;​	两个稳定运行的堆叠系统连接再一起，两个主交换机之间进行竞选，竞选成功的继续为主交换机，竞选失败的成为从交换机&lt;/p&gt;
+&lt;h5 id=&#34;堆叠分裂&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠分裂&#34;&gt;#&lt;/a&gt; 堆叠分裂：&lt;/h5&gt;
+&lt;p&gt;​	一个堆叠系统断开后成为多个堆叠吸引&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 主备交换机在一个堆叠系统的更新拓扑信息
+2. 主备不在一个堆叠系统，主交换机所在可以重新选举备交换机，备交换机所在备交换机成为主交换机，重新选举新的备交换机
+3. 分裂后只有从交换机的重新选举主交换机和备交换机
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：堆叠系统分裂会造成地址冲突的问题，导致网络故障&lt;/p&gt;
+&lt;h6 id=&#34;mad&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mad&#34;&gt;#&lt;/a&gt; MAD：&lt;/h6&gt;
+&lt;p&gt;多主检测，检测堆叠分裂后的冲突问题，分裂后的堆叠系统之间进行竞选，竞选成功的正常运行，竞选失败的关闭所有物理端口（除了管理员手动保留的）&lt;/p&gt;
+&lt;h6 id=&#34;检测方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#检测方式&#34;&gt;#&lt;/a&gt; 检测方式:&lt;/h6&gt;
+&lt;p&gt;​	直连检测：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;中间设备直连检测，通过一台专用的物理设备进行 MAD 检测，不承载其他业务，所有成员交换机与中间设备相连&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Full-mesh 直连检测，所有成员交换机两两互连，通过检测链路交互 MAD 报文检测&lt;/p&gt;
+&lt;p&gt;注：直连检测在分裂前不交互报文，分裂后每 1s 交互 MAD 检测报文&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代理检测：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;单机代理检测：连接方式与中间设备直连检测一直，检测设备检测同时可以承载业务&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;堆叠系统互为代理：不同堆叠系统之间互相作为 MAD 检测设备，交互 MAD 报文&lt;/p&gt;
+&lt;p&gt;注：代理检测在发生分裂前每 30s 交互 MAD 检测报文，分裂后每 1s 交互&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;mad竞选过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mad竞选过程&#34;&gt;#&lt;/a&gt; MAD 竞选过程：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;多个堆叠系统的主交换机比较启动时间，先启动的优先竞选成功，20s 内认为相同&lt;/li&gt;
+&lt;li&gt;主交换机之间比较堆叠优先级，大的竞选成功&lt;/li&gt;
+&lt;li&gt;优先级相同比较 MAC 地址，小的竞选成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;堆叠升级&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆叠升级&#34;&gt;#&lt;/a&gt; 堆叠升级：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 智能升级：所有成员交换机同步主交换机的软件版本和配置信息
+2. 传统升级：设置好堆叠系统下一次启动的软件版本和配置信息，然后进行重启，会造成业务中断
+3. 平滑升级：将堆叠系统划分为Active区域和Backup区域，Backup区域升级时Active区域承载业务，backup区域升级完再升级Active区域，此时Backup区域承载业务，可以保证业务不中断
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;跨设备链路聚合&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#跨设备链路聚合&#34;&gt;#&lt;/a&gt; 跨设备链路聚合：&lt;/h5&gt;
+&lt;p&gt;​	设备通过堆叠技术形成一个虚拟交换机后，不同物理交换机上的链路可以进行跨设备的链路聚合，可以对流量进行负载分担&lt;/p&gt;
+&lt;h5 id=&#34;流量本地优先转发&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#流量本地优先转发&#34;&gt;#&lt;/a&gt; 流量本地优先转发：&lt;/h5&gt;
+&lt;p&gt;​	对于成员交换机在转发数据时会进行负载均衡，一部分数据会通过堆叠线缆转发给其他成员交换机承载，此时会造成堆叠线缆负担过重，利用设置流量本地优先转发，只要本交换机存在出接口能够转发数据就不会让其他成员交换机转发&lt;/p&gt;
+&lt;h5 id=&#34;集群&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集群&#34;&gt;#&lt;/a&gt; 集群：&lt;/h5&gt;
+&lt;p&gt;CSS，将两台支持集群特性的框式交换机虚拟为一台逻辑交换机&lt;/p&gt;
+&lt;h6 id=&#34;结构&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#结构&#34;&gt;#&lt;/a&gt; 结构：&lt;/h6&gt;
+&lt;p&gt;主交换机，备交换机&lt;/p&gt;
+&lt;h6 id=&#34;集群id&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集群id&#34;&gt;#&lt;/a&gt; 集群 ID：&lt;/h6&gt;
+&lt;p&gt;在集群中唯一标识，默认集群 ID 为 1&lt;/p&gt;
+&lt;h6 id=&#34;css-link&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#css-link&#34;&gt;#&lt;/a&gt; CSS link：&lt;/h6&gt;
+&lt;p&gt;集群链路，集群成员交换机之间作用集群链路&lt;/p&gt;
+&lt;h6 id=&#34;集群优先级&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集群优先级&#34;&gt;#&lt;/a&gt; 集群优先级：&lt;/h6&gt;
+&lt;p&gt;默认为 1，越大越优选举为主交换机&lt;/p&gt;
+&lt;h5 id=&#34;集群建立方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集群建立方式&#34;&gt;#&lt;/a&gt; 集群建立方式：&lt;/h5&gt;
+&lt;p&gt;​	传统 CSS: 主控板集群卡建立集群和业务口集群，集群卡需要通过专用的集群线缆建立集群，业务空需要加入集群逻辑接口进行集群&lt;/p&gt;
+&lt;p&gt;​	CSS2: 第二代集群，通过交互网板集群卡集群&lt;/p&gt;
+&lt;p&gt;注：传统 CSS 在转发流量时，同框 / 不同框流量都需要经过主控板，所以两台成员交换机都必须至少有一个可用的主控板&lt;/p&gt;
+&lt;p&gt;同框数据经过本地接口版 — 本地主控版 — 本地接口&lt;/p&gt;
+&lt;p&gt;不同框数据经过本地接口版 — 本地主控板 — 本地集群卡 — 对端集群卡 — 对端主控板 — 对端接口板&lt;/p&gt;
+&lt;p&gt;注：CSS2 转发数据直接通过交换网板，不需要经过主控板，实现了转控分离，具有 “集群主控 1+N 备份” 特性（整个集群只要有一个主控板能正常工作集群就能正常运行）&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/12/01/2022.11.30/</guid>
             <title>HCIP(十三) 2022.11.30</title>
