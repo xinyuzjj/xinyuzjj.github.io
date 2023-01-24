@@ -5,8 +5,576 @@
         <link>http://example.com</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Wed, 07 Dec 2022 20:42:31 +0800</pubDate>
-        <lastBuildDate>Wed, 07 Dec 2022 20:42:31 +0800</lastBuildDate>
+        <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+        <lastBuildDate>Tue, 24 Jan 2023 12:30:55 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.9/</guid>
+            <title>HCIP(十八） 2022.12.9</title>
+            <link>http://example.com/2023/01/24/2022.12.9/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;bfd&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bfd&#34;&gt;#&lt;/a&gt; BFD：&lt;/h4&gt;
+&lt;p&gt;​	双向转发检测，是一个介质无关，协议无关的故障检测协议，应用广泛，能够再毫秒级别感应到网络故障问题&lt;/p&gt;
+&lt;p&gt;注：BFD 通过在设备之间建立会话，互相交互 BFD 报文来检测两者之间的连通性问题&lt;/p&gt;
+&lt;h5 id=&#34;bfd会话建立方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bfd会话建立方式&#34;&gt;#&lt;/a&gt; BFD 会话建立方式：&lt;/h5&gt;
+&lt;p&gt;​	静态建立 BFD 会话：管理员手工配置本地标识符和远端标识符（标识符用于区分本地会话）&lt;/p&gt;
+&lt;p&gt;​	动态建立 BFD 会话：标识符由系统自动分配&lt;/p&gt;
+&lt;h5 id=&#34;bfd的状态变化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bfd的状态变化&#34;&gt;#&lt;/a&gt; BFD 的状态变化：&lt;/h5&gt;
+&lt;p&gt;​	Down：建立 BFD 会话的初始状态 / 会话 Down&lt;/p&gt;
+&lt;p&gt;​	init：处于 Down 状态时收到了 Down 状态 BFD 报文进入 init 状态&lt;/p&gt;
+&lt;p&gt;​	UP：处于 init 状态时收到了 init/UP 状态的报文进入 UP 状态，表示 BFD 会话建立完成&lt;/p&gt;
+&lt;p&gt;​	AdminDown：管理员 Down，由管理员手工将会话 Down，不是因为网络故障&lt;/p&gt;
+&lt;p&gt;注：在任何一个状态，只要会话超时就会回到 Down 状态，此时认为网络故障&lt;/p&gt;
+&lt;h5 id=&#34;bfd的检测模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bfd的检测模式&#34;&gt;#&lt;/a&gt; BFD 的检测模式：&lt;/h5&gt;
+&lt;p&gt;​	异步模式：两个设备都支持 BFD，互相交互 BFD 报文，设备通过是否能够接收到对端发送的 BFD 报文来判断会话连接状态（连通性）&lt;/p&gt;
+&lt;p&gt;​	查询模式：只有一端开启 / 支持 BFD，通过是否能够接收到自己发送出去的 BFD 报文判断连通性&lt;/p&gt;
+&lt;h5 id=&#34;bfd检测时间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bfd检测时间&#34;&gt;#&lt;/a&gt; BFD 检测时间：&lt;/h5&gt;
+&lt;p&gt;​	TX：发送时间间隔&lt;/p&gt;
+&lt;p&gt;​	RX：接收时间间隔&lt;/p&gt;
+&lt;p&gt;​	DM：检测倍数&lt;/p&gt;
+&lt;p&gt;​	设备实际发送时间间隔 = MAX (本地配置发送时间间隔，对端配置接收时间间隔)&lt;/p&gt;
+&lt;p&gt;​	设备实际接收时间间隔 = MAX (对端配置发送时间间隔，本地配置接收时间间隔)&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h6 id=&#34;实际检测时间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#实际检测时间&#34;&gt;#&lt;/a&gt; 实际检测时间：&lt;/h6&gt;
+&lt;p&gt;​	异步模式 = 设备实际接收时间间隔 * 对端配置检测倍数&lt;/p&gt;
+&lt;p&gt;​	查询模式 = 设备实际接收时间间隔 * 本地配置检测倍数&lt;/p&gt;
+&lt;p&gt;静态 BFD&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. bfd //开启BFD
+2. bfd 1 bind peer-ip *  source-ip * //创建BFD会话
+3. discriminator  local  *  //设置本地标识符
+4. discriminator  remote  * //设置远端标识符
+5. commit  //启动配置 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;动态 BFD&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;bfd // 开启 BFD&lt;/li&gt;
+&lt;li&gt;bfd 1 bind peer-ip *  source-ip *  auto // 创建 BFD 会话&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;bfd-echo&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bfd-echo&#34;&gt;#&lt;/a&gt; BFD Echo：&lt;/h5&gt;
+&lt;p&gt;BFD 单臂回声，当进行 BDF 检测时，有一端不支持 BFD 功能，此时可以通过回声达到检测的目的（设备发送 BFD 报文封装源目 IP 地址都为自己的地址，对端接收到后根据目的 IP 转发回来）&lt;/p&gt;
+&lt;p&gt;配置:&lt;/p&gt;
+&lt;p&gt;​	bfd 1 bind peer-ip 10.1.12.2 interface g0/0/0 one-arm-echo&lt;/p&gt;
+&lt;p&gt;​	discriminator local 100&lt;/p&gt;
+&lt;p&gt;​	commit&lt;/p&gt;
+&lt;h5 id=&#34;静态路由与bfd联动&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#静态路由与bfd联动&#34;&gt;#&lt;/a&gt; 静态路由与 BFD 联动：&lt;/h5&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;1. 建立静态路由的主备份路径：&lt;/p&gt;
+&lt;p&gt;（r1）ip route-static 10.1.45.0 255.255.255.0 10.1.34.4&lt;br&gt;
+（r3）ip route-static 10.1.45.0 255.255.255.0 10.1.35.5 preference 70&lt;/p&gt;
+&lt;p&gt;2. 在静态主路径上与 BFD 进行联动&lt;/p&gt;
+&lt;p&gt;（r1）bfd 1 bind peer-ip 10.1.34.4 source-ip 10.1.34.3 auto&lt;/p&gt;
+&lt;p&gt;（r2）bfd 1 bind peer-ip 10.1.34.3 source-ip 10.1.34.4 auto&lt;/p&gt;
+&lt;p&gt;3. 将静态主路径上与 BFD 进行联动&lt;/p&gt;
+&lt;p&gt;（r1）ip route-static 10.1.45.0 255.255.255.0 10.1.34.4 track bfd-session 1&lt;/p&gt;
+&lt;p&gt;修改 BFD 时间间隔：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;detect-multiplier 5 // 修改检测倍数&lt;/li&gt;
+&lt;li&gt;min-tx-interval 500 // 修改发送报文时间&lt;/li&gt;
+&lt;li&gt;min-rx-interval 500 // 修改接收报文时间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;ospf与bfd联动&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ospf与bfd联动&#34;&gt;#&lt;/a&gt; OSPF 与 BFD 联动&lt;/h5&gt;
+&lt;p&gt;在 OSPF 进程下：&lt;/p&gt;
+&lt;p&gt;bfd all-interfaces enable  // 开启所有 OSPF 接口的 BFD 检测功能&lt;/p&gt;
+&lt;p&gt;bfd all-interfaces min-tx-interval&lt;/p&gt;
+&lt;p&gt;bfd all-interfaces min-rx-interval&lt;/p&gt;
+&lt;p&gt;bfd all-interfaces  detect-multiplier&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.8/</guid>
+            <title>HCIP(十七） 2022.12.8</title>
+            <link>http://example.com/2023/01/24/2022.12.8/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h5 id=&#34;pim-sm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pim-sm&#34;&gt;#&lt;/a&gt; PIM SM：&lt;/h5&gt;
+&lt;p&gt;​	PIM Sparse Mode，稀疏模式，PIM SM 认为网络中不存在一个接收者，采用拉（pull）的形式&lt;/p&gt;
+&lt;h6 id=&#34;组播分发树&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#组播分发树&#34;&gt;#&lt;/a&gt; 组播分发树：&lt;/h6&gt;
+&lt;p&gt;​	SPT：最短路径树，通过（S,G）表项构建&lt;/p&gt;
+&lt;p&gt;​	RPT：共享树（汇聚点树），通过（*，G）表项构建&lt;/p&gt;
+&lt;p&gt;注：RP：汇聚点，类似信息汇聚中心，拥有所有组播源和组播组接收者的信息，所有组播路由都知道 RP 的位置，可以静态指定，也可以动态选举&lt;/p&gt;
+&lt;p&gt;组播源侧 DR：负责向 RP 发送单播注册消息&lt;/p&gt;
+&lt;p&gt;接收者侧 DR：负责向 RP 发送 Join 加入消息（查询器角色）&lt;/p&gt;
+&lt;p&gt;DR 选举与 PIM DM 相同&lt;/p&gt;
+&lt;p&gt;**PIM-SM(ASM)**&lt;strong&gt; 协议报文&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;报文类型&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;报文功能&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Hello&lt;/td&gt;
+&lt;td&gt;用于 PIM 邻居发现，协议参数协商，PIM 邻居关系维护等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Register（注册）&lt;/td&gt;
+&lt;td&gt;用于事先源的注册过程。这是一种单播报文，在源的注册过程中，组播数据被第一跳路由器封装在单播注册报文中发往 RP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Register-Stop（注册停止）&lt;/td&gt;
+&lt;td&gt;RP 使用该报文通知第一跳路由器停止通过注册报文发送组播流量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Join/Prune（加入 / 剪枝）&lt;/td&gt;
+&lt;td&gt;加入报文用于加入组播分发树，剪枝则用于修剪组播分发树&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Assert（断言）&lt;/td&gt;
+&lt;td&gt;用于断言机制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bootstrap（自举）&lt;/td&gt;
+&lt;td&gt;用于 BSR 选举。另外 BSR 也使用该报文向网络中扩散 C-RP（Candidate-RP，候选 RP）的汇总信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Candidate-RP-Advertisement   （候选 RP 通告）&lt;/td&gt;
+&lt;td&gt;C-RP 使用该报文向 BSR 发送通告，报文中包含该 C-RP 的 IP 地址及优先级等信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h6 id=&#34;pim-sm-再asm模型下的工作过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pim-sm-再asm模型下的工作过程&#34;&gt;#&lt;/a&gt; PIM SM 再 ASM 模型下的工作过程：&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;接收者侧 DR 通过和接收者之间运行 IGMP 协议可以得知有哪些组播组的接收者，然后主动朝着 RP 的方向发送 Join 加入报文，沿途所有路由器都会形成（*，G）表项，并且将收到 Join 加入报文的端口作为下游端口，一直到 RP 构建 RPT&lt;/li&gt;
+&lt;li&gt;组播源侧 DR 在收到第一个组播报文时，会将组播报文封装为单播注册报文发送给 RP，RP 收到注册报文后，通过注册报文中的组播数据找到组播源和组播组信息，然后反向发送 Join 加入消息，沿途所有路由器形成（S,G）表项，并将收到 JOIN 报文的端口作为下游接口，直到组播源构建 SPT ,&lt;/li&gt;
+&lt;li&gt;由于组播源侧 DR 形成（S,G）表项后组播数据可以转发，注册报文又会单播发送，造成重复数据的问题，此时 RP 会再向组播源册 DR 发送注册停止报文（Rejister-stop），组播源侧 DR 收到停止报文后不再发送注册报文，组播数据正常转发&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注 SPT 和 RPT 树构建完成后，组播数据首先没有沿着 SPT 树转发至 RP，再沿着 RPT 树转发至接收者&lt;/p&gt;
+&lt;h6 id=&#34;spt切换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spt切换&#34;&gt;#&lt;/a&gt; SPT 切换：&lt;/h6&gt;
+&lt;p&gt;​	当组播接收者侧 DR 收到的组播数据不是最优的，触发切换 SPT，通过组播数据中携带的组播源信息，反向朝着组播源的方向发送 Join 加入消息，构建 SPT 树，沿途所有路由器形成（S,G）表项，并将收到报文的端口作为下游接口，之后的组播数据可以沿着新构建的 SPT 转发，组播源侧 DR 会向原先构建的 RPT 剪枝（向 RP 剪枝），为了维持 SPT 和剪枝状态，接收者侧 DR 会周期性 60s 发送 Join 加入报文和 Prune 剪枝报文（如果是共享网段也会触发断言机制竞选，避免重复数据）&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h6 id=&#34;pim-sm-再ssm模型下的工作过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pim-sm-再ssm模型下的工作过程&#34;&gt;#&lt;/a&gt; PIM SM 再 SSM 模型下的工作过程：&lt;/h6&gt;
+&lt;p&gt;​	对于成员端 DR 来说，与接收者之间运行了 IGMPv3，能够得知接收者需要哪些组播源的组播数据，可以主动向组播源的方向发送 join 加入报文，反向建立 SPT，沿途所有路由器生成 (S,G) 表项，并将收到 Join 报文的端口作为下游接口，直到源端 DR，后续的组播数据都沿着 SPT 转发至接收者&lt;/p&gt;
+&lt;p&gt;注：SSM 模型下，不需要 RP，无需构建 RPT 以及注册源&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1670469599101.png&#34; alt=&#34;1670469599101&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.16/</guid>
+            <title>HCIP(二十三) 2022.12.16</title>
+            <link>http://example.com/2023/01/24/2022.12.16/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;mpls-vpn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mpls-vpn&#34;&gt;#&lt;/a&gt; MPLS VPN :&lt;/h4&gt;
+&lt;p&gt;​	VPN：&lt;/p&gt;
+&lt;p&gt;虚拟专用网络&lt;/p&gt;
+&lt;h5 id=&#34;背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#背景&#34;&gt;#&lt;/a&gt; 背景：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 直接通过公网通信安全性过低
+2. 搭建物理专线安全性高，但是成本也相应增多
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;PE：运营商边缘设备&lt;/p&gt;
+&lt;p&gt;P：运营商核心设备&lt;/p&gt;
+&lt;p&gt;CE：用户边缘设备&lt;/p&gt;
+&lt;h5 id=&#34;vpf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vpf&#34;&gt;#&lt;/a&gt; VPF:&lt;/h5&gt;
+&lt;p&gt;虚拟路由转发，类似虚拟路由表，用于 PE 本地区分不同客户的路由（不同客户可能存在地址空间重叠的问题），只在本地有效&lt;/p&gt;
+&lt;h5 id=&#34;rd&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rd&#34;&gt;#&lt;/a&gt; RD：&lt;/h5&gt;
+&lt;p&gt;路由标识符，8 字节，用于 PE 之间传递路由时进行区分，普通的 IPv4 路由加上 RD 值后就是 VPN-IPv4 路由，简称 VPNv4 路由，长 12 字节&lt;/p&gt;
+&lt;h5 id=&#34;rt&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rt&#34;&gt;#&lt;/a&gt; RT:&lt;/h5&gt;
+&lt;p&gt;分为 Export-RT 和 Import-RT（出方向 RT 和入方向 RT），出方向 RT 值作为 MP-BGP 的扩展团体属性携带在路由中，入方向 RT 值用于检查收到的路由是否可以接收&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注：MP-BGP：BGP 的多协议扩展，普通的 BGP-4 无法传递 VPNv4 路由，需要使能地址族 VPNv4 功能，也就是 MP-BGP，使其能够传递 VPNv4 路由&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vpn的路由传递&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vpn的路由传递&#34;&gt;#&lt;/a&gt; VPN 的路由传递：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 本端CE——&amp;gt;本端PE: 通过路由协议
+2. 本端PE——&amp;gt;对端PE：通过MP-BGP
+3. 对端PE——&amp;gt;对端CE：同上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;vpn的报文转发&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vpn的报文转发&#34;&gt;#&lt;/a&gt; VPN 的报文转发：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 数据从PE设备转发至P设备时，P设备没有路由无法转发，需要在公网设置LDP隧道，分配公网标签
+2. 数据从PE1-PE2时，PE无法判断查找那个路由表，需要MP-BGP 为私网路由分配私网标签进行区分
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671180735844.png&#34; alt=&#34;1671180735844&#34;&gt;&lt;/p&gt;
+&lt;p&gt;VPN 路由的传递过程：&lt;/p&gt;
+&lt;p&gt;CE1——PE1——P——PE2——CE2&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CE1-PE1 之间运行了路由协议，并且 PE1 运行协议时绑定了 VPN 实例，所以 CE1 的路由可以传递到 PE1 的 VRF 中&lt;/li&gt;
+&lt;li&gt;PE1 与 PE2 之间建立了 MP-BGP 的 IBGP 对等体关系，将 CE1-PE1 之间的路由协议引入 BGP 中，PE2 就可以学习到 CE1 的路由，并且携带了出方向的 RT 值（作为 BGP 的扩展团体属性），MP-BGP 为该路由分配了一个私网标签（发布给 PE2 作为出标签）&lt;/li&gt;
+&lt;li&gt;PE2-CE2 之间也运行了路由协议，将 BGP 引入 PE2-CE2 路由协议中，CE2 就可以学习到 CE1 的路由&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;数据转发过程：&lt;/p&gt;
+&lt;p&gt;CE2———&amp;gt;CE1&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CE2 想要访问 CE1, 封装数据查找 FIB，下一跳为 PE2, 将数据发送给 PE2&lt;/li&gt;
+&lt;li&gt;PE2 收到数据后通过查找 CE2 对应的 VRF 转发表，发现去往 CE2 需要进行标签转发，加上一个私网标签，然后去往 CE1 的下一跳为 PE1, 非直连，再查找去往 PE1 的转发表，发现又需要进行标签转发，加上一层公网标签，从对应的接口发送给下一跳设备（P 设备）&lt;/li&gt;
+&lt;li&gt;P 设备收到数据后，看到最外层的公网标签，根据入标签找到对应的出标签，执行交换标签的动作（公网标签），从对应的接口发送给下一跳&lt;/li&gt;
+&lt;li&gt;PE1 收到数据后，外层公网标签没有对应的出标签，拆掉公网标签，查看内层私网标签，发现是给 CE1 路由分配的，没有对应的出标签，拆掉私网标签，查找 CE1 对应的 VRF1 转发表，发送给 CE1 设备&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;vpn组网&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vpn组网&#34;&gt;#&lt;/a&gt; VPN 组网：&lt;/h4&gt;
+&lt;p&gt;​	Intranet：相同 VPN 用户之间互访，不同 VPN 用户相互隔离&lt;/p&gt;
+&lt;p&gt;​	Extranet：一个 VPN 用户可以与不同 VPN 用户互访&lt;/p&gt;
+&lt;p&gt;​	Hub-Spoke：Spoke 之间访问需要通过 Hub（例如分公司之间通信经过总公司）&lt;/p&gt;
+&lt;p&gt;CE1(AS100)——PE1—P—PE2(AS 123)——CE2(AS 100)&lt;/p&gt;
+&lt;p&gt;CE1 和 CE2 属于同一个 VPN 用户，AS 号相同，当 PE-CE 之间运行的都是 BGP 协议时，PE 将路由传递给 CE 设备，会由于 AS_Path 中包含自身 AS 号不接收 VPN 路由，导致路由传递失败&lt;/p&gt;
+&lt;p&gt;注：开启 PE 设备上针对对等体的 AS 号替换功能，将其中的 AS 号替换为本地 AS 号（原本 PE 传递的路由 AS_Path 为 123，100；替换后为 123，123）&lt;/p&gt;
+&lt;p&gt;So0 属性：&lt;/p&gt;
+&lt;p&gt;​	开启 PE 设备的 AS 号替换功能后，在一些特殊场景下可能会导致路由环路（一个 PE 连接了同一个站点的多个 CE, 并且都建立 EBGP）, 此时可以设置 PE 针对这两个 CE 的相同 So0 值，当 PE 从 CE1 学习到路由后，给路由加上设置的 So0 属性，再传递给另一个 CE 时检查路由携带的 So0 属性与要传递 CE 设置的 So0 属性是否一致，一致则不传递&lt;/p&gt;
+&lt;p&gt;DomainID，Route Type ：通过 BGP 的扩展团体属性携带，两端 CE-PE 都运行 OSPF 时，如果接收到的路由 DomianID 与本地一致，表示属于同一个 OSPF 域，原本的 Route Type 为 1，2，3——3 ，原本 5，7—5，7；如果 DomianID 不一致，原本 1，2，3，5，7——5，7&lt;/p&gt;
+&lt;p&gt;Type-3 防环：PE 将路由传递给 OSPF 实例邻居时，将 LSA 中 Option 的 DN 为置位 1，其他 PE 设备收到 DN 置位 1 的路由不进行计算&lt;/p&gt;
+&lt;p&gt;Type-5/7 防环：PE 在将路由传递给 OSPF 实例邻居时 LSA 中携带 Route Tag（默认为本地 AS 计算得出）, 其他 PE 收到 Route Tag 数值与本地计算得出的一致则不进行计算&lt;/p&gt;
+&lt;p&gt;后门链路：在两端 CE 之间建立后门链路作为 VPN 备份，互相传递路由，如果 CE-PE 协议为 OSPF , 导致后门链路传递的路由为 OSPF 域内路由，VPN 传递的为域间路由（type3），后门链路会被优选，没有达到作为备份的目的&lt;/p&gt;
+&lt;p&gt;Sham Link：在 PE 设备之间建立一条伪链路，使 VPN 传递的路由也成为 OSPF 域内，再将后门链路的开销设置比 Sham link 大，则可以使后门链路成为备份链路&lt;/p&gt;
+&lt;p&gt;ISIS 快速收敛；&lt;/p&gt;
+&lt;p&gt;​	I-SPF; 增量最短路劲优先算法，只计算发送变化的节点信息&lt;/p&gt;
+&lt;p&gt;​	ISIS 的分片扩展，正常情况下，一个 ISIS 路由器的 LSP 可以最多生成 256 个分片携带信息，可以携带的数据有限&lt;/p&gt;
+&lt;p&gt;​	分片扩展，一个 ISIS 设备可以设置多个虚拟路由器（最多 50 个），每一个虚拟路由器可以产生自己的 LSP（可以携带 256 个分片），所以扩展后可携带分片数为 50*256 个&lt;/p&gt;
+&lt;p&gt;​	初始系统，物理路由器&lt;/p&gt;
+&lt;p&gt;​	系统 ID，物理路由器的系统 ID&lt;/p&gt;
+&lt;p&gt;​	虚拟系统，虚拟路由器&lt;/p&gt;
+&lt;p&gt;​	附加系统 ID，虚拟路由器的系统 ID&lt;/p&gt;
+&lt;p&gt;​	分配扩展模式，&lt;/p&gt;
+&lt;p&gt;​	Mode-1，邻居路由器不支持分片扩展，将虚拟系统作为真实设备和原设备分开进行计算&lt;/p&gt;
+&lt;p&gt;​	Mode-2，邻居路由器支持分片扩展，能够得知虚拟系统的初始系统是原设备，将数据集中统一计算&lt;/p&gt;
+&lt;p&gt;BGP 高级特性，&lt;/p&gt;
+&lt;p&gt;​	路由控制，&lt;/p&gt;
+&lt;p&gt;​	正则表达式，（特殊字符含义）&lt;/p&gt;
+&lt;p&gt;​	AS-path Filter，路劲信息过滤器，针对 BGP 路由中携带了 AS_Path 属性对路由进行控制，AS_PATH Filter 可以通过正则表达式匹配路由 AS_Path 字符串）&lt;/p&gt;
+&lt;p&gt;例如 10.1.1.1/32 携带 AS_Path 103 102 101&lt;/p&gt;
+&lt;p&gt;​	通过 AS_Path Filter 匹配时，&lt;/p&gt;
+&lt;p&gt;​	IP AS_Path Filter 1 permit /deny ^103/101$ 等&lt;/p&gt;
+&lt;p&gt;注 AS_Path Filter 可以直接针对对等体应用，也可以结合 ROuter-POlicy 使用&lt;/p&gt;
+&lt;p&gt;​	Community Filter，团体属性过滤器，针对 BGP 路由中携带的团体属性进行控制&lt;/p&gt;
+&lt;p&gt;​	分类，&lt;/p&gt;
+&lt;p&gt;​	基本 Community Filter ，编号 1-99，可以匹配路由中的团体号 / 公认团体属性（传递范围）&lt;/p&gt;
+&lt;p&gt;​	高级 Community Filter， 编号 100-199，可以通过正则表达式对路由的团体属性进行匹配&lt;/p&gt;
+&lt;p&gt;​	注 BGP 路由器默认不向对等体通过团体属性，可以通过 Peer 对等体 IP Advertise-Community 命令开启&lt;/p&gt;
+&lt;p&gt;结合 ROute-policy 使用&lt;/p&gt;
+&lt;p&gt;BGP 其他特性，&lt;/p&gt;
+&lt;p&gt;​	ORF，出口路由过滤器，BGP 设备只期望接收对等体发送自己某些路由，可以配置策略，然后通过 ORF 报文发送给对等体，对等体接收到 ORF 报文后策略只发布满足条件的路由&lt;/p&gt;
+&lt;p&gt;​	对等体组，将某些具有相同特性的对等体放入同一个对等体组，然后通过对对等体配置相关参数生效于对等体组内的对等体设备&lt;/p&gt;
+&lt;p&gt;​	分为 External 和 Internal ，External 表示 EBGP 对等体组，Internal 表示 IBGP 对等体组&lt;/p&gt;
+&lt;p&gt;​	例如，group 1 External // 创建 EBGP 对等体组 1&lt;/p&gt;
+&lt;p&gt;​	group 2 Internal // 创建 IBGP 对等体组 2&lt;/p&gt;
+&lt;p&gt;​	peer 对等体 group 1 // 加入组 1 为 EBGP 对等体&lt;/p&gt;
+&lt;p&gt;​	Peer 对等体 group 2 // 加入组 2 为 IBGP 对等体&lt;/p&gt;
+&lt;p&gt;注 由于 IBGP 对等体组 AS 号与本地相同，所以对等体 AS 号直接生成，EBGP 对等体 AS 号未知，需要指定 AS 号，peer 1 as-number * //1 为 EBGP 对等体组号&lt;/p&gt;
+&lt;p&gt;peer 2 connect loopback 0 // 与对等体组 2 的所有设备用环回口建立关系、&lt;/p&gt;
+&lt;p&gt;BGP 安全性，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 防止建立非法BGP对等体关系，bgp认证
+2. 防止设备发送大量非法BGP报文占用CPU,GTSM
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GTSM，通过 TTL 安全保护机制，通过设置与合法设备交互 BGP 报文的有效条数，决定收到的合法 BGP 报文的 TTL，如果收到的 BGP 报文在有效跳数内，正常接收，否则丢弃&lt;/p&gt;
+&lt;p&gt;公式 ，TTL=(255-HOPS+1,255),HOPS 为设置的有效跳数&lt;/p&gt;
+&lt;p&gt;路由反射器组网，&lt;/p&gt;
+&lt;p&gt;​	备份 RR 组我，多个 RR 指定相同的 BGP 路由器作为自己的客户端，并且 RR 多设置相同的集群 ID&lt;/p&gt;
+&lt;p&gt;​	多集群同级 RR 组网，所有路由器只作为 RR 身份&lt;/p&gt;
+&lt;p&gt;​	多集群分级 RR 组网，路由器不仅作为 RR，还作为其他 RR 的客户端（只为 RR 为一级 RR, 作为一级 RR 的客户端身份的 RR 为二级 RR…）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671610768740.png&#34; alt=&#34;1671610768740&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;vlan聚合&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vlan聚合&#34;&gt;#&lt;/a&gt; VLAN 聚合：&lt;/h4&gt;
+&lt;p&gt;传统 VLAN 划分如果想要实现 VLAN 间通信需要为每一个 VLAN 设置 VLANIF 逻辑接口，并为其设置 IP 地址，并且每一个 VLAN 都属于不同子网，会造成 IP 地址的浪费（一个 VLAN 至少有三个 IP 地址不能使用，VLANIF 地址，子网段网络地址和广播地址），通过 VLAN 聚合技术减少 IP 地址的浪费&lt;/p&gt;
+&lt;h5 id=&#34;super-vlan&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#super-vlan&#34;&gt;#&lt;/a&gt; Super VLAN ：&lt;/h5&gt;
+&lt;p&gt;聚合 VLAN，只包含三层 VLANIF 逻辑接口，作为所有 Sub VLAN 内 PC 的网关，Sub VLAN 间通信通过 SuperVLAN&lt;/p&gt;
+&lt;h5 id=&#34;sub-vlan&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#sub-vlan&#34;&gt;#&lt;/a&gt; Sub VLAN：&lt;/h5&gt;
+&lt;p&gt;子 VLAN , 只包含二层物理接口，实现二层广播域的划分，相同 SubVLAN 内二层互通，不同 SubVLAN 二层互相隔离&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注：一个 SuperVLAN 可以设置多个 SubVLAN，一个 SubVLAN 只能绑定一个 SuperVLAN，一个 SuperVlan 下的所有 SubVlan 属于同一个网段&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不同 SubVLAN 间通信：由于目的地与自身处于相同网段，所以直接发送 ARP 广播请求报文，SuperVLAN 也能收到，开启 SuperVLAN 的 SubVLAN 间代理功能后，SuperVLAN 会将收到的广播 ARP 会发送给所有的 SubVLAN，目的设备也能收到，收到后回复 ARP 响应，至此达到通信的目的&lt;/p&gt;
+&lt;p&gt;Subvlan 内设备与其他 VLAN（不属于 SubVLAN）设备二层通信：正常发送数据，由于 SuperVLAN 不包含物理接口，所以数据所携带的标签不会发生变化，可与其他相同 VLANTag 的 PC 直接通信&lt;/p&gt;
+&lt;p&gt;二层通信：通过 SuperVLAN 进行三层路由互通&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671677451957.png&#34; alt=&#34;1671677451957&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;mux-vlan&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mux-vlan&#34;&gt;#&lt;/a&gt; Mux VLAN：&lt;/h5&gt;
+&lt;p&gt;分为主 VLAN，从 VLAN，主 Vlan 唯一并且可以与所有从 VLAN 通信，从 VLAN 分为互通型从 VLAN 和隔离型从 VLAN&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;主 VLAN&lt;/strong&gt;：PrincipalVLAN, 在一个 MuxVLAN 中只会有一个，并且主 VLAN 下的设备可以与 Muxvlan 内所有设备互通&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;互通型从 VLAN&lt;/strong&gt;：GroupVLAN, 属于相同 VLAN 的设备之间能够互通，不同互通 VLAN 之间互相隔离，也不能与隔离 vlan 通信，可以与主 VLAN 通信&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;隔离型从 VLAN&lt;/strong&gt;：SeparateVLAN, 属于隔离 VLAN 的设备不能与相同 VLAN 内 / 互通 VLAN 通信，只能与主 VLAN 通信（一个 MuxVLAN 只能有一个隔离型从 VLAN）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671679308345.png&#34; alt=&#34;1671679308345&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;qinq&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#qinq&#34;&gt;#&lt;/a&gt; QinQ:&lt;/h5&gt;
+&lt;p&gt;802.1Q in 802.1Q，传统的 VLAN 数据帧只能携带一层 VLAN Tag，最多存在 4096 个 VLAN（0-4095，可用 4094 个），vlan 资源有限，为了扩展 VLAN 空间，通过 QinQ 的技术，在原有基础上增加一层 TAG，外层为公网 Tag，内存为私网 Tag，最多可存在 4096*4096 个 VLAN (可用 4094 * 4904)&lt;/p&gt;
+&lt;h6 id=&#34;数据转发&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据转发&#34;&gt;#&lt;/a&gt; 数据转发：&lt;/h6&gt;
+&lt;p&gt;私网内部通过私网 Tag 正常转发，在进入公网时加上一层所属的公网 Tag，通过外层公网 Tag 在公网进行转发，进入私网时将外层公网 Tag 剥离，再通过内层私网 TAG 转发至目标设备&lt;/p&gt;
+&lt;h6 id=&#34;分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#分类&#34;&gt;#&lt;/a&gt; 分类：&lt;/h6&gt;
+&lt;p&gt;​	基本 QinQ：为一个私网局域网设置一个公网 Tag，无论内网的哪一个 VLAN 数据进入公网都加上统一的公网 tag&lt;/p&gt;
+&lt;p&gt;​	灵活 QinQ：可以为内网不同的 vlan 设置不同的公网 Tag，内网数据进入公网时，根据设置的策略加上对应的公网 tag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671693084166.png&#34; alt=&#34;1671693084166&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671694832837.png&#34; alt=&#34;1671694832837&#34;&gt;&lt;/p&gt;
+&lt;p&gt;端口隔离，可以将设备的端口加入端口隔离组，处于相同隔离组的端口所连接的终端无法通信&lt;/p&gt;
+&lt;p&gt;背景，想要实现终端之间二层隔离，通常会将端口划分为不同 VLAN，但是会浪费有限的 Vlan 资源，通过端口隔离技术，既能够实现报文二层隔离，又能够节约 VLAN 资源&lt;/p&gt;
+&lt;p&gt;隔离类型，&lt;/p&gt;
+&lt;p&gt;​	双向隔离，端口加入同一个隔离组后，互相不能通信&lt;/p&gt;
+&lt;p&gt;​	单向隔离，在接口视图下，指定该端口与另一个端口之间的单向隔离，该接口不能与指定的端口通信，但是对端可以将数据发送给本端口&lt;/p&gt;
+&lt;p&gt;隔离模式，&lt;/p&gt;
+&lt;p&gt;​	L2，二层隔离三层互通（缺省），需要开启 VlanIF 的 vlan 内 ARP 代理功能，实现处于相同隔离组的端口三层通信&lt;/p&gt;
+&lt;p&gt;​	ALL，二层三层都隔离，处于同一个隔离组的端口之间彻底隔离无法通信&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1672711912633.png&#34; alt=&#34;1672711912633&#34;&gt;&lt;/p&gt;
+&lt;p&gt;MAC 地址表安全，&lt;/p&gt;
+&lt;p&gt;​	动态 MAC 地址表项，交换机动态学习报文的源 MAC 所形成的 MAC 地址表项&lt;/p&gt;
+&lt;p&gt;​	静态 MAC 地址表项，手工配置 MAC 地址与端口的映射关系所形成的表项，优先级高于动态表项&lt;/p&gt;
+&lt;p&gt;​	黑洞 MAC 地址表项，配置为黑洞 MAC 的 MAC 地址类型于加入黑名单，交换机接收到源 MAC / 目的 MAC 为黑洞 MAC 的报文直接丢弃&lt;/p&gt;
+&lt;p&gt;​	MAC 地址表项老化时间，默认 300 是，可以修改，0 为不老化，可以修改（防止 MAC 地址表项爆炸式增长）&lt;/p&gt;
+&lt;p&gt;​	禁止 MAC 地址学习功能，默认交换机的 MAC 地址学习功能已使能，可以关闭，关闭后交换机不再形成该端口对应报文的源 MAC 表项（收到报文的动作默认转发，可以设置为丢弃）&lt;/p&gt;
+&lt;p&gt;​	限制 MAC 地址表项学习数量，可以设置交换机端口学习 MAC 地址的最大数量，超过数量的可以丢弃报文（修改动作，默认转发）/ 告警&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1672717033943.png&#34; alt=&#34;1672717033943&#34;&gt;&lt;/p&gt;
+&lt;p&gt;端口安全，&lt;/p&gt;
+&lt;p&gt;​	安全动态 MAC 地址，开启端口安全后动态学习的 MAC 地址，&lt;/p&gt;
+&lt;p&gt;​	特点，默认不会老化，可以设置老化时间，设备重启会丢失&lt;/p&gt;
+&lt;p&gt;​	使用场景，适用于存在大量不固定终端的场景&lt;/p&gt;
+&lt;p&gt;​	安全静态 MAC 地址，开启端口安全后手工配置 MAC 地址表项&lt;/p&gt;
+&lt;p&gt;​	特点，不会被老化，保存配置后重启不会丢失&lt;/p&gt;
+&lt;p&gt;​	使用场景，存在少量固定终端&lt;/p&gt;
+&lt;p&gt;​	Sticky MAC 地址，粘贴 MAC 地址，开启了端口安全的同时使能了 Sticky MAC 功能后转换的地址（动态学习 / 手工添加）&lt;/p&gt;
+&lt;p&gt;​	特点，不会被老化，保存配置后重启不会丢失&lt;/p&gt;
+&lt;p&gt;​	适用场景，存在大量固定终端&lt;/p&gt;
+&lt;p&gt;​	限制 MAC 地址学习数量，开启端口安全，默认端口学习 MAC 地址数量为 1，超出数量的采取安全保护动作&lt;/p&gt;
+&lt;p&gt;​	安全保护动作，&lt;/p&gt;
+&lt;p&gt;​	protect，丢弃源 MAC 不存在的报文&lt;/p&gt;
+&lt;p&gt;​	（缺省）restrict，丢弃源 MAC 不存在的报文并告警&lt;/p&gt;
+&lt;p&gt;​	shutdown，端口被设置为 error-down，并告警&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1672731713406.png&#34; alt=&#34;1672731713406&#34;&gt;&lt;/p&gt;
+&lt;p&gt;MAC 地址漂移防止与检测，&lt;/p&gt;
+&lt;p&gt;​	防止低优先级端口覆盖高优先级端口，修改端口的 mac 地址学习优先级，默认为 0，优先级高的端口可以覆盖优先级低的，低优先级不能覆盖高优先级&lt;/p&gt;
+&lt;p&gt;​	配置不允许相同优先级端口发送漂移，默认可以发生，undo 后可以防止&lt;/p&gt;
+&lt;p&gt;​	基于 Vlan 检测 mac 地址漂移，发生漂移后可执行动作告警 / 关闭端口 / 阻断 MAC 地址&lt;/p&gt;
+&lt;p&gt;​	基于全局检测 mac 地址漂移，发生漂移后可执行动作告警 / 关闭端口 / 退出 VLAN&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1672736115087.png&#34; alt=&#34;1672736115087&#34;&gt;&lt;/p&gt;
+&lt;p&gt;MACsec，保证二层数据传输的可靠性，具有数据完整性检查，数据加密，真实性校验等机制保障数据传输的安全性&lt;/p&gt;
+&lt;p&gt;CAK，安全连接关联密钥，为点到点两端预相同配置连接密钥&lt;/p&gt;
+&lt;p&gt;KEY Server，通过预配置参数选举，决定加密方案（生成数据加密密钥）（key server 是通过 MKA，MACsec 数据加密协商协议选举）&lt;/p&gt;
+&lt;p&gt;SAK，key Server 生成的数据密钥，用于真实数据传输时进行加密（安全关联密钥）&lt;/p&gt;
+&lt;p&gt;流量抑制，&lt;/p&gt;
+&lt;p&gt;​	入方向，针对接收的数据设置相关 阈值（广播 / 组播 / 单播）从而控制数据的发送速率（超过阈值部分丢弃，阈值内可以通过）&lt;/p&gt;
+&lt;p&gt;​	出方向，阻断广播 / 组播 / 单播报文&lt;/p&gt;
+&lt;p&gt;广播风暴，在数据入反向对数据进行控制，设置相关阈值，在阈值范围内的数据可以通过，不在范围内的数据完全丢弃并设置相关惩罚动作（阻断报文 / 关闭端口），阻断不在范围内的报文只有超过阈值的报文不能通过，关闭端口后所有报文都不能通过）&lt;/p&gt;
+&lt;p&gt;DHCP Snooping，防止针对 DHCP 漏洞攻击，通过信任功能，绑定表等实现&lt;/p&gt;
+&lt;p&gt;攻击手段，&lt;/p&gt;
+&lt;p&gt;​	DHCP 饿死攻击，非法设备通过伪造 DHCP 客户端请求报文的源 MAC 地址，不断向服务器请求 IP 地址等网络参数，直至耗尽服务器的地址，导致合法客户端没有地址可以（饿死）&lt;/p&gt;
+&lt;p&gt;​	解决，设置交换机端口学习 MAC 地址的数量，防止非法设备修改 MAC 地址&lt;/p&gt;
+&lt;p&gt;​	改变 CHADDR 字段的 Dos 攻击，非法设备通过修改 DHCP 报文中的 CHADDR 字段（源 MAC 不变）不停的向服务器请求 IP 地址（DHCP 服务器通过 CHADDR 字段分配地址），直至耗尽地址池的地址，当合法设备需要地址时服务器没有地址可分配（拒绝服务）&lt;/p&gt;
+&lt;p&gt;​	解决，交换机 DHCP Snooping 可以检查收到的 DHCP 报文中 CHADDR 字段是否与源 MAC 一致，一致则正常处理，不一致则丢弃报文（防止修改 CHADDR 字段）&lt;/p&gt;
+&lt;p&gt;​	DHCP 中间人攻击，非法设备利用 ARP 致使客户端和服务器学习到错误的 ARP 映射关系（对于客户端，服务器 IP - 非发设备 MAC，对于服务器，客户端 IP - 非法设备 MAC），客户端和服务器之间交互的所有报文都经过非法设备转发，可能会造成信息泄露 / 信息被篡改等安全隐患&lt;/p&gt;
+&lt;p&gt;​	解决，交换机可以形成 DHCP Snooping 绑定表，表中记录了正确的客户端和服务器信息（IP 地址，MAC 地址，vlan，接口等对应关系），当交换机收到 DHCP 报文时，可以对报文以及接收到的接口信息与绑定表做对比，信息一致才能正常处理，否则丢弃报文&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.15/</guid>
+            <title>HCIP(二十二) 2022.12.15</title>
+            <link>http://example.com/2023/01/24/2022.12.15/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;mpls-ldp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mpls-ldp&#34;&gt;#&lt;/a&gt; MPLS LDP&lt;/h4&gt;
+&lt;h5 id=&#34;ldp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ldp&#34;&gt;#&lt;/a&gt; LDP：&lt;/h5&gt;
+&lt;p&gt;​	标签分发协议，LSR 之间建立 LDP 会话关系，互相交换报文，动态建立 LSP&lt;/p&gt;
+&lt;h5 id=&#34;ldp的关系类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ldp的关系类型&#34;&gt;#&lt;/a&gt; LDP 的关系类型：&lt;/h5&gt;
+&lt;p&gt;​	LDP 邻接体 —&amp;gt;LDP 会话 —&amp;gt;LDP 对等体&lt;/p&gt;
+&lt;h5 id=&#34;lsr-id-和ldp-id&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsr-id-和ldp-id&#34;&gt;#&lt;/a&gt; LSR ID 和 LDP ID:&lt;/h5&gt;
+&lt;p&gt;​	LSR ID 用于在 MPLS 中唯一标识一台 LSR&lt;/p&gt;
+&lt;p&gt;​	LDP ID 由 ID + 标签空间标识符组成&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注：标签空间标识符如果为 0，表示标签空间是基于设备（或基于平台），如果非 0，表示是基于接口的标签空间，一般为 0，所以 LDP ID=LSR ID :0&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;ldp的工作过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ldp的工作过程&#34;&gt;#&lt;/a&gt; LDP 的工作过程：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 运行LDP的LSR组播发送Hello报文，周期性5s发送，通过交互Hello报文，LSR之间可以建立LDP的邻接体关系（老化时间15s，Hello报文基于UDP的646端口发送）
+2. Hello报文中携带了LSR的传输地址，传输地址大的一端会主动发起TCP连接，后续报文基于TCP连接交互（传输地址默认为LSR ID）
+3. TCP 连接建立完成后通过交互Init报文和KeepAlive报文建立LDP会话关系，会话建立完成后LSR互为LDP对等体
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;ldp的工作过程分为三个阶段&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ldp的工作过程分为三个阶段&#34;&gt;#&lt;/a&gt; LDP 的工作过程分为三个阶段：&lt;/h5&gt;
+&lt;p&gt;​	发现阶段（hello）—》会话阶段 —》通告阶段（交互 FEC 与标签映射关系等）&lt;/p&gt;
+&lt;p&gt;​	注：如果发生错误，会交互 Notification 报文，为差错阶段&lt;/p&gt;
+&lt;h5 id=&#34;ldp的状态机&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ldp的状态机&#34;&gt;#&lt;/a&gt; LDP 的状态机：&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Non-existent：初始化状态，建立 LDP 邻接体关系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Init：TCP 连接建立完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Opensent：主动端发送了 Init 报文后进入此状态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OpenRec：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;被动方收到主动发可接受的 Init 报文后进入此状态，并回复 Init 和 KeepAlive 报文&lt;/li&gt;
+&lt;li&gt;主动方收到被动方可接收的 Init 报文进入此状态，并回复 KeepAlive 报文&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Operational：主动方 / 被动方收到了对端发送的 KeepAlive 报文后进入此状态，表示 LDP 会话建立完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;标签发布与管理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标签发布与管理&#34;&gt;#&lt;/a&gt; 标签发布与管理：&lt;/h5&gt;
+&lt;h6 id=&#34;标签发布方式默认du&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标签发布方式默认du&#34;&gt;#&lt;/a&gt; 标签发布方式：（默认 DU）&lt;/h6&gt;
+&lt;p&gt;​	DU: 下游自主，不管上游是否向自己请求标签，都会主动将标签映射关系发布给上游&lt;/p&gt;
+&lt;p&gt;​	DoD：下游按需，只有上游向自己请求了标签，才会向上游发布&lt;/p&gt;
+&lt;h6 id=&#34;标签控制方式默认有序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标签控制方式默认有序&#34;&gt;#&lt;/a&gt; 标签控制方式：（默认有序）&lt;/h6&gt;
+&lt;p&gt;​	Independent：独立，不管该 FEC 是否存在出标签，都可以为其分配入标签发布给上游&lt;/p&gt;
+&lt;p&gt;​	Ordered：有序，只有该 FEC 存在对应的出标签，才会为其分配入标签发布给上游&lt;/p&gt;
+&lt;h6 id=&#34;标签保留方式默认自由&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标签保留方式默认自由&#34;&gt;#&lt;/a&gt; 标签保留方式：（默认自由）&lt;/h6&gt;
+&lt;p&gt;​	Liberal：自由，不管是不是自己最优的下一跳给自己的标签，都保留&lt;/p&gt;
+&lt;p&gt;​	Conservative：保守，只有自己最优的下一跳的标签才会保留&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注：标签保留方式与标签发布方式关联，当发布方式为 DU 时，保留方式为自由，发布方式为 DoD 时，保留方式为保守&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;php&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#php&#34;&gt;#&lt;/a&gt; PHP:&lt;/h5&gt;
+&lt;p&gt;​	次末跳弹出，在 MPLS 标签转发时，连接 FEC 目的网络的最后一跳路由器始终需要执行弹出标签以及查表转发的动作，压力过大，容易成为故障点，为了减轻最后一跳设备的压力，设置 PHP，使最后一条设备向倒数第二跳分配特殊标签（默认为隐式空标签 3），倒数第二跳在转发数据时，发现出标签为特殊标签哦，执行弹出动作，将 IP 数据转发给最后一跳，最后一跳只需要查表转发即可&lt;/p&gt;
+&lt;h6 id=&#34;隐式空标签和显示空标签&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#隐式空标签和显示空标签&#34;&gt;#&lt;/a&gt; 隐式空标签和显示空标签：&lt;/h6&gt;
+&lt;p&gt;​	PHP 默认最后一条分配隐式空标签 3，次末跳在弹出标签时会丢失 Qos 信息（类似报文优先级），在部署了 Qos 的场景下需要保留 Qos 信息，此时可以设置最后一跳给次末跳分配显示空标签 0，次末跳在弹出标签时可以保留 Qos 信息&lt;/p&gt;
+&lt;p&gt;设置：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;底层路由可达&lt;/li&gt;
+&lt;li&gt;设置 MPLS LSR-ID&lt;/li&gt;
+&lt;li&gt;全局开启 mpls&lt;/li&gt;
+&lt;li&gt;全局开启 mpls ldp&lt;/li&gt;
+&lt;li&gt;物理接口开启 mpls&lt;/li&gt;
+&lt;li&gt;物理接口开启 mpls ldp&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;查看：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;display mpls ldp peer //&lt;strong&gt; 查看 ldp 的邻居&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;display mpls ldp session //&lt;strong&gt; 查看 ldp 的会话&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.14/</guid>
+            <title>HCIP(二十一) 2022.12.14</title>
+            <link>http://example.com/2023/01/24/2022.12.14/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;mpls&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mpls&#34;&gt;#&lt;/a&gt; MPLS :&lt;/h4&gt;
+&lt;p&gt;​	多协议标签交换&lt;/p&gt;
+&lt;h5 id=&#34;背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#背景&#34;&gt;#&lt;/a&gt; 背景：&lt;/h5&gt;
+&lt;p&gt;​	网络发展初期，设备的硬件条件低，按照传统的查表转发数据效率低下，想要提高数据的转发速度，研究出了 MPLS 协议，通过给数据加上对应的 MPLS 标签，然后设备按照标签转发数据，提高转发效率&lt;/p&gt;
+&lt;p&gt;注：到现在为止，设备硬件已经发展较好，MPLS 的作用不再是加快转发效率，而是由于 MPLS 的其他特性可以结合多种协议使用&lt;/p&gt;
+&lt;h5 id=&#34;相关概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#相关概念&#34;&gt;#&lt;/a&gt; 相关概念：&lt;/h5&gt;
+&lt;p&gt;​	MPLS 域：由运行了 MPLS 的路由器组成，在域内，数据通常通过标签转发&lt;/p&gt;
+&lt;p&gt;​	LSR：标签交换路由器，运行了 MPLS 的路由器&lt;/p&gt;
+&lt;p&gt;​	LER：标签边缘路由器，处于 MPLS 域边界的路由器，一般执行压入 / 弹出标签的动作&lt;/p&gt;
+&lt;p&gt;​	FEC：转发等价类，一组具有相同特性的数据流的集合，一般指一条路由就是一个 FEC&lt;/p&gt;
+&lt;p&gt;​	入站 LSR：ingress，为数据执行压入标签的动作（加上标签）&lt;/p&gt;
+&lt;p&gt;​	中转 LSR：Transit，将携带 MPLS 标签的数据执行交换标签的动作&lt;/p&gt;
+&lt;p&gt;​	出站 LSR：Egress，为数据执行弹出标签的动作（拆掉标签）&lt;/p&gt;
+&lt;p&gt;注：入站 / 出战 LSR 是根据数据区分，角色不固定&lt;/p&gt;
+&lt;h5 id=&#34;lsp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsp&#34;&gt;#&lt;/a&gt; LSP：&lt;/h5&gt;
+&lt;p&gt;​	标签交换路径，数据在 MPLS 域内所经过的路径（从不同设备进入 MPLS 域时 LSP 不相同；同一个 FEC 转发时标签相同）&lt;/p&gt;
+&lt;h5 id=&#34;mpls的报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mpls的报文格式&#34;&gt;#&lt;/a&gt; MPLS 的报文格式：&lt;/h5&gt;
+&lt;p&gt;​	二层帧头 + MPLS 标签头部 + IP 头部&lt;/p&gt;
+&lt;h6 id=&#34;mpls标签头部&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mpls标签头部&#34;&gt;#&lt;/a&gt; MPLS 标签头部：&lt;/h6&gt;
+&lt;p&gt;​	Lable：标签空间，20bit&lt;/p&gt;
+&lt;p&gt;​	EXP：服务类别&lt;/p&gt;
+&lt;p&gt;​	S：栈底标识，如果置位为 1，表示是最后一层标签（MPLS 支持多层标签嵌套）&lt;/p&gt;
+&lt;p&gt;​	TTL：8bit，生成时间，防环&lt;/p&gt;
+&lt;h6 id=&#34;标签空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标签空间&#34;&gt;#&lt;/a&gt; 标签空间：&lt;/h6&gt;
+&lt;p&gt;​	是一个短而定长，只具有本地意义的标识符，标签空间就是指标签的范围，&lt;/p&gt;
+&lt;p&gt;0-15 为特殊标签，&lt;/p&gt;
+&lt;p&gt;16-1023 静态 LSP&lt;/p&gt;
+&lt;p&gt;1024 及以上 LDP (标签分发协议，动态建立 LSP)&lt;/p&gt;
+&lt;h6 id=&#34;动作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#动作&#34;&gt;#&lt;/a&gt; 动作：&lt;/h6&gt;
+&lt;p&gt;​	Push：压入，给数据加上一个标签（一个 / 多个）&lt;/p&gt;
+&lt;p&gt;​	Swap：交换，将数据的最外层标签进行交换&lt;/p&gt;
+&lt;p&gt;​	Pop：弹出，将数据拆除标签（一个 / 多个）&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;MPLS 标签转发过程：（例）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671000647498.png&#34; alt=&#34;1671000647498&#34;&gt;&lt;/p&gt;
+&lt;p&gt;R1(Ingress)————R2(Transit)————R3(Egress)————&amp;gt; FEC ：4.4.4.4&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;入节点 R1 接收到一个普通的 IP 数据，根据目的 IP4.4.4.4 查找 FIB，发现对应的 Tunnel ID 非 0，表示进行隧道转发（标签）&lt;/li&gt;
+&lt;li&gt;根据 Tunnel ID（隧道 ID） 找到对应的动作是压入标签，并且下一跳是 R2（还有出接口，标签等信息），从接口带标签发送出去&lt;/li&gt;
+&lt;li&gt;R2 接收到携带 MPLS 标签的数据后，根据入标签找到对应的 Tunnel ID, 然后根据 Tunnel ID 找到动作作为交换标签，把数据中携带的入标签交换为对应的出标签，然后从出接口发送给下一跳设备 R3&lt;/li&gt;
+&lt;li&gt;R3 接收到携带 MPLS 标签的数据后，根据入标签查找到的动作作为弹出标签，然后将 MPLS 标签头部拆除，在根据头部的目的 IP 进行普通的 IP 转发&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;配置:&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1671002656341.png&#34; alt=&#34;1671002656341&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;入站 LSR：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;static-lsp ingress 1 destination 3.3.3.3 32 nexthop 10.1.12.2 out-label 100&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;中转 LSR：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;static-lsp transit 1 incoming-interface GigabitEthernet0/0/0 in-label 100 nexthop 10.1.23.3 out-label 200&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;出站 LSR：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;static-lsp egress 1 incoming-interface GigabitEthernet0/0/0 in-label 200&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;查看配置：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;display mpls lsp  // 查看 LSP 信息&lt;/li&gt;
+&lt;li&gt;display mpls static-lsp // 查看静态 LSP 信息&lt;/li&gt;
+&lt;li&gt;display fib // 查看转发信息表&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.13/</guid>
+            <title>HCIP(二十) 2022.12.13</title>
+            <link>http://example.com/2023/01/24/2022.12.13/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;dhcp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dhcp&#34;&gt;#&lt;/a&gt; DHCP：&lt;/h4&gt;
+&lt;p&gt;​	动态主机配置协议，使用 UDP 传输报文，67 端口（服务器）和 68 端口（客户端）&lt;/p&gt;
+&lt;h5 id=&#34;报文类型通过option53携带&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#报文类型通过option53携带&#34;&gt;#&lt;/a&gt; 报文类型：（通过 Option53 携带）&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. DHCP Discover 
+2. DHCP Offer
+3. DHCP Request
+4. DHCP Decline ：当客户端获取的IP地址发生冲突时，通过该报文通知服务器
+5. DCHP Ack
+6. DHCP Nak
+7. DHCP release
+8. DHCP inform ：客户端想要获取更加详细的配置参数，通过该报文向服务器请求
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;服务器向客户端分配ip地址的顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#服务器向客户端分配ip地址的顺序&#34;&gt;#&lt;/a&gt; 服务器向客户端分配 IP 地址的顺序：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 静态绑定MAC地址的IP0
+2. 使用过的IP（客户端在向服务器请求IP地址时，会利用Option50携带自己曾经用过的地址，期望服务器分配该地址）
+3. 空闲的IP地址
+4. 超过租期的IP地址
+5. 产生冲突的IP地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;dhcp-relay&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dhcp-relay&#34;&gt;#&lt;/a&gt; DHCP relay：&lt;/h5&gt;
+&lt;p&gt;​	DHCP 中继，当客户端和服务器不在一个二层广播域，正常发送的广播报文无法进行传递，需要将连接客户端的三层设备设置为 DHCP 中继，客户端服务器传递交互的报文&lt;/p&gt;
+&lt;h6 id=&#34;工作过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#工作过程&#34;&gt;#&lt;/a&gt; 工作过程：&lt;/h6&gt;
+&lt;p&gt;​       客户端 ——————–中继 —————— 服务器&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;— 广播 discover ——-| 单播 discover———》&lt;/li&gt;
+&lt;li&gt;《———offer———|——offer———&lt;/li&gt;
+&lt;li&gt;— 广播 request———| 单播 request———》&lt;/li&gt;
+&lt;li&gt;《———ACK ———-|——ACK———&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5Cz.j.j%5CDesktop%5Chcip%E5%9F%B9%E8%AE%AD%5Cassets%5C1670912905122.png&#34; alt=&#34;1670912905122&#34;&gt;&lt;/p&gt;
+&lt;p&gt;DHCP-Relay&lt;/p&gt;
+&lt;p&gt;中继连接终端的端口：&lt;/p&gt;
+&lt;p&gt;dhcp select relay&lt;/p&gt;
+&lt;p&gt;dhcp relay server-ip 10.1.12.2&lt;/p&gt;
+&lt;p&gt;// 向一个服务器请求&lt;/p&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;p&gt;dhcp server group 1&lt;/p&gt;
+&lt;p&gt;dhcp-server 10.1.12.2&lt;/p&gt;
+&lt;p&gt;中断连接终端的端口：&lt;/p&gt;
+&lt;p&gt;dhcp select relay&lt;/p&gt;
+&lt;p&gt;dhcp relay server-ip server-select 1&lt;/p&gt;
+&lt;p&gt;// 向多个服务器请求（设置服务器组）&lt;/p&gt;
+&lt;p&gt;路由器通过 DHCP 获取地址：&lt;/p&gt;
+&lt;p&gt;ip address dhcp-alloc&lt;/p&gt;
+&lt;p&gt;5489-987B-308E&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/01/24/2022.12.12/</guid>
+            <title>HCIP(十九) 2022.12.12</title>
+            <link>http://example.com/2023/01/24/2022.12.12/</link>
+            <pubDate>Tue, 24 Jan 2023 12:30:55 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;vrrp&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vrrp&#34;&gt;#&lt;/a&gt; VRRP:&lt;/h4&gt;
+&lt;p&gt;​	虚拟路由器冗余协议，使用 IP 的协议号&lt;strong&gt; 112&lt;/strong&gt;，使用组播地址&lt;strong&gt; 224.0.0.18&lt;/strong&gt; 发送报文&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h5 id=&#34;背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#背景&#34;&gt;#&lt;/a&gt; 背景：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. 解决单个网关造成的单点故障
+2. 解决多个网关造成的IP地址冲突
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;原理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原理&#34;&gt;#&lt;/a&gt; 原理：&lt;/h5&gt;
+&lt;p&gt;​	通过将多个物理路由器逻辑为一个虚拟路由器，再为虚拟路由器设置对应的虚拟 IP 地址作为终端的网关地址，&lt;strong&gt;虚拟 MAC 前 5 字节固定 0x0000-5e00-01xx&lt;/strong&gt;，其中 XX 为 VRID 转换为十六进制所得&lt;/p&gt;
+&lt;p&gt;注：虚拟路由器之间通过&lt;strong&gt; VRID 区分&lt;/strong&gt;，构成虚拟路由器的物理设备称之为 VRRP 路由器，&lt;strong&gt;分为 Master 和 Backup&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;两种角色，其中 Master 用于承载终端访问其他网络产生的数据，Backup 作为 Master 的备份&lt;/p&gt;
+&lt;h6 id=&#34;master的选举&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#master的选举&#34;&gt;#&lt;/a&gt; Master 的选举：&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;1. 通过VRRP优先级，范围0-255，数值越大越优，其中**0和255保留**，0用于使Backup快速成为Master，255给真实IP地址拥有者（虚拟IP）
+2. 优先级相同时，比较接口IP地址，越大越优 (如果此时已经存在Master，不会继续比较IP )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：Backup 作为 Master 的备份，会监听 Master 发送的报文，VRRP 中只有一个报文 Advertisement（通告报文），&lt;strong&gt;默认周期性每 1s&lt;/strong&gt; 发送一次，Backup 如果再 Master Down 时超时没有收到 ADV 报文，就认为 Master 不在，自己成为 Master&lt;/p&gt;
+&lt;p&gt;Master_DOWN=(3*Adv_int)+Skew_Time (偏移时间)&lt;/p&gt;
+&lt;p&gt;Skew_Time=(256-Priority)/256&lt;/p&gt;
+&lt;h5 id=&#34;vrrp的状态变化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vrrp的状态变化&#34;&gt;#&lt;/a&gt; VRRP 的状态变化：&lt;/h5&gt;
+&lt;p&gt;​	Init：初始化状态，开启 VRRP 时的状态&lt;/p&gt;
+&lt;p&gt;​	Backup：备份状态，当自己的优先级小于 255 时，先进入 Backup (收到优先级比自己大的报文也会进入此状态)&lt;/p&gt;
+&lt;p&gt;​	Master：活跃状态，优先级等于 255 时直接成为 master（收到优先级比自己小 / Master_down 时间超时会进入此状态）&lt;/p&gt;
+&lt;h5 id=&#34;vrrp主备回切&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vrrp主备回切&#34;&gt;#&lt;/a&gt; VRRP 主备回切：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1. Master 设备退出备份组，会主动发送优先级为0的报文，让Backup迅速成为Master
+2. Master设备故障/链路故障，导致Backup无法接收到Master的报文，等待Master_Down超时，Backup成为Master
+3. 由于VRRP默认开启抢占并且立即抢占，当故障的Master重新恢复时/网络不稳定，会造成主备设备频繁切换，数据丢失，可以设置VRRP的非抢占模式（关闭抢占）或者设置VRRP的抢占延时
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;p&gt;interface GigabitEthernet0/0/0&lt;/p&gt;
+&lt;p&gt;ip address 10.1.1.20 255.255.255.0  //&lt;strong&gt; 物理 ip 地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;vrrp vrid 1 virtual-ip 10.1.1.254 //&lt;strong&gt; 设置 VRID1 的虚拟 IP 地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;vrrp vrid 2 virtual-ip 10.1.1.253&lt;/p&gt;
+&lt;p&gt;vrrp vrid 2 priority 200 //&lt;strong&gt; 设置优先级&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;vrrp vrid 1 preempt-mode disable //&lt;strong&gt; 关闭抢占&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;vrrp vrid 1 preempt-mode timer delay 15 //&lt;strong&gt; 设置抢占延时 15s&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;vrrp vrid 1 track interface GigabitEthernet0/0/1 reduced 101 //&lt;strong&gt; 监视上行端口&lt;/strong&gt; （检测直连故障）&lt;/p&gt;
+&lt;p&gt;vrrp vrid 1 track bfd-session session-name 1 reduced 110 //&lt;strong&gt;VRRP 联动 BFD 会话检测链路连通性&lt;/strong&gt;（检测直连 / 非直连故障）&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2022/12/07/2022.12.7/</guid>
             <title>HCIP(十六） 2022.12.7</title>
