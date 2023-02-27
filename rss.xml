@@ -10,8 +10,162 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Mon, 20 Feb 2023 08:54:39 +0800</pubDate>
-        <lastBuildDate>Mon, 20 Feb 2023 08:54:39 +0800</lastBuildDate>
+        <pubDate>Mon, 27 Feb 2023 09:18:49 +0800</pubDate>
+        <lastBuildDate>Mon, 27 Feb 2023 09:18:49 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/02/27/2023.2.20/</guid>
+            <title>云计算 2023.2.20</title>
+            <link>http://example.com/2023/02/27/2023.2.20/</link>
+            <pubDate>Mon, 27 Feb 2023 09:18:49 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;云计算是什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算是什么&#34;&gt;#&lt;/a&gt; 云计算是什么？&lt;/h4&gt;
+&lt;p&gt;​	在传统模式下，用户通过使用实际的硬件设备，达到完成业务运行的目的，但基于实际设备运维成本较高，不利于用户的资源共享。&lt;/p&gt;
+&lt;p&gt;​	传统模式下，软件与硬件是紧密耦合状态，虚拟化之后，实现软硬件的解耦&lt;/p&gt;
+&lt;p&gt;​	云计算是通过资源整合后，基于服务器 / 硬件设备的集群，创建虚拟计算机，提供给用户使用&lt;/p&gt;
+&lt;h5 id=&#34;云计算优势&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算优势&#34;&gt;#&lt;/a&gt; 云计算优势：&lt;/h5&gt;
+&lt;p&gt;由于传统模式的成本高，因此可通过虚拟化的技术，将真实的物理资源整合，之后分配给不同的用户，以实现资源共享，对于厂商则将设备的商业价值最大化&lt;/p&gt;
+&lt;h5 id=&#34;云计算的构成&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算的构成&#34;&gt;#&lt;/a&gt; 云计算的构成：&lt;/h5&gt;
+&lt;p&gt;计算资源虚拟化 + 存储资源虚拟化 + 网络资源虚拟化 + Internet = 云计算&lt;/p&gt;
+&lt;h5 id=&#34;虚拟化是什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟化是什么&#34;&gt;#&lt;/a&gt; 虚拟化是什么：&lt;/h5&gt;
+&lt;p&gt;虚拟化指将实际的设备通过虚拟化技术整合成虚拟资源池（计算 / 存储 / 网络），以租用的方式提供给用户，资源池中的资源是共享的，通过虚拟化实现资源的商业价值最大化，最终实现资源的复用率提高&lt;/p&gt;
+&lt;h5 id=&#34;云计算与虚拟化的关系&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算与虚拟化的关系&#34;&gt;#&lt;/a&gt; 云计算与虚拟化的关系：&lt;/h5&gt;
+&lt;p&gt;虚拟化是实现云计算的基础，云计算是将虚拟化提供给用户的商业模式&lt;/p&gt;
+&lt;h5 id=&#34;云计算服务类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算服务类型&#34;&gt;#&lt;/a&gt; 云计算服务类型：&lt;/h5&gt;
+&lt;p&gt;基础即服务 — — 硬件设施&lt;/p&gt;
+&lt;p&gt;平台即服务 — — 操作系统&lt;/p&gt;
+&lt;p&gt;软件即服务 — — 运行在系统之上的 APP&lt;/p&gt;
+&lt;h5 id=&#34;云计算的商业价值&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算的商业价值&#34;&gt;#&lt;/a&gt; 云计算的商业价值：&lt;/h5&gt;
+&lt;p&gt;私有云：针对个人所使用的云环境（针对特定用户）&lt;/p&gt;
+&lt;p&gt;公有云：针对所有用户&lt;/p&gt;
+&lt;p&gt;混合云：两种云环境结合使用&lt;/p&gt;
+&lt;p&gt;行业云：属于私有云，只限于行业内部人员使用&lt;/p&gt;
+&lt;h5 id=&#34;云计算的优点通用点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算的优点通用点&#34;&gt;#&lt;/a&gt; 云计算的优点 / 通用点&lt;/h5&gt;
+&lt;p&gt;按需自助的服务：根据用户的资源需求量，自助选择服务类型&lt;/p&gt;
+&lt;p&gt;随时随地的网络接入：对于用户接入服务的地点，没有地域限制，只要有公网可达即可&lt;/p&gt;
+&lt;p&gt;弹性伸缩的资源：根据用户的需求，可对资源进行伸缩&lt;/p&gt;
+&lt;p&gt;可计量的收费方式：根据用户的使用情况，收取相应的费用&lt;/p&gt;
+&lt;p&gt;资源池化：将所有的硬件资源，整合成资源池，达到资源共享的目的，从而提高资源复用率，节约用户成本&lt;/p&gt;
+&lt;p&gt;大规模：由于虚拟化资源使用，必须基于底层设备的支持，因此根据发展情况，厂商会不断扩大底层硬件的规模&lt;/p&gt;
+&lt;p&gt;安全性：虚拟化实现 封装 / 独立 / 分区 / 灵活迁移&lt;/p&gt;
+&lt;p&gt;异构化 / 同构化&lt;/p&gt;
+&lt;h4 id=&#34;问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#问题&#34;&gt;#&lt;/a&gt; 问题：&lt;/h4&gt;
+&lt;h5 id=&#34;为什么需要云计算&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么需要云计算&#34;&gt;#&lt;/a&gt; 为什么需要云计算：&lt;/h5&gt;
+&lt;p&gt;​	基于硬件设备的支持，提升运行的效率，提高资源的复用率，实现资源共享，节约成本&lt;/p&gt;
+&lt;h5 id=&#34;云计算实现方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算实现方式&#34;&gt;#&lt;/a&gt; 云计算实现方式：&lt;/h5&gt;
+&lt;p&gt;​	以虚拟化作为基础，实现软硬件解耦，再分为不同的服务类型，以私有云 / 公有云 / 混合云 / 行业云出租给用户，实现商业价值的最大值&lt;/p&gt;
+&lt;h5 id=&#34;云计算是什么-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算是什么-2&#34;&gt;#&lt;/a&gt; 云计算是什么？&lt;/h5&gt;
+&lt;p&gt;​		让用户创建虚拟计算机，并且使虚拟计算机最大程度接近于真实主机的运行。&lt;/p&gt;
+&lt;h5 id=&#34;虚拟化优势&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟化优势&#34;&gt;#&lt;/a&gt; 虚拟化优势：&lt;/h5&gt;
+&lt;p&gt;​	将资源池化，实现资源共享，提高资源复用率，降低成本&lt;/p&gt;
+&lt;h5 id=&#34;云计算与虚拟化的关系-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#云计算与虚拟化的关系-2&#34;&gt;#&lt;/a&gt; 云计算与虚拟化的关系：&lt;/h5&gt;
+&lt;p&gt;​	虚拟化是实现云计算的前提条件&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&#34;计算虚拟化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#计算虚拟化&#34;&gt;#&lt;/a&gt; 计算虚拟化&lt;/h4&gt;
+&lt;p&gt;针对 CPU / 内存 / IO 读写，虚拟机在运行过程中，与底层设备之间交互的过程&lt;/p&gt;
+&lt;p&gt;虚拟化层：将硬件资源进行虚拟化整合，分享&lt;/p&gt;
+&lt;h5 id=&#34;计算虚拟化架构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#计算虚拟化架构&#34;&gt;#&lt;/a&gt; 计算虚拟化架构&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;全虚拟化&lt;/strong&gt;：将底层硬件全部整合成虚拟资源池，当虚拟机发送指令时，直接由虚拟化层处理回应，不会影响到底层，实现虚拟化目的，但性能最差&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;半虚拟化&lt;/strong&gt;：虚拟机向底层发放指令时，先由虚拟化层拦截，再进行区分转发给底层，底层接收后，再经过虚拟化层转发给虚拟机，相比全虚在实现虚拟化的基础上性能提升&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;硬件辅助虚拟化&lt;/strong&gt;：虚拟机与硬件层，一一对应，可直接通过虚拟化层，将指令发送给底层硬件，相对性能最好&lt;/p&gt;
+&lt;p&gt;并且虚拟化层与底层硬件之间，分别根据主机，系统，软件等 分成 Ring0-Ring3 四个级别&lt;/p&gt;
+&lt;p&gt;一般由&lt;strong&gt; Ring0&lt;/strong&gt; 发出的指令都属于&lt;strong&gt;特权（敏感）指令&lt;/strong&gt;，此种指令表明会对底层主机产生直接影响，对于主机的运行状态产生影响，&lt;/p&gt;
+&lt;p&gt;所以&lt;strong&gt; Ring0&lt;/strong&gt; 属于核心区域，底层主机和虚拟机所在的位置都属于&lt;strong&gt; Ring0&lt;/strong&gt;,&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ring1&lt;/strong&gt; 是系统所在层次，&lt;strong&gt;ring2&lt;/strong&gt; 属于&lt;strong&gt;过渡层&lt;/strong&gt;没有明确的对应位置，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ring3&lt;/strong&gt; 对应应用软件层，并且由&lt;strong&gt; ring3&lt;/strong&gt; 发出的指令属于&lt;strong&gt;普通指令&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;普通指令指只会影响底层资源的调用&lt;/p&gt;
+&lt;h5 id=&#34;计算虚拟化分类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#计算虚拟化分类&#34;&gt;#&lt;/a&gt; 计算虚拟化分类：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;寄居虚拟化&lt;/strong&gt; /&lt;strong&gt; 宿主虚拟化&lt;/strong&gt;，在硬件设备上直接按照虚拟化操作系统（虚拟机），是否能运行正常，取决于底层是否支持，因此此种模式对硬件要求较高。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;裸金属虚拟化&lt;/strong&gt;，属于半虚拟化的一种，虚拟机属于内核态运行，依靠 XEN 虚拟化技术将虚拟机的指令统一处理下发到底层，但 XEN 开发难度大，安全性高，处理的效率较低，并且若虚拟化架构发生改变，则需重新开发&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;混合虚拟化&lt;/strong&gt;，属于半虚拟化，但相比 XEN 技术，混合虚拟化依靠 KVM 技术运行，此种类型处理效率较高，相当于安装在虚拟化层的进程，不会因为架构改变而重新研发&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;操作系统虚拟化&lt;/strong&gt;，指使用容器技术实现虚拟机运行，此种虚拟化模式下，多个虚拟机共享同一操作系统，因此独立和安全性不足&lt;/p&gt;
+&lt;p&gt;​	一型虚拟化：半虚拟化&lt;/p&gt;
+&lt;p&gt;​	二型虚拟化：寄居虚拟化&lt;/p&gt;
+&lt;h5 id=&#34;虚拟化技术的区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟化技术的区别&#34;&gt;#&lt;/a&gt; 虚拟化技术的区别&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;XEN&lt;/strong&gt;：在半虚拟化中，将虚拟化所有的指令统一转发给 DOM 0, 此区域是 XEN 的核心处理区域，其他虚拟机所在区域为 Dom U 区域，根据虚拟机个数的多少，可以存在多个 U 区域，而 0 区域只有一个，&lt;strong&gt;因此是一对多的关系&lt;/strong&gt;，所以由于只由一个 0 区域统一处理，资源占用较大，效率较低，但安全性高&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;KVM&lt;/strong&gt;：在半虚拟化中，把自身所有的核心 qemu 与不同的虚拟机形成对应，目的是加快虚拟机响应的速度，提升计算读写的处理效率，并且 KVM 的对应关系是可将 qemu&lt;strong&gt; 分成多个与虚拟机形成一一对应的关系&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;计算虚拟化对象&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#计算虚拟化对象&#34;&gt;#&lt;/a&gt; 计算虚拟化对象：&lt;/h5&gt;
+&lt;p&gt;​	内存：针对于实际内存资源，通过虚拟化技术，实现内存资源使用 / 共享，依靠内存复用的虚拟化技术&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.	 内存共享：用户使用相同的部分
+2.	 内存气泡：先根据用户虚拟机的请求，进行资源分配，若在使用过程中，存在用户内存不足，则会将其他的空闲内存先挪用给当下继续使用，若后续其他用户需要使用时，则会重新分配资源
+3.	 内存置换：指现有的内存全部已占用，若后续有新业务写入，则查看当前不需要经常读写的老业务，并且将其置换出来，空闲的空间则用于写入新的业务，若后续老业务需要读写，则再置换一次空间
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	cpu：针对实际的 CPU 内核，实现虚拟化的资源共享&lt;/p&gt;
+&lt;p&gt;​	i/o 读写：通过虚拟化的技术，能够让虚拟机接近于真实主机的运行 依靠半虚 / 硬件辅助等方式，将虚拟机的所有指令下发到底层，完成虚拟机的正常读写。&lt;/p&gt;
+&lt;h4 id=&#34;问题-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#问题-2&#34;&gt;#&lt;/a&gt; 问题：&lt;/h4&gt;
+&lt;h5 id=&#34;1-xen和kvm的区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-xen和kvm的区别&#34;&gt;#&lt;/a&gt; 1 XEN 和 KVM 的区别&lt;/h5&gt;
+&lt;h5 id=&#34;2-内存复用如何实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-内存复用如何实现&#34;&gt;#&lt;/a&gt; 2 内存复用如何实现&lt;/h5&gt;
+&lt;p&gt;通过内存共享 气泡 置换&lt;/p&gt;
+&lt;h5 id=&#34;ps-内存复用如何实现内存资源的共享&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ps-内存复用如何实现内存资源的共享&#34;&gt;#&lt;/a&gt; PS 内存复用如何实现内存资源的共享？&lt;/h5&gt;
+&lt;p&gt;由于内存复用的目的 (提高内存的利用率，减少内存浪费，从而降低系统成本和提高系统性能。)，在于重复使用相同的内存部分，但根据不同用户的需求，会分成置换 气泡 共享等实现方式，以上三种方式分别通过将占用空间置换成空闲，将空闲未使用的内存分配给需要使用的用户，以及满足多用户可能同时读取的需求，内存复用是在不改变真实设备内存总数的基础上，提高内存资源利用率&lt;/p&gt;
+&lt;h5 id=&#34;3-全虚半虚硬件辅助区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-全虚半虚硬件辅助区别&#34;&gt;#&lt;/a&gt; 3 全虚 / 半虚 / 硬件辅助区别&lt;/h5&gt;
+&lt;h5 id=&#34;4-虚拟化除实现共享利用率等还能实现什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-虚拟化除实现共享利用率等还能实现什么&#34;&gt;#&lt;/a&gt; 4 虚拟化除实现共享，利用率等，还能实现什么&lt;/h5&gt;
+&lt;p&gt;隔离性，灵活性，可靠性&lt;/p&gt;
+&lt;h5 id=&#34;5-计算虚拟化的对象&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-计算虚拟化的对象&#34;&gt;#&lt;/a&gt; 5 计算虚拟化的对象&lt;/h5&gt;
+&lt;h4 id=&#34;华为的虚拟化平台&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#华为的虚拟化平台&#34;&gt;#&lt;/a&gt; 华为的虚拟化平台&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;fusion&lt;/strong&gt; &lt;strong&gt;compute&lt;/strong&gt;（计算虚拟化 / 服务器虚拟化）&lt;/p&gt;
+&lt;h5 id=&#34;fc的构成&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#fc的构成&#34;&gt;#&lt;/a&gt; FC 的构成：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;CNA&lt;/strong&gt;：单节点管理，主要用于管理分配单个虚拟机的计算，存储，网络资源&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;VRM&lt;/strong&gt;：集群管理，主要用于管理分配集群内的虚拟机的生命周期和资源分配统筹&lt;/p&gt;
+&lt;h5 id=&#34;虚拟机监控器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟机监控器&#34;&gt;#&lt;/a&gt; 虚拟机监控器：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;hyper&lt;/strong&gt;-v（Hypervisor）：作用是管理统称分配虚拟化资源 ，在虚拟化层&lt;/p&gt;
+&lt;h4 id=&#34;网络虚拟化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络虚拟化&#34;&gt;#&lt;/a&gt; 网络虚拟化：&lt;/h4&gt;
+&lt;p&gt;由于创建出虚拟机目的是为虚拟机之间能够像真实主机一样相互通信，因此需要把实际的网络资源，虚拟化后，提供给虚拟机使用&lt;/p&gt;
+&lt;p&gt;虚拟机通信主要依靠虚拟交换机实现&lt;/p&gt;
+&lt;h5 id=&#34;虚拟机通信必备组件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟机通信必备组件&#34;&gt;#&lt;/a&gt; 虚拟机通信必备组件:&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;上行链路&lt;/strong&gt;：用于连接物理交换机与虚拟交换机的实际接口，位于物理交换机上&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;端口组&lt;/strong&gt;：用于连接虚拟机与虚拟交换机的虚拟接口，位于虚拟交换机上&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;安全组&lt;/strong&gt;：用于保证每一个端口组内的通信安全，设置在每一个端口组中，类似于 QOS 等通信策略，并且端口组内的成员必须执行相同的安全组&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;虚拟网卡&lt;/strong&gt;：由物理网卡通过虚拟化手段，分配给不同的虚拟机，并且在同一端口组内的虚拟机都可以分配到对应的虚拟网卡&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;vlan&lt;/strong&gt;：用于分配端口组&lt;/p&gt;
+&lt;h5 id=&#34;虚拟机通信规则&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟机通信规则&#34;&gt;#&lt;/a&gt; 虚拟机通信规则：&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;若虚拟机是处于同一虚拟交换机上，且处于同一端口组内，则直接通过虚拟交换机转发流量，若处在不同端口组内，但处于同一虚拟交换机上，则需要通过上行链路转发&lt;/li&gt;
+&lt;li&gt;若虚拟机处在不同交换机上，则同样需要通过上行链路转发&lt;/li&gt;
+&lt;li&gt;若虚拟机 vlan 端口组相同，但处在不同虚拟交换机上，由于连接不同的上行链路，因此依旧需要物理交换机实现转发&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;虚拟交换机只支持二层转发，物理交换机由于支持三层转发，因此上行链路的类型一般设置为 trunk&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h5 id=&#34;虚拟机流量走向&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟机流量走向&#34;&gt;#&lt;/a&gt; 虚拟机流量走向&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;东西&lt;/strong&gt;：虚拟机之间的通信是否属于同一集群 / 数据中心内，标准看底层资源是否互通，互通则表示传递的是东西流量&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;南北&lt;/strong&gt;：虚拟机之间的通信不属于同一数据中心内，底层资源不能互通，则传递的是南北流量&lt;/p&gt;
+&lt;h5 id=&#34;虚拟网卡类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟网卡类型&#34;&gt;#&lt;/a&gt; 虚拟网卡类型:&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;普通网卡&lt;/strong&gt;：通过虚拟化手段将物理网卡虚拟化后给虚拟机使用，并且对应关系是一对一，同时通过 XEN 虚拟化技术进行转发&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;直通网卡&lt;/strong&gt;：基于物理网卡通过虚拟化手段，将实际网卡虚拟成多个虚拟网卡，然后用来对应不同的虚拟机，由于虚拟机都有自身对应的网卡，转发效率提升&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用户态网卡&lt;/strong&gt;：在直通网卡基础上，加快转发速度&lt;/p&gt;
+&lt;h4 id=&#34;存储资源虚拟化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#存储资源虚拟化&#34;&gt;#&lt;/a&gt; 存储资源虚拟化&lt;/h4&gt;
+&lt;h5 id=&#34;存储分类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#存储分类&#34;&gt;#&lt;/a&gt; 存储分类：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;集中式存储&lt;/strong&gt;：现实中指将一份完整的数据，存储到一块存储设备上，若设备损 坏，则数据丢失，若以虚拟化方式进行存储，则指多个存储设备集中在某一个区域内，联合完成存储目的，可以实现一定程度的数据备份。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;分布式存储&lt;/strong&gt;：指可以将一份数据存放到不同的设备上，并且设备所在的位置不在同一区域。分布式存储可以更好的实现数据信息的备份&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;虚拟化存储&lt;/strong&gt;：能够支持高级虚拟化特性，如快照，链接克隆，完整克隆，存储热迁移&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;非虚拟化存储&lt;/strong&gt;：不支持高级虚拟化特性&lt;/p&gt;
+&lt;h5 id=&#34;存储虚拟化特性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#存储虚拟化特性&#34;&gt;#&lt;/a&gt; 存储虚拟化特性：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;快照&lt;/strong&gt;：作用是来备份当前状态下运行的业务，并且只能备份部分业务数据，当业务发生中断时，可通过快照功能，将其恢复到之前的某一状态下，快照并不能进行永久性的保存（当热迁移发生时，不支持迁移快照数据）&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;链接克隆&lt;/strong&gt;：当有批量创建存储磁盘 / 虚拟机时，则可使用此方式，在链接克隆状态可以基于原始母盘，创建多个子盘，并且只需要对母盘进行统一操作即可影响子盘，创建速度快，但母盘故障，由于与子盘之间存在依附关系，则子盘失效&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;完整克隆&lt;/strong&gt;：同样可以基于母盘进行批量创建，但与子盘之间不存在依附关系，不会因为母盘的失效而失效，创建速度慢&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;存储热迁移&lt;/strong&gt;：在用户无感应的情况下的进行存储数据的迁移&lt;/p&gt;
+&lt;h5 id=&#34;虚拟化磁盘分类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟化磁盘分类&#34;&gt;#&lt;/a&gt; 虚拟化磁盘分类：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;普通磁盘&lt;/strong&gt;：会将所有空间展示给用户，并且会清空所有的空间，但用户只会使用到所需要的部分，由于需要清空所有空间，因此创建速度较慢，但性能最好&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;普通延迟置零&lt;/strong&gt;：同样将所有空间展示给用户，但只清空用户所需要的空间，创建速度快，但性能较差&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;精简磁盘&lt;/strong&gt;：不会将可用空间展示给用户，只会根据用户的需求发放相应存储空间，创建速度最快，但性能最差&lt;/p&gt;
+&lt;h5 id=&#34;存储资源与存储设备的关系&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#存储资源与存储设备的关系&#34;&gt;#&lt;/a&gt; 存储资源与存储设备的关系：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;存储资源&lt;/strong&gt;：是指用来进行存储框架&lt;/p&gt;
+&lt;p&gt;​	** 存储设备:** 指不同的存储资源中可以用来进行存储的空间&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;数据存储&lt;/strong&gt;：指用来统一管理不同存储设备中的数据信息的不同方式&lt;/p&gt;
+&lt;h5 id=&#34;基于磁盘资源分配&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基于磁盘资源分配&#34;&gt;#&lt;/a&gt; 基于磁盘资源分配：&lt;/h5&gt;
+&lt;p&gt;​	&lt;strong&gt;普通磁盘&lt;/strong&gt;：只能分配给一个虚拟机使用资源&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;共享磁盘&lt;/strong&gt;：可以将分配的资源给多个虚拟机同时使用&lt;/p&gt;
+&lt;h4 id=&#34;虚拟化特性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟化特性&#34;&gt;#&lt;/a&gt; 虚拟化特性:&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;HA&lt;/strong&gt;(&lt;strong&gt;高可用性&lt;/strong&gt;) 当主机发生故障时，为避免虚拟机业务中断，被动将虚拟机迁移到集群内的其他主机上，正常运行，并且 HA 只在底层发生故障时起效，如虚拟机蓝屏 / 故障，则无法进行 HA&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;负载均衡&lt;/strong&gt;：为提升设备性能，相对节约成本，从而不影响业务的正常运行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;易扩容&lt;/strong&gt;：在不影响业务运行的过程中，若资源池资源不足，则在线进行添加&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;内容复用&lt;/strong&gt;：提交内存的利用率，降低内存的损号，提高系统性能&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模板部署&lt;/strong&gt;：创建虚拟机的方式，但模板不能当虚拟机使用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虚拟机复制&lt;/strong&gt;：快速创建虚拟机的方式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;资源热添加&lt;/strong&gt;：体现虚拟化资源易扩容的优势&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;快照&lt;/strong&gt;：用来备份当前状态下的业务，并且只能保存部分数据，不能永久存在，当业务发生故障时，回到某一个时刻&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;numa 架构&lt;/strong&gt;：在实现内存 CPU 共享的基础上，提升 CPU 的调用速度&lt;/p&gt;
+&lt;p&gt;若需要实现以上虚拟化特性创建的虚拟机需要挂载&lt;strong&gt; tools&lt;/strong&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2023/02/20/2023.2.13/</guid>
             <title>HCIA-security(一) 2023.2.13</title>
@@ -2069,108 +2223,6 @@ igmp version 1 设置版本&lt;/p&gt;
 &lt;p&gt;​	接口认证：针对 ISIS 邻接关系的建立进行认证，认证通过才可以建立邻接关系&lt;/p&gt;
 &lt;p&gt;​	区域认证：针对 Level-1 的 LSDB 进行认证，开启认证后会在发送的 Level-1 报文中携带认证信息（Level-1LSP,Level-1SNP）, 对收到的报文也会进行认证检查，检查通过才可以加入 LSDB&lt;/p&gt;
 &lt;p&gt;​	路由器认证：针对 Level-2 的 LSDB 进行认证，开启认证后会在发送的 Level-2 报文中携带认证信息，对收到的报文也会进行认证检查&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://example.com/2022/11/24/2022.11.17/</guid>
-            <title>HCIP(五) 2022.11.17</title>
-            <link>http://example.com/2022/11/24/2022.11.17/</link>
-            <pubDate>Thu, 24 Nov 2022 07:29:59 +0800</pubDate>
-            <description><![CDATA[ &lt;h6 id=&#34;isis建立邻接关系的原则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis建立邻接关系的原则&#34;&gt;#&lt;/a&gt; ISIS 建立邻接关系的原则：&lt;/h6&gt;
-&lt;pre&gt;&lt;code&gt;1. 只有同一层次的路由器之间才能建立邻接关系（level 1/2 即属于level 1 有属于level 2）
-2. 对于level 1 路由器来说，area id 必须一致
-3. 两端设备的ISIS网络类型必须一致
-4. ISIS两端的ip地址需要处于同一网段（特殊情况除外- - -&amp;gt;p2p）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h6 id=&#34;hello-报文格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hello-报文格式&#34;&gt;#&lt;/a&gt; hello 报文格式  ：&lt;/h6&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Reserved/Circuit Type：用于表示路由器类型&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Source ID&lt;/strong&gt;：发送设备的 System id&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Holding Time ：邻接关系的失效时间，一般为 3 倍的 hello 间隔&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;PDU length：整个报文的长度&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Priority&lt;/strong&gt;：优先级，用于选举 DIS 时使用&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;LAN ID:DIS 的 system id 加上一个字节的 01/10, 只存在于广播网络中&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Local Circuit ID：本地链路 ID，用于 P2P 网络类型协商&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Variable Length  Fields：可选择携带的某些参数值或者可选功能&lt;/p&gt;
-&lt;p&gt;​	采用 TLV 结构进行携带，需要提供某种功能时，只需要加载对于对应的 TLV 即可&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h6 id=&#34;广播型网络邻接关系的建立三次握手&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#广播型网络邻接关系的建立三次握手&#34;&gt;#&lt;/a&gt; 广播型网络邻接关系的建立：（三次握手）&lt;/h6&gt;
-&lt;p&gt;​	R1&amp;lt;——————————&amp;gt;R2&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1. 设备初始状态都处于down状态
-2. 运行或激活接口ISIS后，发送hello报文，假设R1先发送Hello 报文
-3. R2收到R1的hello 报文后，状态转变为initial ，同时将R1的System id 写入自己hello 的邻接列表
-4. R2 发送hello 报文，邻接列表中含有R1的System id
-5. R1收到后，将R2列为自己的邻接路由器，同时将R2的System id 列入自己的hello 报文中，发送给R2
-6. R2收到R1 发送的hello 报文后，将自己的状态转变为UP状态，此时邻接关系建立完成
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h6 id=&#34;点到点网络两次握手默认采用三次握手&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#点到点网络两次握手默认采用三次握手&#34;&gt;#&lt;/a&gt; 点到点网络（两次握手，默认采用三次握手）&lt;/h6&gt;
-&lt;p&gt;​	R1&amp;lt;——————————&amp;gt;R2&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;设备初始状态都处于 down 状态&lt;/li&gt;
-&lt;li&gt;运行或激活接口 ISIS 后，发送 hello 报文，假设 R1 先发送 Hello 报文&lt;/li&gt;
-&lt;li&gt;R1 发送 hello 报文后，报文中的邻接列表为空&lt;/li&gt;
-&lt;li&gt;R2 收到 R1 的 hello 报文后，直接将 R1 列为自己的邻接路由器，并将状态转变为 UP&lt;/li&gt;
-&lt;li&gt;R2 发送 hello 报文，报文中的邻接列表中有 R1 的 System id&lt;/li&gt;
-&lt;li&gt;R1 收到 R2 的 hello 报文后，将 R2 列为自己的邻接路由器，邻接关系建立完成&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;配置接口使用两次握手建立邻接关系：&lt;/p&gt;
-&lt;p&gt;配置接口交互 hello 次数：isis ppp- negotiation 2-way&lt;/p&gt;
-&lt;p&gt;PPP 链路两端 IP 不处于同一网段使用&lt;/p&gt;
-&lt;p&gt;[huawei-serial 1/0/0] isis peer-ip-ignore // 配置 PPP 链路不检查对端 IP 地址&lt;/p&gt;
-&lt;h6 id=&#34;dis和伪节点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dis和伪节点&#34;&gt;#&lt;/a&gt; DIS 和伪节点：&lt;/h6&gt;
-&lt;pre&gt;&lt;code&gt;1. DIS通过所有路由器选举产生
-2. 负责产生伪节点的LSP
-3. 用于周期发送CSNP报文，同步网络中的路由器的LSDB
-4. 伪节点LSP使用DIS的system id 和 circuit id 进行标识，当circuit id 为非零时，表示LSP为伪节点LSP
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h6 id=&#34;dis的选举规则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dis的选举规则&#34;&gt;#&lt;/a&gt; DIS 的选举规则：&lt;/h6&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;比较设备的优先级，以大为优，优先级越高越容易成为 DIS 设备&lt;/p&gt;
-&lt;p&gt;设备优先级：0-127，默认 63，&lt;strong&gt;ISIS 的优先级为 0 的设备参与选举 DIS&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;优先级相同时，比较 MAC 地址，MAC 地址大的作为 DIS 设备&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;ISIS 的 hello 报文间隔时间为 10s，DIS 的 hello 时间间隔为 10/3, 邻接失效时间 3 倍 10s&lt;/p&gt;
-&lt;h6 id=&#34;isis的dis和ospf的dr的对比&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isis的dis和ospf的dr的对比&#34;&gt;#&lt;/a&gt; ISIS 的 DIS 和 OSPF 的 DR 的对比：&lt;/h6&gt;
-&lt;pre&gt;&lt;code&gt;1. 优先级为0的设备参不参与选举
-2. 抢占，DIS支持抢占，DR不支持
-3. 选举规则不同，优先级相同时，DIS比较MAC地址,DR比较router id
-4. hello 时间间隔，DR的时间间隔为10/3,死亡时间
-5. 有无备份,DR存在备份BDR,DIS不存在备份
-6. 作用不同，DR的作用-减少邻接关系，DIS的作用-周期发送CSNP同步LSDB
-7. 选择过程不同，DR选举过程为其他路由器感知自己为DR设备，DIS初始化默认自己为DIS
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h6 id=&#34;lsp报文格式900s&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsp报文格式900s&#34;&gt;#&lt;/a&gt; LSP 报文格式：900s&lt;/h6&gt;
-&lt;ul&gt;
-&lt;li&gt;PDU length：报文的长度&lt;/li&gt;
-&lt;li&gt;Remaining Lifetime：生存时间，时间范围 0 —1200 , 时间为递减&lt;/li&gt;
-&lt;li&gt;LSP ID：由 System id，伪节点 id，LSP 分片 id 组成，用于标识一条 LSP&lt;/li&gt;
-&lt;li&gt;Sequence number ：序列号，与 OSPF 的 LSA 的序列号作用一致&lt;/li&gt;
-&lt;li&gt;check sum：校验和，用于检验 LSP 的完整性&lt;/li&gt;
-&lt;li&gt;P：是否支持自动修复&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;ATT&lt;/strong&gt;：由 level 1/2 路由器产生的 LSP 置位，用于 level 1 区域的路由器访问 level 2 区域使用&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OL(overload)&lt;/strong&gt;：过载比特位，当 LSP 的 OL 置位后，其他路由器将不会使用 LSP 进行路由计算&lt;/li&gt;
-&lt;li&gt;IS type：标识生成此条 LSP 的路由角色&lt;/li&gt;
-&lt;/ul&gt;
  ]]></description>
         </item>
     </channel>
